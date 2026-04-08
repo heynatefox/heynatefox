@@ -525,6 +525,7 @@ function TierTable() {
 
 export default function PSFProposal({ password }: { password: string }) {
   const [unlocked, setUnlocked] = useState(false)
+  const [origOpen, setOrigOpen] = useState(false)
 
   if (!unlocked) {
     return <PasswordGate password={password} onUnlock={() => setUnlocked(true)} />
@@ -553,6 +554,8 @@ export default function PSFProposal({ password }: { password: string }) {
           .psf-retainer-pills button { white-space: normal !important; text-align: left; }
           .psf-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
           .psf-billing-grid { grid-template-columns: 1fr !important; }
+          .psf-model-grid { grid-template-columns: 1fr !important; }
+          .psf-model-card { padding: 28px 24px !important; }
           .psf-billing-grid > * { padding-bottom: 4px; }
         }
       `}</style>
@@ -597,6 +600,178 @@ export default function PSFProposal({ password }: { password: string }) {
           </div>
         </div>
         <hr style={s.divider} />
+
+        {/* ── Updated Scope — April 8, 2026 ── */}
+        <div style={s.section}>
+          <SectionLabel accent>Updated Scope</SectionLabel>
+          <h2 className="psf-h2" style={s.h2}>Updated Scope — April 8, 2026</h2>
+          <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 36, marginTop: -8 }}>
+            Based on your feedback, here are three rough models. Final scope and pricing locked on our call.
+          </p>
+
+          {/* ── Three model cards ── */}
+          <div className="psf-model-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, alignItems: 'start', marginBottom: 32 }}>
+
+            {/* Model A */}
+            <div className="psf-model-card" style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '36px 28px', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
+              <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+              <div style={{ position: 'relative' }}>
+                <div style={{ fontSize: 10, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: MID, marginBottom: 8 }}>Model A</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: BLACK, marginBottom: 4 }}>Discord First</div>
+                <div style={{ fontSize: 13, color: MID, marginBottom: 20 }}>8 weeks</div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>My engagement</span><span>$14,000</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Community outreach partner</span><span>$1,500–$2,500</span>
+                  </div>
+                </div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 6 }}>Estimated Total</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 800, color: A }}>$15,500–$16,500</div>
+                </div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16 }}>
+                  <div style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.5, fontStyle: 'italic' }}>
+                    Best for: fastest path to launch, lowest spend.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Model B — Recommended */}
+            <div className="psf-model-card" style={{ background: '#FFF9F7', border: `3px solid ${A}`, borderRadius: 16, padding: '52px 32px 40px', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
+              <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+              <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: A, color: '#fff', fontFamily: "'Syne', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '5px 16px', borderRadius: 100, whiteSpace: 'nowrap' }}>
+                Recommended
+              </div>
+              <div style={{ position: 'relative' }}>
+                <div style={{ fontSize: 10, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', marginBottom: 8 }}>Model B</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: BLACK, marginBottom: 4 }}>Discord + Reddit</div>
+                <div style={{ fontSize: 13, color: MID, marginBottom: 20 }}>8 weeks</div>
+                <div style={{ borderTop: `1px solid rgba(232,96,28,0.15)`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>My engagement</span><span>$14,000</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Community outreach partner</span><span>$1,500–$2,500</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Reddit Tip Toe via Red Ranked</span><span>$5,000</span>
+                  </div>
+                </div>
+                <div style={{ borderTop: `1px solid rgba(232,96,28,0.15)`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', marginBottom: 6 }}>Estimated Total</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, fontWeight: 800, color: A }}>$20,500–$21,500</div>
+                </div>
+                <div style={{ borderTop: `1px solid rgba(232,96,28,0.15)`, paddingTop: 16 }}>
+                  <div style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.5, fontStyle: 'italic' }}>
+                    Best for: maximum inbound from investing communities before launch. Reddit used specifically to reach WallStreetBets-adjacent audiences and drive them into the Discord — not an SEO play.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Model C */}
+            <div className="psf-model-card" style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '36px 28px', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
+              <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+              <div style={{ position: 'relative' }}>
+                <div style={{ fontSize: 10, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: MID, marginBottom: 8 }}>Model C</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: BLACK, marginBottom: 4 }}>Full Engine</div>
+                <div style={{ fontSize: 13, color: MID, marginBottom: 20 }}>10 weeks</div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>My engagement</span><span>$19,000</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Community outreach partner</span><span>$1,500–$2,500</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Reddit Tip Toe via Red Ranked</span><span>$6,250</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
+                    <span>Bad Cards Discord activation</span><span>$700–$1,750</span>
+                  </div>
+                </div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16, marginBottom: 16 }}>
+                  <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 6 }}>Estimated Total</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 800, color: A }}>$27,450–$29,500</div>
+                </div>
+                <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16 }}>
+                  <div style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.5, fontStyle: 'italic' }}>
+                    Best for: full pre-launch push before the fundraise.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style={{ fontSize: 12, color: MID, fontWeight: 300, lineHeight: 1.65, marginBottom: 0 }}>
+            All models include: Discord build and architecture, waitlist strategy and technical spec, compliance-aligned referral mechanics, trust architecture, founder AMA programming, and weekly reporting.
+          </p>
+        </div>
+
+        <hr style={s.divider} />
+
+        {/* ── Questions section ── */}
+        <div style={s.section}>
+          <SectionLabel>Alignment</SectionLabel>
+          <h2 className="psf-h2" style={s.h2}>To finalize scope on our call, here&apos;s what we need to align on.</h2>
+          <ol style={{ listStyle: 'none', padding: 0, margin: '0 0 0' }}>
+            {[
+              'Total budget ceiling for the pre-launch period',
+              'Launch timeline — open to 10 weeks for a stronger demand base, or is there a hard date?',
+              'Team execution capacity — who owns Discord moderation day to day once the server is built?',
+              'Founder availability — Omar and Youssef available for bi-weekly AMAs throughout the engagement',
+              'Referral mechanic — confirming position-based incentives as the primary driver, with financial incentives layered in once legal clears the workaround',
+              'Reddit — WallStreetBets Discord has 478K members. Is a targeted outreach play into those communities worth the additional spend?',
+              'Bad Cards — open to performance-based Discord acquisition at $0.35 per join, zero upfront cost?',
+              'Success metrics — how many Discord members and waitlist signups would make you feel confident hitting 2,100–2,500 investors at launch?',
+            ].map((q, i) => (
+              <li key={i} style={{ display: 'flex', gap: 20, alignItems: 'flex-start', marginBottom: 16, fontSize: 16, lineHeight: 1.65, color: '#444', fontWeight: 300 }}>
+                <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: A, flexShrink: 0, lineHeight: 1.3 }}>0{i + 1}</span>
+                <span>{q}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <hr style={s.divider} />
+
+        {/* ── Callout box ── */}
+        <div style={{ ...s.callout, marginBottom: 64 }}>
+          <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700, color: A, marginBottom: 6 }}>
+            Note
+          </div>
+          <p style={{ fontSize: 14, lineHeight: 1.65, color: '#444', fontWeight: 300, marginBottom: 0 }}>
+            These are rough estimates. Final scope, hours, and pricing confirmed on our April 8 call.
+          </p>
+        </div>
+
+        <hr style={s.divider} />
+
+        {/* ── Collapsible original proposal ── */}
+        <div style={{ marginBottom: 64 }}>
+          <button
+            onClick={() => setOrigOpen(!origOpen)}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0',
+              display: 'flex', alignItems: 'center', gap: 8, width: '100%',
+            }}
+          >
+            <svg
+              width="12" height="12" viewBox="0 0 12 12"
+              style={{ transform: origOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s', flexShrink: 0 }}
+            >
+              <path d="M4 2L8 6L4 10" stroke={MID} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 500, color: MID, letterSpacing: 0.5 }}>
+              View Full Strategy Document (v1 — April 3, 2026)
+            </span>
+          </button>
+
+          {origOpen && (
+            <div style={{ marginTop: 32 }}>
 
         {/* ── PSF_SECTIONS ── */}
         {PSF_SECTIONS.map(sec => (
@@ -802,6 +977,10 @@ export default function PSFProposal({ password }: { password: string }) {
           >
             Download Full Proposal
           </a>
+        </div>
+
+            </div>
+          )}
         </div>
 
         {/* ── Footer ── */}
