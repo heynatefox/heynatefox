@@ -524,13 +524,22 @@ function TierTable() {
 // ─── Updated Scope — interactive recommended scope ───────────────────────────
 
 const SCOPE_ADDONS = [
-  { id: 'reddit',   label: 'Reddit Tip Toe via Red Ranked',  price: '+$5,000' },
-  { id: 'outreach', label: 'Community Outreach Partner',      price: '+$1,500–$2,500' },
-  { id: 'badcards', label: 'Bad Cards Discord Activation',    price: '+$700–$1,750' },
+  { id: 'reddit',   label: 'Reddit Tip Toe via Red Ranked',  price: '+$5,000',        locked: false },
+  { id: 'outreach', label: 'Community Outreach Partner',      price: '+$1,500–$2,500', locked: true  },
+  { id: 'badcards', label: 'Bad Cards Discord Activation',    price: '+$700–$1,750',   locked: false },
 ] as const
 
+function LockIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0, marginLeft: 4 }}>
+      <rect x="2" y="5.5" width="8" height="5.5" rx="1" stroke={A} strokeWidth="1.2" />
+      <path d="M4 5.5V3.5a2 2 0 0 1 4 0V5.5" stroke={A} strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 function UpdatedScope() {
-  const [active, setActive] = useState<Set<string>>(new Set())
+  const [active, setActive] = useState<Set<string>>(new Set(['reddit', 'outreach', 'badcards']))
 
   function toggle(id: string) {
     setActive(prev => {
@@ -560,7 +569,7 @@ function UpdatedScope() {
         Based on your feedback, this is the approach I&apos;d take. Final scope confirmed on our call.
       </p>
 
-      <div style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
+      <div className="psf-scope-card" style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
         <CornerAccent size={120} style={{ top: 0, left: 0 }} />
 
         {/* Base line item */}
@@ -586,26 +595,38 @@ function UpdatedScope() {
         {/* Add-on pills */}
         <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 24, marginBottom: 28 }}>
           <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: MID, marginBottom: 14 }}>
-            Add to your scope
+            Included — deselect to remove
           </div>
           <div className="psf-scope-pills" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {SCOPE_ADDONS.map(addon => {
               const on = active.has(addon.id)
+              const locked = addon.locked
               return (
-                <button
-                  key={addon.id}
-                  onClick={() => toggle(addon.id)}
-                  style={{
-                    fontFamily: "'Syne', sans-serif", fontWeight: on ? 700 : 500, fontSize: 13,
-                    padding: '10px 20px', borderRadius: 100,
-                    border: on ? `1.5px solid ${A}` : `1.5px solid ${BORDER}`,
-                    background: on ? AL : '#fff',
-                    color: on ? A : BLACK,
-                    cursor: 'pointer', transition: 'all 0.15s',
-                  }}
-                >
-                  {addon.label} <span style={{ opacity: 0.65, fontWeight: 400 }}>{addon.price}</span>
-                </button>
+                <div key={addon.id} style={{ position: 'relative' }}>
+                  <button
+                    onClick={() => !locked && toggle(addon.id)}
+                    title={locked ? 'Required for the strategy to deliver' : undefined}
+                    style={{
+                      fontFamily: "'Syne', sans-serif", fontWeight: on ? 700 : 500, fontSize: 13,
+                      padding: '10px 20px', borderRadius: 100,
+                      border: on ? `1.5px solid ${A}` : `1.5px solid ${BORDER}`,
+                      background: on ? AL : '#fff',
+                      color: on ? A : MID,
+                      cursor: locked ? 'default' : 'pointer',
+                      transition: 'all 0.15s',
+                      opacity: on ? 1 : 0.5,
+                      display: 'flex', alignItems: 'center', gap: 4,
+                    }}
+                  >
+                    {addon.label} <span style={{ opacity: 0.65, fontWeight: 400 }}>{addon.price}</span>
+                    {locked && <LockIcon />}
+                  </button>
+                  {locked && (
+                    <div style={{ fontSize: 11, color: MID, fontWeight: 300, fontStyle: 'italic', marginTop: 4, paddingLeft: 20 }}>
+                      Required for the strategy to deliver
+                    </div>
+                  )}
+                </div>
               )
             })}
           </div>
@@ -626,6 +647,48 @@ function UpdatedScope() {
 
       <p style={{ fontSize: 12, color: MID, fontWeight: 300, lineHeight: 1.65, marginTop: 16, marginBottom: 0 }}>
         All options include: Discord build, waitlist strategy, compliance-aligned referral mechanics, trust architecture, founder AMA support, and weekly reporting.
+      </p>
+    </div>
+  )
+}
+
+// ─── Why Nate — standalone section ───────────────────────────────────────────
+
+function WhyNateSection() {
+  return (
+    <div style={s.section}>
+      <SectionLabel accent>Why Me</SectionLabel>
+      <h2 className="psf-h2" style={s.h2}>I&apos;ve built this before. From the inside.</h2>
+
+      <div className="psf-why-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, margin: '0 0 40px' }}>
+        {[
+          { num: '42%',  label: 'Discord conversion rate (FIFA test via Bad Cards)' },
+          { num: '10M+', label: 'Bad Cards lifetime users' },
+          { num: '$0',   label: 'Paid marketing. Ever.' },
+          { num: '1M',   label: 'Robinhood pre-launch waitlist signups' },
+        ].map((stat, i) => (
+          <div key={i} style={{ background: '#FFF9F7', borderRadius: 12, padding: '24px 20px', textAlign: 'center' }}>
+            <div className="psf-stat-num" style={{ fontFamily: "'Syne', sans-serif", fontSize: 28, fontWeight: 800, color: A, lineHeight: 1, marginBottom: 8 }}>
+              {stat.num}
+            </div>
+            <div style={{ fontSize: 12, color: MID, lineHeight: 1.45, fontWeight: 300 }}>
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style={s.body}>
+        I ran crypto GTM at Robinhood during the GameStop crisis. I created This Week in Crypto — 52 episodes, still running today, the only content that generated positive brand sentiment during that window. I know how financial products grow virally because I built those systems from inside a regulated fintech at scale.
+      </p>
+      <p style={s.body}>
+        At Gametime I built a gamified microsite in under three weeks: 12,629 registrations, 5,700+ app reinstalls. At Concept Labs I ran a Web3 activation that drove 368K entries and 9x social growth.
+      </p>
+      <p style={s.body}>
+        Bad Cards has 10M lifetime users and zero paid marketing. I&apos;ve built the exact community engine PSF needs. The cost instinct that lets me run a platform at scale for $125 a month in infrastructure does not turn off when I am working for clients.
+      </p>
+      <p style={{ ...s.body, fontWeight: 600, color: BLACK, marginBottom: 0 }}>
+        I don&apos;t consult on this from the outside. I operate inside it.
       </p>
     </div>
   )
@@ -753,28 +816,40 @@ export default function PSFProposal({ password }: { password: string }) {
 
         <hr style={s.divider} />
 
+        {/* ── Why Nate ── */}
+        <WhyNateSection />
+
+        <hr style={s.divider} />
+
         {/* ── Collapsible original proposal ── */}
         <div style={{ marginBottom: 64 }}>
           <button
             onClick={() => setOrigOpen(!origOpen)}
             style={{
-              background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0',
-              display: 'flex', alignItems: 'center', gap: 8, width: '100%',
+              background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, cursor: 'pointer',
+              padding: '32px 36px', width: '100%', textAlign: 'left',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.04)', transition: 'all 0.15s',
+              display: 'flex', alignItems: 'center', gap: 16,
             }}
           >
             <svg
-              width="12" height="12" viewBox="0 0 12 12"
+              width="20" height="20" viewBox="0 0 20 20"
               style={{ transform: origOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s', flexShrink: 0 }}
             >
-              <path d="M4 2L8 6L4 10" stroke={MID} strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M7 4L13 10L7 16" stroke={A} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 500, color: MID, letterSpacing: 0.5 }}>
-              View Full Strategy Document (v1 — April 3, 2026)
-            </span>
+            <div>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 700, color: BLACK, marginBottom: 4 }}>
+                View Full Strategy Document <span style={{ fontWeight: 400, color: MID }}>(v1 — April 3, 2026)</span>
+              </div>
+              <div style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.5 }}>
+                Full strategy, approach, compliance flags, tier details, and engagement structure — click to expand.
+              </div>
+            </div>
           </button>
 
           {origOpen && (
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: 48 }}>
 
         {/* ── PSF_SECTIONS ── */}
         {PSF_SECTIONS.map(sec => (
