@@ -698,6 +698,7 @@ function WhyNateSection() {
 
 export default function PSFProposal({ password }: { password: string }) {
   const [unlocked, setUnlocked] = useState(false)
+  const [v2Open, setV2Open] = useState(false)
   const [origOpen, setOrigOpen] = useState(false)
 
   if (!unlocked) {
@@ -774,25 +775,117 @@ export default function PSFProposal({ password }: { password: string }) {
         </div>
         <hr style={{ ...s.divider, margin: '24px 0 40px' }} />
 
-        {/* ── Updated Scope — April 8, 2026 ── */}
-        <UpdatedScope />
+        {/* ── V3 — Updated Scope — April 8, 2026 (expanded) ── */}
+        <div style={s.section}>
+          <SectionLabel accent>Updated Scope</SectionLabel>
+          <h2 className="psf-h2" style={s.h2}>Here&apos;s the engagement.</h2>
+          <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 36, marginTop: -8 }}>
+            Based on our call, here is the agreed approach. Final agreement to follow.
+          </p>
+
+          {/* Engagement summary block */}
+          <div className="psf-scope-card" style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
+            <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+            <div style={{ position: 'relative' }}>
+              {[
+                { label: 'Engagement Type', value: 'Strategy Sprint' },
+                { label: 'Duration', value: '3 weeks' },
+                { label: 'Investment', value: '$9,000 total ($4,500 at signing, $4,500 at playbook delivery)' },
+                { label: 'Rate', value: '$100/hr — approximately 30 hours per week' },
+              ].map((row, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'baseline', marginBottom: i < 3 ? 16 : 0, flexWrap: 'wrap' }}>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, minWidth: 160, flexShrink: 0 }}>
+                    {row.label}
+                  </div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>
+                    {row.value}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* What's Included — The Playbook */}
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: MID, marginBottom: 24 }}>
+              What&apos;s Included — The Playbook
+            </div>
+
+            {/* Week cards */}
+            {[
+              {
+                week: 'Week 1',
+                title: 'Strategy Architecture',
+                items: [
+                  'Waitlist mechanic design — position-based referral system, onboarding flow, expiration mechanics, full technical spec for your team to build',
+                  'Discord server architecture — channel structure, roles, onboarding flow, moderation guidelines, bot recommendations',
+                  'Content strategy framework — posting cadence, content pillars, community tone of voice',
+                  'Organic social and podcast strategy — platform recommendations, format, cadence, distribution approach',
+                ],
+              },
+              {
+                week: 'Week 2',
+                title: 'Partner Vetting and Outreach',
+                items: [
+                  'Collab manager sourced, vetted, and briefed — 2-3 candidates evaluated, one recommended with a full brief',
+                  'Reddit partner scoped and handed off — tier recommendation, target subreddit list, content brief',
+                  'Bad Cards activation scoped — mechanic designed, pricing confirmed, ready for your team to activate',
+                  'All vendor options presented with clear go/no-go recommendations',
+                ],
+              },
+              {
+                week: 'Week 3',
+                title: 'Finalization and Handoff',
+                items: [
+                  'All vendor agreements scoped and ready for your team to sign',
+                  'Launch sequence delivered — week by week execution calendar your team runs after handoff',
+                  'Full playbook document — everything in one place, built so your team can execute without me',
+                  '1-hour handoff call with your team to walk through everything',
+                ],
+              },
+            ].map((wk, wi) => (
+              <div key={wi} style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
+                <CornerAccent size={80} style={{ top: 0, left: 0 }} />
+                <div style={{ position: 'relative' }}>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
+                    {wk.week}
+                  </div>
+                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: BLACK, marginBottom: 16, marginTop: 0 }}>
+                    {wk.title}
+                  </h3>
+                  <BulletList items={wk.items} />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Callout box */}
+          <div style={s.callout}>
+            <p style={{ fontSize: 15, lineHeight: 1.7, color: '#444', fontWeight: 300, marginBottom: 0 }}>
+              I design the system. Your team runs it. Brand voice and positioning recommendations are provided as guidance only, aligned to your existing PSF brand assets. All strategic recommendations are yours to activate on your terms.
+            </p>
+          </div>
+
+          <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginTop: 24, marginBottom: 0 }}>
+            Advisory available after the sprint at $100/hr as needed — no retainer, no commitment.
+          </p>
+        </div>
 
         <hr style={s.divider} />
 
-        {/* ── Questions section ── */}
+        {/* ── Alignment section ── */}
         <div style={s.section}>
           <SectionLabel>Alignment</SectionLabel>
-          <h2 className="psf-h2" style={s.h2}>To finalize scope on our call, here&apos;s what we need to align on.</h2>
+          <h2 className="psf-h2" style={s.h2}>What we aligned on today.</h2>
           <ol style={{ listStyle: 'none', padding: 0, margin: '0 0 0' }}>
             {[
-              'Total budget ceiling for the pre-launch period',
-              'Launch timeline — open to 10 weeks for a stronger demand base, or is there a hard date?',
-              'Team execution capacity — who owns Discord moderation day to day once the server is built?',
-              'Founder availability — Omar and Youssef available for bi-weekly AMAs throughout the engagement',
-              'Referral mechanic — confirming position-based incentives as the primary driver, with financial incentives layered in once legal clears the workaround',
-              'Reddit — WallStreetBets Discord has 478K members. Is a targeted outreach play into those communities worth the additional spend?',
-              'Bad Cards — open to performance-based Discord acquisition at $0.35 per join, zero upfront cost?',
-              'Success metrics — how many Discord members and waitlist signups would make you feel confident hitting 2,100–2,500 investors at launch?',
+              'Budget — pre-raise, self-funding. Engagement scoped accordingly.',
+              'Timeline — 3-week strategy sprint starting week of April 8',
+              'Execution — PSF team runs the playbook after handoff. Nate available hourly for advisory.',
+              'Referral mechanic — position-based waitlist incentives confirmed as the approach',
+              'Reddit — included in partner recommendations, execution handed to Red Ranked',
+              'Bad Cards — scoped as optional activation, decision with PSF team',
+              'Success metric — playbook delivered and all partners briefed by end of week 3',
             ].map((q, i) => (
               <li key={i} style={{ display: 'flex', gap: 20, alignItems: 'flex-start', marginBottom: 16, fontSize: 16, lineHeight: 1.65, color: '#444', fontWeight: 300 }}>
                 <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: A, flexShrink: 0, lineHeight: 1.3 }}>0{i + 1}</span>
@@ -804,24 +897,44 @@ export default function PSFProposal({ password }: { password: string }) {
 
         <hr style={s.divider} />
 
-        {/* ── Callout box ── */}
-        <div style={{ ...s.callout, marginBottom: 64 }}>
-          <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700, color: A, marginBottom: 6 }}>
-            Note
-          </div>
-          <p style={{ fontSize: 14, lineHeight: 1.65, color: '#444', fontWeight: 300, marginBottom: 0 }}>
-            These are rough estimates. Final scope, hours, and pricing confirmed on our April 8 call.
-          </p>
-        </div>
-
-        <hr style={s.divider} />
-
         {/* ── Why Nate ── */}
         <WhyNateSection />
 
         <hr style={s.divider} />
 
-        {/* ── Collapsible original proposal ── */}
+        {/* ── Collapsible V2 — Updated Scope — April 7 ── */}
+        <div style={{ marginBottom: 16 }}>
+          <button
+            onClick={() => setV2Open(!v2Open)}
+            style={{
+              background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, cursor: 'pointer',
+              padding: '32px 36px', width: '100%', textAlign: 'left',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.04)', transition: 'all 0.15s',
+              display: 'flex', alignItems: 'center', gap: 16,
+            }}
+          >
+            <svg
+              width="20" height="20" viewBox="0 0 20 20"
+              style={{ transform: v2Open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s', flexShrink: 0 }}
+            >
+              <path d="M7 4L13 10L7 16" stroke={A} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <div>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 700, color: BLACK, marginBottom: 4 }}>
+                Updated Scope v2 — April 7, 2026 <span style={{ fontWeight: 400, color: MID }}>— click to expand</span>
+              </div>
+            </div>
+          </button>
+
+          {v2Open && (
+            <div style={{ marginTop: 48 }}>
+              <UpdatedScope />
+              <hr style={s.divider} />
+            </div>
+          )}
+        </div>
+
+        {/* ── Collapsible V1 — Original proposal ── */}
         <div style={{ marginBottom: 64 }}>
           <button
             onClick={() => setOrigOpen(!origOpen)}
