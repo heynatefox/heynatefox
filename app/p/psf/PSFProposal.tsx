@@ -581,7 +581,7 @@ export default function PSFProposal({ password }: { password: string }) {
       <div style={s.inner} className="psf-inner">
 
         {/* ── Hero — Fix 6: updated wordmark ── */}
-        <div style={{ paddingTop: 80, paddingBottom: 56, textAlign: 'center' }}>
+        <div style={{ paddingTop: 80, paddingBottom: 24, textAlign: 'center' }}>
           <div className="psf-wordmark" style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(28px, 4.5vw, 48px)', letterSpacing: -1, marginBottom: 20, display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '0.25em' }}>
             <span style={{ fontWeight: 300, color: A, opacity: 0.65 }}>/</span>
             <span style={{ fontWeight: 800, color: A }}>psf</span>
@@ -599,7 +599,7 @@ export default function PSFProposal({ password }: { password: string }) {
             <br />{PSF_HERO.date}
           </div>
         </div>
-        <hr style={s.divider} />
+        <hr style={{ ...s.divider, margin: '24px 0 40px' }} />
 
         {/* ── Updated Scope — April 8, 2026 ── */}
         <div style={s.section}>
@@ -647,7 +647,7 @@ export default function PSFProposal({ password }: { password: string }) {
               </div>
               <div style={{ position: 'relative' }}>
                 <div style={{ fontSize: 10, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(0,0,0,0.35)', marginBottom: 8 }}>Model B</div>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: BLACK, marginBottom: 4 }}>Discord + Reddit</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: BLACK, marginBottom: 4, whiteSpace: 'nowrap' }}>Discord + Reddit</div>
                 <div style={{ fontSize: 13, color: MID, marginBottom: 20 }}>8 weeks</div>
                 <div style={{ borderTop: `1px solid rgba(232,96,28,0.15)`, paddingTop: 16, marginBottom: 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4, color: '#444', fontWeight: 300 }}>
