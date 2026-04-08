@@ -880,7 +880,7 @@ export default function PSFProposal({ password }: { password: string }) {
           <ol style={{ listStyle: 'none', padding: 0, margin: '0 0 0' }}>
             {[
               'Budget — pre-raise, self-funding. Engagement scoped accordingly.',
-              'Timeline — 3-week strategy sprint starting week of April 8',
+              'Timeline — 3-week strategy sprint starting week of April 13',
               'Execution — PSF team runs the playbook after handoff. Nate available hourly for advisory.',
               'Referral mechanic — position-based waitlist incentives confirmed as the approach',
               'Reddit — included in partner recommendations, execution handed to Red Ranked',
