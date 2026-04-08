@@ -2,7 +2,7 @@ import './globals.css'
 
 export const metadata = {
   title: 'Nate Fox — Marketing & Growth Consultant',
-  description: 'Senior marketing operator. Brand, product, growth, and ops — not as separate functions, but as one system.',
+  description: 'Senior marketing operator. Brand, product, growth, and ops as one system.',
 }
 
 export default function RootLayout({ children }) {

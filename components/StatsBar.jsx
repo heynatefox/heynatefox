@@ -5,7 +5,7 @@ const stats = [
   { target: 5, suffix: 'M+', label: 'In partnership spend restructured at Gametime', electric: true },
   { target: 10, suffix: 'M+', label: 'Players on Bad Cards with $0 paid marketing', electric: false },
   { target: 162, suffix: '%', label: 'Increase in demo sign-ups at Lyft', electric: false },
-  { target: 14, suffix: 'yr', label: 'Across consumer tech, fintech, and Web3', electric: false },
+  { target: 14, suffix: 'yr', label: 'Across consumer tech, fintech, and emerging tech', electric: false },
 ]
 
 export default function StatsBar() {
