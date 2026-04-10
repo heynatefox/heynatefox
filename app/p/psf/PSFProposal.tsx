@@ -843,6 +843,16 @@ export default function PSFProposal({ password }: { password: string }) {
                   '1-hour handoff call with your team to walk through everything',
                 ],
               },
+              {
+                week: 'After the Sprint',
+                title: 'Advisory Access',
+                items: [
+                  'Available at $100/hr, 2-hour minimum booking',
+                  'Monthly optional check-in calls to review execution progress',
+                  'Available for vendor questions, course corrections, and strategy pivots',
+                  'Response time: 48 hours on async questions via email',
+                ],
+              },
             ].map((wk, wi) => (
               <div key={wi} style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
                 <CornerAccent size={80} style={{ top: 0, left: 0 }} />
@@ -857,6 +867,9 @@ export default function PSFProposal({ password }: { password: string }) {
                 </div>
               </div>
             ))}
+            <p style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.65, marginTop: 8, marginBottom: 0 }}>
+              Post-sprint advisory is optional and booked as needed. Execution outcomes after playbook delivery are the responsibility of the PSF team and their vendors.
+            </p>
           </div>
 
           {/* Callout box */}
@@ -866,9 +879,6 @@ export default function PSFProposal({ password }: { password: string }) {
             </p>
           </div>
 
-          <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginTop: 24, marginBottom: 0 }}>
-            Advisory available after the sprint at $100/hr as needed — no retainer, no commitment.
-          </p>
         </div>
 
         <hr style={s.divider} />
