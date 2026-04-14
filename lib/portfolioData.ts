@@ -1,0 +1,147 @@
+export type Project = {
+  slug: string
+  title: string
+  company: string
+  thumbnail: string
+  images: string[]
+  description: string
+}
+
+export const COMPANIES = ['All', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'Other'] as const
+
+export const PROJECTS: Project[] = [
+  {
+    slug: 'creative-marketing-ops-playbook',
+    title: 'Creative + Marketing Ops Playbook',
+    company: 'Other',
+    thumbnail: '/portfolio/aaba8d72-52ea-42fe-9073-3942f84fdeb9_car_1x1.png',
+    images: [
+      '/portfolio/849d33ed-f9e6-4a23-bfbe-fd2d7f1f0018_rw_1920.png',
+    ],
+    description: '',
+  },
+  {
+    slug: 'process-implementation',
+    title: 'Process Implementation',
+    company: 'Lyft',
+    thumbnail: '/portfolio/7f8819e9-f0ad-4bb4-a3c7-8113e4666fad_rwc_0x0x1746x1746x1746.png',
+    images: [
+      '/portfolio/2d6c3d25-704c-4a4d-b614-b1f06058019c_rw_1200.png',
+      '/portfolio/3c8ad011-ec0f-4df4-aa74-0a5caf26d460_rw_1200.png',
+      '/portfolio/085a43b8-6c13-430b-9784-a9d07f0b38ae_rw_1200.png',
+      '/portfolio/9c55b63f-a631-4bdd-a219-0d9a3dbdbafd_rw_1200.png',
+      '/portfolio/7a9b7a21-2f6a-4c35-8a52-88eca6989fa1_rw_1200.png',
+      '/portfolio/3adaa6b8-10fd-41b0-80db-9a373628ee75_rw_1200.png',
+      '/portfolio/fd778a13-ca1c-45df-9eb0-eeb72459f698_rw_1200.png',
+    ],
+    description: '',
+  },
+  {
+    slug: '12-days-of-momo',
+    title: '12 Days Of Momo',
+    company: 'Concept Labs',
+    thumbnail: '/portfolio/cd05c55c-3120-425b-b714-6c01f31b423f_rwc_337x0x1017x1017x1017.png',
+    images: [
+      '/portfolio/4724e046-8025-40b3-8aef-0f8cd9b5eb05_rw_1920.png',
+    ],
+    description: '',
+  },
+  {
+    slug: 'robinhood-you-got-it',
+    title: 'You Got It',
+    company: 'Robinhood',
+    thumbnail: '/portfolio/9dfe4c52-a25d-47d4-8020-873412eddac3_rwc_720x0x1844x1844x1844.png',
+    images: [
+      '/portfolio/d7723cfe-14ed-4b14-a20e-813ccce6b55b_rw_1200.png',
+      '/portfolio/f53d6c90-94fe-4ff9-91dd-1bbabdf12d1a_rw_1200.png',
+      '/portfolio/2af8669a-4c87-46bb-9ea8-de450ae18fde_rw_1200.png',
+      '/portfolio/c94e6dad-2c91-4d1c-9d1c-16343bff95ee_rw_1200.png',
+    ],
+    description: 'January 28th hit the company when we didn\'t have a creative team dedicated to social. With much of the group stuck on our brand design systems or building educational content, we needed thought and design leadership to help develop social content/strategy.',
+  },
+  {
+    slug: 'concept-labs-rebrand',
+    title: 'Rebrand Strategy',
+    company: 'Concept Labs',
+    thumbnail: '/portfolio/54e1b0a5-ec2a-4a4e-81b4-96a52e9be3e7_rwc_458x80x847x847x847.jpg',
+    images: [
+      '/portfolio/f9dc1753-24e4-4dd9-9bc3-afa58b6a85ba_rw_3840.png',
+      '/portfolio/ded50621-70e9-40b9-92ae-41a0f4544f77_rw_3840.png',
+      '/portfolio/13c7c303-0431-4ebb-bf30-ff015655711d_rw_3840.png',
+      '/portfolio/9bd7c9f3-59fd-4c18-b4e6-cab6f6c8135e_rw_3840.png',
+      '/portfolio/0db7858e-32b6-479e-8998-e6d4565480a6_rw_3840.png',
+      '/portfolio/c9864ad8-b50f-4a22-86e9-355d5749abec_rw_3840.png',
+      '/portfolio/e81adc9b-61ba-411b-8f04-4b0a2d87ffb1_rw_3840.png',
+      '/portfolio/1bd7d328-1405-42aa-ad26-9cd32ad1eae8_rw_3840.png',
+      '/portfolio/da40ac93-a482-4ccb-8ec9-d68c6e24a4b3_rw_3840.png',
+      '/portfolio/e34ef738-d152-4b8a-93c4-cad07277da29_rw_3840.png',
+      '/portfolio/16cb9f46-c6a0-42e2-b45d-28fa041d7d47_rw_3840.png',
+      '/portfolio/da991e32-332c-4861-9b42-533bee961d27_rw_3840.png',
+      '/portfolio/91781357-8d3b-4057-9f40-ee37ee0cca50_rw_3840.png',
+      '/portfolio/12a3db7d-6e7a-45f2-9cfd-630c02d87559_rw_3840.png',
+      '/portfolio/c16fa195-cd61-4658-9695-62cb407fb32f_rw_3840.png',
+      '/portfolio/8732aa31-15a3-4be1-ba11-f51f11a7b153_rw_3840.png',
+      '/portfolio/040b33db-3ee7-475d-aafa-df0d3955b792_rw_3840.png',
+      '/portfolio/f0f60fff-abfe-4c7b-801b-02ee633576c0_rw_3840.png',
+      '/portfolio/e195732a-1571-4828-9bef-a254a0acaa68_rw_3840.png',
+      '/portfolio/a741092b-059e-475a-8550-4882d526f414_rw_3840.png',
+      '/portfolio/e50bf48b-cbeb-4888-b235-4f647a4bd09d_rw_3840.png',
+      '/portfolio/710f84b6-8347-4b44-9290-f0b84332bf32_rw_3840.png',
+      '/portfolio/823a3f14-e9d2-4a78-a48c-5d951f94600a_rw_3840.png',
+      '/portfolio/0742454b-fb45-427f-a51a-d360615c8d7e_rw_3840.png',
+      '/portfolio/80b86606-03dd-42f3-bf17-e6f30e0c4c8e_rw_3840.png',
+      '/portfolio/ff5b8c0b-8381-44f6-8004-5096c06e0d8d_rw_3840.png',
+      '/portfolio/33c266fe-4086-43fb-8298-463efe2c4a7c_rw_3840.png',
+      '/portfolio/c41452c0-b108-4360-b4f6-a95ce07a9c32_rw_3840.png',
+      '/portfolio/c5eae02b-70f4-46a4-8c5b-5926d8b5fa2c_rw_3840.png',
+      '/portfolio/3ab4934e-132d-4d4d-b6fc-c1ee9af6b66d_rw_3840.png',
+      '/portfolio/019390da-4f5b-4b2d-95ed-e66c72f91ebf_rw_3840.png',
+      '/portfolio/cdbc0358-14e4-493a-9ede-9254d5a95aee_rw_3840.png',
+      '/portfolio/ea37d9a6-9590-46af-bd0f-85a2b2389e9d_rw_3840.png',
+      '/portfolio/2e010a1f-51ee-49b3-83ef-61b201b452f6_rw_3840.png',
+      '/portfolio/2bfab00c-1a76-41a7-b1a3-bffcf9e6cd4e_rw_3840.png',
+      '/portfolio/4ed8ebda-a458-444a-8364-da49e9d7042a_rw_3840.png',
+    ],
+    description: '',
+  },
+  {
+    slug: 'y-lyft',
+    title: 'Y Lyft Brand Campaign',
+    company: 'Lyft',
+    thumbnail: '/portfolio/c39f7928-7efe-4005-a732-d01c481eb749_rwc_211x0x540x540x540.png',
+    images: [],
+    description: '',
+  },
+  {
+    slug: 'bad-cards-rebrand',
+    title: 'Rebrand',
+    company: 'Bad Cards',
+    thumbnail: '/portfolio/7264a83d-2bdc-4854-8169-0fc89b60ec7a_rwc_445x121x1031x1031x1031.jpg',
+    images: [],
+    description: '',
+  },
+  {
+    slug: 'robinhood-creative-support',
+    title: 'Creative Support',
+    company: 'Robinhood',
+    thumbnail: '/portfolio/a222145e-adfb-4eb5-bd14-1ed12ab50c3f_rwc_0x0x1008x1008x1008.gif',
+    images: [],
+    description: 'Various samples of design support I\'ve provided while at Robinhood. Some work was leveraging templates while other work was net-new.',
+  },
+  {
+    slug: 'airpr-brand-development',
+    title: 'Brand Development',
+    company: 'AirPR',
+    thumbnail: '/portfolio/8a342c3f-6f45-44e1-9334-e5d75ad9fb87_rwc_0x0x1693x1693x1693.gif',
+    images: [],
+    description: 'I was tasked to reimagine/develope the AirPR brand with many limitations. We had some older stakeholders that didn\'t like change, so I needed to develop things in ways that weren\'t far off from what they currently had, and had to justify every move.\n\nBelow you will see the steps in my work from start to finish, and into future planning.',
+  },
+  {
+    slug: 'content-creation',
+    title: 'Content Creation',
+    company: 'Other',
+    thumbnail: '/portfolio/801b1583-7b87-47cd-8b28-e794cf34a3b8_car_1x1.gif',
+    images: [],
+    description: '',
+  },
+]
