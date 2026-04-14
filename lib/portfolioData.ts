@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     images: [
       '/portfolio/849d33ed-f9e6-4a23-bfbe-fd2d7f1f0018_rw_1920.png',
     ],
-    description: '',
+    description: 'Need resources to help your team\'s creative operations? I got you.\n\nI created a 30+ Page Creative + Marketing Ops. Playbook includes brief templates, DACI modeling, naming convention guides, decision-making frameworks, and more! Click the button to download the PDF guide, or request access to the template (so you can fit it to your team/needs) by entering your email on my website.',
   },
   {
     slug: 'process-implementation',
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
       '/portfolio/3adaa6b8-10fd-41b0-80db-9a373628ee75_rw_1200.png',
       '/portfolio/fd778a13-ca1c-45df-9eb0-eeb72459f698_rw_1200.png',
     ],
-    description: '',
+    description: 'This is typically given in a presentation, and I\'d love to connect to walk you through it. In the meantime, here is what this page covers:\n\nName a process that I\'m most proud of spearheading and implementing, which significantly impacted my team\'s productivity. The following slides walk through the process that I built and implemented at Lyft, which followed me to many other roles.',
   },
   {
     slug: '12-days-of-momo',
@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     images: [
       '/portfolio/4724e046-8025-40b3-8aef-0f8cd9b5eb05_rw_1920.png',
     ],
-    description: '',
+    description: 'Working with 9x Emmy-award-winning animation studio, Baobab Studios, we collaborated to bring the Momoguro universe to life. We were tasked with creating an interactive holiday activation for Momoguro. We made an advent calendar where users could claim "tickets" by entering them into a raffle for allowlist spots. This interactive experience brought users into a snowy plain that they could enter every day for 12 days.\n\nVisiting the Website was not a CTA \u2014 so we felt this was a great success metric. Not only did people participate, but they were engaged enough to go to our website to learn more about our services.\n\nThe team worked incredibly hard on this with a tight turn, and the results speak for themselves. It was an incredibly challenging but fun activation that was engaging and produced an amazing return.',
   },
   {
     slug: 'robinhood-you-got-it',
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
       '/portfolio/2af8669a-4c87-46bb-9ea8-de450ae18fde_rw_1200.png',
       '/portfolio/c94e6dad-2c91-4d1c-9d1c-16343bff95ee_rw_1200.png',
     ],
-    description: 'January 28th hit the company when we didn\'t have a creative team dedicated to social. With much of the group stuck on our brand design systems or building educational content, we needed thought and design leadership to help develop social content/strategy.',
+    description: 'January 28th hit the company when we didn\'t have a creative team dedicated to social. With much of the group stuck on our brand design systems or building educational content, we needed thought and design leadership to help develop social content/strategy.\n\nMoving quickly, I took a few days to sit in some customer feedback sessions with the research team and developed a very high-level strategy for social. The upper left image on the grid below shows the social pillars I crafted, which became the foundation for the social crisis strategy.\n\nAfter activating the team on some educational content, the c-team quickly wanted creative ideas to combat the negative chatter from a group they called "The Fringe Fighters." (people who were on the fringe/cusp of leaving Robinhood). That night, I created storyboards to present ideas to help combat the negative social media discussion. CS + team responded favorably to these ideas and asked us to align one of them with the pillars above.\n\n"You Got It" fit the bill. It highlighted some of our product features and added a level of transparency on things we are building for the future. This concept also performed the best in our research/testing. Working with our agency partner, we produced the video and planned to target a specific audience with the cut.\n\nLearnings: Looking back, I would have tested these concepts without music. I think the team got excited about using a song like "You Got It," but the reality of that was slim. In turn, when we had to change the music due to budget constraints, it felt like the project lost a bit of steam.\n\nI am reluctant to say this because I love data, but I wish we focused less on testing these concepts. Not because I don\'t think the research was valuable, but testing lost us quite a few weeks. The original ask was to have this turned around quickly, so it felt like a blocker that we would start testing ads now (when we have never tested ads in the past.)\n\nI also would have liked to work with agency partners who could execute faster. Our AOR took more than four weeks to produce this short video, and at the end of it all, we still needed to have an internal team member clean it up. With how much lifting the storyboard did, it should have been as simple as handing that off to an editor and having them make the cuts.\n\nThough there were quite a few hiccups, I feel I learned a lot from that experience and loved seeing farfetched concepts come to life.',
   },
   {
     slug: 'concept-labs-rebrand',
@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
       '/portfolio/2bfab00c-1a76-41a7-b1a3-bffcf9e6cd4e_rw_3840.png',
       '/portfolio/4ed8ebda-a458-444a-8364-da49e9d7042a_rw_3840.png',
     ],
-    description: '',
+    description: 'Transitioning a 15-year-old AAA art agency to a creative and marketing powerhouse while keeping the built equity from the old name, "Concept Art House."\n\nResponsible for: Rebranding and design, brand strategy, design systems, creative positioning, voice and tone, social strategy, campaigns, pitch work, and more.',
   },
   {
     slug: 'y-lyft',
@@ -110,7 +110,7 @@ export const PROJECTS: Project[] = [
     company: 'Lyft',
     thumbnail: '/portfolio/c39f7928-7efe-4005-a732-d01c481eb749_rwc_211x0x540x540x540.png',
     images: [],
-    description: '',
+    description: 'This is typically given in a presentation, and I\'d love to connect to walk you through it. In the meantime, here is what this page covers:\n\n"Think about a previous project/brand campaign I\'ve managed that required complex tracking of multiple deliverables and various stakeholders and walk us through the project from inception to launch."',
   },
   {
     slug: 'bad-cards-rebrand',
@@ -118,7 +118,7 @@ export const PROJECTS: Project[] = [
     company: 'Bad Cards',
     thumbnail: '/portfolio/7264a83d-2bdc-4854-8169-0fc89b60ec7a_rwc_445x121x1031x1031x1031.jpg',
     images: [],
-    description: '',
+    description: 'Rebranding outdated design to present Bad Cards as an innovative online party game.\n\nResponsible for: Rebranding and design, brand strategy, design systems, creative positioning, voice and tone, social strategy, campaigns, pitch work, agency management, and more.',
   },
   {
     slug: 'robinhood-creative-support',
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     company: 'Robinhood',
     thumbnail: '/portfolio/a222145e-adfb-4eb5-bd14-1ed12ab50c3f_rwc_0x0x1008x1008x1008.gif',
     images: [],
-    description: 'Various samples of design support I\'ve provided while at Robinhood. Some work was leveraging templates while other work was net-new.',
+    description: 'Various samples of design support I\'ve provided while at Robinhood. Some work was leveraging templates while other work was net-new.\n\nChallenge: Create a post for Twitter that celebrates DogeDay without bringing too much attention or looking like a recommendation.\n\nSurprise and delight is key \u2014 so I decided to make our simple Doge boi (original design by one of our brand designers) wink at his fans.\n\nMetrics: The RH Tweet was the second most interacted with/trending DogeDay post.\n\nThere was a lot of chatter about Reddit\'s Super Bowl ad after the game. If you don\'t know much about it \u2014 they ran a 5-second ad and leveraged what\'s called the "curiosity effect." I pitched an idea that we do something similar with our giveaways. This design is a sample of how that idea could work/look.\n\nObjective: Engage a diverse audience of investors \u2014 giving them quick tips on how to invest, use RH, and more with Megan Thee Stallion.\n\nStrategy: Get some star power behind our social media. Engage a new audience, and walk through Megan\'s story on how she became an icon (and an investor).\n\nApproach: 60 second videos for IG/Reels/TikTok that highlight different features of Robinhood and Megan\'s journey.\n\nWith the bandwidth constraints, I will occasionally jump in to help with various projects like TWIC, Blog Headers, etc. Why? I write the letters "JAV" in the front of every notebook I own. It stands for "just add value." It\'s a subtle reminder that it\'s not about the role; it\'s about the goal. I am here to help the team when/how I can.',
   },
   {
     slug: 'airpr-brand-development',
@@ -134,7 +134,7 @@ export const PROJECTS: Project[] = [
     company: 'AirPR',
     thumbnail: '/portfolio/8a342c3f-6f45-44e1-9334-e5d75ad9fb87_rwc_0x0x1693x1693x1693.gif',
     images: [],
-    description: 'I was tasked to reimagine/develope the AirPR brand with many limitations. We had some older stakeholders that didn\'t like change, so I needed to develop things in ways that weren\'t far off from what they currently had, and had to justify every move.\n\nBelow you will see the steps in my work from start to finish, and into future planning.',
+    description: 'I was tasked to reimagine/develop the AirPR brand with many limitations. We had some older stakeholders that didn\'t like change, so I needed to develop things in ways that weren\'t far off from what they currently had, and had to justify every move.\n\nOn my first day, the Marketing team provided me with this. AirPR had been working with d-level agencies and low-res images for years and knew they needed to step up their brand presence if they ever wanted to make waves in the space. However, some older stakeholders were very partial to the current look and didn\'t want to change much.\n\nOne major complaint that the team had was how difficult it was to make the logo look good on any print piece, swag item, screen, 1-pager, etc. We identified the main factor playing into that was the logo\'s complexity (shadow under the icon, gradient, etc). We also recognized that the brown color in "AIR" clashed with a lot of their work.\n\nFrom my perspective, simplicity helps create good design. I worked diligently with the team to help simplify the logo, develop a color palette, and flatten the images.\n\nWith executive leadership on board, I worked to develop a brand style guide. The team didn\'t recognize the importance of consistency across their marketing materials. Fonts were randomly selected, colors chosen on the season, and presentations were filled with inconsistent illustration styles.\n\nWe started simple and created a baseline style guide. Every email, PowerPoint presentation, and ad began to fit within these guidelines. I worked with the UX team to help change design elements in our software UI.\n\nHighlight: We did an email campaign with some high-level case study results in a banner image in this style. Typically the click rate of the emails was around 14%, but with the new images, we saw an 18 point increase.\n\nLearnings: I would have worked to get more budget for this project. We had a small team and little to spend, but I should\'ve pushed more and developed guidelines around voice and tone, photography, illustrations, etc.\n\nOne of my favorite things about being a designer and creator is seeing what I create come to life. From digital/print ads to OOH and conference materials, seeing people respond and interact with a design is gratifying.\n\nSomething I\'m proud of is seeing our hard work come to life at the annual AirPR conference. I was responsible for designing, ordering, printing, hosting, and project managing for this event.\n\nAfter some user research, we recognized that the name "AirPR" was misleading. Many assumed that we were a PR agency vs. a SaaS company \u2014 which kept us from many executive-level conversations at prospect companies.\n\nOur tag line was "the story is in the data." I presented a new name, "Datell" (day-tell), and got support from all but two of our board of directors. This effort was started during my transition out of AirPR and dropped after I left. It turns out one opposing director had the rights and the URL to "Onclusive."\n\nThough it felt like our hard work didn\'t pay off, I am grateful for the experience of helping a technology company go through the rebranding process.',
   },
   {
     slug: 'content-creation',
@@ -142,6 +142,6 @@ export const PROJECTS: Project[] = [
     company: 'Other',
     thumbnail: '/portfolio/801b1583-7b87-47cd-8b28-e794cf34a3b8_car_1x1.gif',
     images: [],
-    description: '',
+    description: 'Jumping into the NFT space, I wanted to help other people understand NFTs and what they are. I created this video and channel to help educate others on basic NFT topics and evangelize the space/growth potential.\n\nI was hired to create some custom emojis for the Infinite\'s discord server. Here are some of those explorations.',
   },
 ]
