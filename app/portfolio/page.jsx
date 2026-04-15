@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import PortfolioGrid from './PortfolioGrid'
 
 export const metadata = {
-  title: 'Work — Nate Fox',
+  title: 'Portfolio — Nate Fox',
 }
 
 export default function WorkPage() {
@@ -12,9 +12,8 @@ export default function WorkPage() {
       <Nav />
       <main>
         <div className="work-page-hero">
-          <div className="section-label">Portfolio</div>
           <h1 style={{fontSize:'clamp(48px,5.5vw,76px)',fontWeight:800,letterSpacing:'-2.5px',lineHeight:1.05,marginBottom:'24px'}}>
-            The full body<br /><em style={{fontStyle:'italic',fontWeight:300,color:'var(--mid)'}}>of work.</em>
+            Portfolio
           </h1>
           <p style={{fontSize:'18px',color:'#444',fontWeight:300,maxWidth:'540px',lineHeight:1.65}}>
             Selected projects across brand, growth, creative ops, and product marketing.
