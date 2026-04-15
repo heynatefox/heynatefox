@@ -16,6 +16,65 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   }
 }
 
+function RichText({ text }: { text: string }) {
+  const paragraphs = text.split('\n\n')
+  return (
+    <>
+      {paragraphs.map((block, i) => {
+        // Bullet list block: all lines start with "- "
+        const lines = block.split('\n')
+        if (lines.every(l => l.startsWith('- '))) {
+          return (
+            <ul key={i} style={{ listStyle: 'none', padding: 0, margin: '16px 0' }}>
+              {lines.map((line, j) => (
+                <li key={j} style={{
+                  display: 'flex', gap: 12, alignItems: 'flex-start',
+                  marginBottom: 8, fontSize: 16, lineHeight: 1.65, color: '#444', fontWeight: 300,
+                }}>
+                  <span style={{
+                    width: 6, height: 6, background: 'var(--electric)', borderRadius: '50%',
+                    marginTop: 10, flexShrink: 0,
+                  }} />
+                  <span>{line.replace(/^- /, '')}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        // Mixed block: some lines are bullets, some are not
+        if (lines.some(l => l.startsWith('- '))) {
+          return (
+            <div key={i} style={{ marginBottom: 16 }}>
+              {lines.map((line, j) =>
+                line.startsWith('- ') ? (
+                  <div key={j} style={{
+                    display: 'flex', gap: 12, alignItems: 'flex-start',
+                    marginBottom: 6, fontSize: 16, lineHeight: 1.65, color: '#444', fontWeight: 300,
+                    paddingLeft: 4,
+                  }}>
+                    <span style={{
+                      width: 6, height: 6, background: 'var(--electric)', borderRadius: '50%',
+                      marginTop: 10, flexShrink: 0,
+                    }} />
+                    <span>{line.replace(/^- /, '')}</span>
+                  </div>
+                ) : (
+                  <p key={j} style={{ marginBottom: 8, fontSize: 17, lineHeight: 1.75, color: '#444', fontWeight: 300 }}>{line}</p>
+                )
+              )}
+            </div>
+          )
+        }
+        return (
+          <p key={i} style={{ marginBottom: 16, fontSize: 17, lineHeight: 1.75, color: '#444', fontWeight: 300 }}>
+            {block}
+          </p>
+        )
+      })}
+    </>
+  )
+}
+
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = PROJECTS.find(p => p.slug === params.slug)
   if (!project) notFound()
@@ -77,19 +136,79 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               {project.title}
             </h1>
             {project.description && (
-              <div style={{
-                fontSize: 17,
-                lineHeight: 1.75,
-                color: '#444',
-                fontWeight: 300,
-                maxWidth: 640,
-              }}>
-                {project.description.split('\n\n').map((p, i) => (
-                  <p key={i} style={{ marginBottom: 16 }}>{p}</p>
-                ))}
+              <div style={{ maxWidth: 640 }}>
+                <RichText text={project.description} />
               </div>
             )}
+            {project.thinContent && (
+              <p style={{
+                fontSize: 15, fontStyle: 'italic', color: 'var(--mid)',
+                fontWeight: 300, marginTop: 8,
+              }}>
+                Full case study available on request.
+              </p>
+            )}
           </div>
+
+          {/* Stats grid (Momo) */}
+          {project.stats && (
+            <div className="project-stats-grid" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 12,
+              marginBottom: 48,
+            }}>
+              {project.stats.map((stat, i) => (
+                <div key={i} style={{
+                  background: '#fff',
+                  borderRadius: 12,
+                  padding: '24px 20px',
+                  textAlign: 'center',
+                  border: '1px solid var(--border)',
+                }}>
+                  <div style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 28,
+                    fontWeight: 800,
+                    color: '#E8601C',
+                    lineHeight: 1,
+                    marginBottom: 8,
+                  }}>
+                    {stat.value}
+                  </div>
+                  <div style={{ fontSize: 12, color: 'var(--mid)', lineHeight: 1.45, fontWeight: 300 }}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Sections (RH Creative Support, AirPR, Content Creation) */}
+          {project.sections && (
+            <div style={{ marginBottom: 48 }}>
+              {project.sections.map((section, i) => (
+                <div key={i} style={{
+                  marginBottom: 40,
+                  paddingTop: i > 0 ? 32 : 0,
+                  borderTop: i > 0 ? '1px solid var(--border)' : 'none',
+                }}>
+                  <h3 style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 18,
+                    fontWeight: 700,
+                    color: '#E8601C',
+                    marginBottom: 16,
+                  }}>
+                    {section.title}
+                  </h3>
+                  <div style={{ maxWidth: 640 }}>
+                    <RichText text={section.body} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Images */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -135,6 +254,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <style>{`
         @media (max-width: 900px) {
           main > div { padding: 120px 24px 60px !important; }
+          .project-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </>
