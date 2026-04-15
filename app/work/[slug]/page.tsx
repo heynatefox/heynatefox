@@ -226,6 +226,21 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <div style={{ maxWidth: 640 }}>
                     <RichText text={section.body} />
                   </div>
+                  {section.image && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={section.image}
+                      alt={section.title}
+                      loading="lazy"
+                      style={{
+                        width: '100%',
+                        borderRadius: 12,
+                        display: 'block',
+                        background: '#e8e6e0',
+                        marginTop: 20,
+                      }}
+                    />
+                  )}
                 </div>
               ))}
             </div>

@@ -1,5 +1,5 @@
 export type ProjectStat = { value: string; label: string }
-export type ProjectSection = { title: string; body: string }
+export type ProjectSection = { title: string; body: string; image?: string }
 
 export type Project = {
   slug: string
@@ -22,9 +22,9 @@ export const PROJECTS: Project[] = [
     slug: 'bad-cards-platform',
     title: 'Platform & Growth',
     company: 'Bad Cards',
-    thumbnail: '',
+    thumbnail: '/portfolio/badcards-platform-hero.png',
     thumbnailColor: '#0d0d0d',
-    images: [],
+    images: ['/portfolio/badcards-platform-hero.png'],
     description: 'Bad Cards is a modern party-gaming platform built to turn internet culture into playable moments across web, Discord, Twitch, and community-driven surfaces. Led end-to-end product, creative, and distribution strategy \u2014 designing a flexible system that allows games, card packs, and mechanics to evolve as fast as culture itself.',
     stats: [
       { value: '10M+', label: 'Players across web and Discord' },
@@ -40,14 +40,17 @@ export const PROJECTS: Project[] = [
       {
         title: 'Discord Activity (Launched August 2025)',
         body: 'Rather than advertising to Discord users, launched as a native Discord Activity enabling instant group play directly inside servers. Cost to build: $8,500. Results: 2M+ users since August, 400K+ email subscribers, played in hundreds of Discord communities.',
+        image: '/portfolio/badcards-discord-gameplay.gif',
       },
       {
         title: 'Twitch Extension (Just Launched)',
         body: 'Built a Twitch Extension that lets creators host interactive games directly with their audience in real time. Cost to build: $7,000. Early results: one creator getting over 3,000 concurrent users on their weekly game night.',
+        image: '/portfolio/badcards-twitch.gif',
       },
       {
         title: 'Reddit Game (Coming Soon)',
         body: 'Exploring a Reddit-native game designed to live inside subreddits themselves. Cost to build: $1,000.',
+        image: '/portfolio/badcards-reddit.gif',
       },
       {
         title: 'The Bigger Picture',
@@ -59,9 +62,12 @@ export const PROJECTS: Project[] = [
     slug: 'gametime-12-days',
     title: '12 Days of Gametime',
     company: 'Gametime',
-    thumbnail: '',
-    thumbnailColor: '#14532d',
-    images: [],
+    thumbnail: '/portfolio/gametime-hero.png',
+    images: [
+      '/portfolio/gametime-hero.png',
+      '/portfolio/gametime-screen2.png',
+      '/portfolio/gametime-screen3.png',
+    ],
     description: 'Design and launch a holiday activation to drive installs, re-engagement, and seasonal brand momentum during a peak ticketing window. Built and launched cross-channel in under three weeks across CRM, social, PR, and influencer partnerships.\n\nThe original recommendation was to validate the activation through owned and high-intent channels first, then scale distribution once performance was proven. Due to timing and seasonal goals, the campaign launched as a hybrid, pairing performance-led mechanics with a large-scale partner amplification. This structure allowed us to test both experience quality and distribution efficiency in a single window.\n\nFully custom interactive microsite with daily giveaways, streak mechanics, referrals, and lifecycle integrations.',
     stats: [
       { value: '12,629', label: 'Registrations' },
@@ -88,9 +94,8 @@ export const PROJECTS: Project[] = [
     slug: 'ditch-your-site',
     title: 'DitchYourSite',
     company: 'Other',
-    thumbnail: '',
-    thumbnailColor: '#0f172a',
-    images: [],
+    thumbnail: '/portfolio/ditchyoursite-hero.png',
+    images: ['/portfolio/ditchyoursite-hero.png'],
     description: 'DitchYourSite is an AI-powered website migration tool that scrapes any public website and outputs a complete migration kit \u2014 structured JSON, downloaded images, and a pre-written Claude Code prompt \u2014 ready to rebuild the site as a modern Next.js application. Built and shipped in under 48 hours from concept to live product with payments.\n\nLeaving Squarespace, Wix, Showit, or any legacy website builder is painful. The platforms don\'t give you your content back in a usable format. Designers charge $3\u20135K to rebuild. Manual migration takes days. There was no fast, affordable, self-serve path from "I hate my website" to "I have a new one."\n\nPaste a URL. Click Scrape. Get a ZIP file containing everything needed to rebuild the site with AI \u2014 all pages, all images, full text content, nav structure, and a ready-to-paste Claude Code prompt. The entire migration goes from weeks to hours.',
     stats: [
       { value: '48hrs', label: 'Concept to live product' },
@@ -114,9 +119,8 @@ export const PROJECTS: Project[] = [
     slug: 'personalityhire-ai',
     title: 'PersonalityHire.ai',
     company: 'Other',
-    thumbnail: '',
-    thumbnailColor: '#6d28d9',
-    images: [],
+    thumbnail: '/portfolio/personalityhire-hero.png',
+    images: ['/portfolio/personalityhire-hero.png'],
     description: 'A lightweight Slack bot built solo using AI-assisted coding tools including v0.dev and ChatGPT. The bot sends randomized, chaotic-good messages to keep teams entertained, with admins able to add custom messages.\n\nHandled ~90% of the build solo, then brought in an engineer for final polish and Slack submission. A fun experiment to test AI-assisted development capabilities.',
     stats: [
       { value: '~$250', label: 'Total cost to build' },
