@@ -13,6 +13,7 @@ export type Project = {
   sections?: ProjectSection[]
   thinContent?: boolean
   link?: string
+  imageLabels?: Record<number, string>
 }
 
 export const COMPANIES = ['All', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'Other'] as const
@@ -275,6 +276,7 @@ export const PROJECTS: Project[] = [
       'https://cdn.myportfolio.com/0b016d8a836e89dbab66b15317ee8de6/5a692da0-fd0f-44aa-a6f3-2136ac025611_rw_1200.png?h=78984e8c26451a9c0b7b2c50ffc58da3',
     ],
     description: 'Rebranding outdated design to present Bad Cards as an innovative online party game.\n\nResponsible for: Rebranding and design, brand strategy, design systems, creative positioning, voice and tone, social strategy, campaigns, pitch work, agency management, and more.\n\nAgency: monga.design',
+    imageLabels: { 17: 'Look prior to rebrand' },
   },
   {
     slug: 'robinhood-creative-support',

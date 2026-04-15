@@ -275,19 +275,32 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           {/* Images */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {allImages.map((src, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={i}
-                src={src}
-                alt={`${project.title} — image ${i + 1}`}
-                loading={i < 2 ? 'eager' : 'lazy'}
-                style={{
-                  width: '100%',
-                  borderRadius: 12,
-                  display: 'block',
-                  background: '#e8e6e0',
-                }}
-              />
+              <div key={i}>
+                {project.imageLabels?.[i] && (
+                  <div style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: 'var(--mid)',
+                    marginBottom: 8,
+                    marginTop: 8,
+                  }}>
+                    {project.imageLabels[i]}
+                  </div>
+                )}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={`${project.title} — image ${i + 1}`}
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  style={{
+                    width: '100%',
+                    borderRadius: 12,
+                    display: 'block',
+                    background: '#e8e6e0',
+                  }}
+                />
+              </div>
             ))}
           </div>
 
