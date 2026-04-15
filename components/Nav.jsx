@@ -30,7 +30,7 @@ export default function Nav() {
         <div className="nav-links">
           <Link href="/#work">Work</Link>
           <Link href="/#about">About</Link>
-          <Link href="/work">Portfolio</Link>
+          <Link href="/portfolio">Portfolio</Link>
         </div>
 
         {/* Desktop social + CTA */}
@@ -65,7 +65,7 @@ export default function Nav() {
           <nav className="mobile-menu-links">
             <Link href="/#work" onClick={closeMenu}>Work</Link>
             <Link href="/#about" onClick={closeMenu}>About</Link>
-            <Link href="/work" onClick={closeMenu}>Portfolio</Link>
+            <Link href="/portfolio" onClick={closeMenu}>Portfolio</Link>
           </nav>
           <div className="mobile-menu-bottom">
             <a href="mailto:heynatefox@gmail.com" className="mobile-menu-cta" onClick={closeMenu}>

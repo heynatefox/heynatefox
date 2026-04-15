@@ -30,7 +30,7 @@ export default function PortfolioGrid() {
         {filtered.map(project => (
           <Link
             key={project.slug}
-            href={`/work/${project.slug}`}
+            href={`/portfolio/${project.slug}`}
             className="portfolio-card"
           >
             <div className="portfolio-card-img" style={project.thumbnailColor ? { background: project.thumbnailColor } : undefined}>

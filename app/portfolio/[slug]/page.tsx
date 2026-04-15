@@ -79,9 +79,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = PROJECTS.find(p => p.slug === params.slug)
   if (!project) notFound()
 
-  const allImages = project.thumbnail
-    ? [project.thumbnail, ...project.images.filter(i => i !== project.thumbnail)]
-    : project.images
+  const allImages = project.images.length > 0
+    ? project.images
+    : project.thumbnail
+      ? [project.thumbnail]
+      : []
 
   return (
     <>
@@ -94,7 +96,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         }}>
           {/* Back link */}
           <Link
-            href="/work"
+            href="/portfolio"
             style={{
               fontFamily: "'Syne', sans-serif",
               fontSize: 13,
@@ -108,7 +110,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               transition: 'color 0.2s',
             }}
           >
-            <span style={{ fontSize: 18, lineHeight: 1 }}>&larr;</span> Back to Work
+            <span style={{ fontSize: 18, lineHeight: 1 }}>&larr;</span> Back to Portfolio
           </Link>
 
           {/* Header */}
@@ -141,25 +143,49 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </div>
             )}
             {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-block',
-                  fontFamily: "'Syne', sans-serif",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: 'var(--electric)',
-                  textDecoration: 'none',
-                  borderBottom: '1.5px solid var(--electric)',
-                  paddingBottom: 2,
-                  marginTop: 8,
-                  marginBottom: 8,
-                }}
-              >
-                {project.link.replace(/^https?:\/\//, '')} &rarr;
-              </a>
+              project.link.includes('docs.google.com') ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: '#fff',
+                    background: 'var(--electric)',
+                    textDecoration: 'none',
+                    padding: '14px 32px',
+                    borderRadius: 100,
+                    marginTop: 16,
+                    marginBottom: 8,
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  Download the Playbook
+                </a>
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: 'var(--electric)',
+                    textDecoration: 'none',
+                    borderBottom: '1.5px solid var(--electric)',
+                    paddingBottom: 2,
+                    marginTop: 8,
+                    marginBottom: 8,
+                  }}
+                >
+                  {project.link.replace(/^https?:\/\//, '')} &rarr;
+                </a>
+              )
             )}
             {project.thinContent && (
               <p style={{
