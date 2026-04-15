@@ -359,26 +359,4 @@ export const PROJECTS: Project[] = [
       },
     ],
   },
-  {
-    slug: 'content-creation',
-    title: 'Content Creation',
-    company: 'Other',
-    thumbnail: '/portfolio/801b1583-7b87-47cd-8b28-e794cf34a3b8_car_1x1.gif',
-    images: [],
-    description: 'Jumping into the NFT space, I wanted to help other people understand NFTs and what they are. I created this video and channel to help educate others on basic NFT topics and evangelize the space/growth potential.',
-    sections: [
-      {
-        title: 'What is an NFT?',
-        body: 'Jumping into the NFT space, I wanted to help other people understand NFTs and what they are. I created this video and channel to help educate others on basic NFT topics and evangelize the space/growth potential.',
-      },
-      {
-        title: 'Sphere Artwork',
-        body: 'Legends Live On — an NFT collection exploring digital art and ownership.',
-      },
-      {
-        title: 'Infinites Emoji Project',
-        body: 'I was hired to create some custom emojis for the Infinite\'s discord server. Here are some of those explorations.',
-      },
-    ],
-  },
 ]
