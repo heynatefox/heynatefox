@@ -140,6 +140,27 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 <RichText text={project.description} />
               </div>
             )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: 'var(--electric)',
+                  textDecoration: 'none',
+                  borderBottom: '1.5px solid var(--electric)',
+                  paddingBottom: 2,
+                  marginTop: 8,
+                  marginBottom: 8,
+                }}
+              >
+                {project.link.replace(/^https?:\/\//, '')} &rarr;
+              </a>
+            )}
             {project.thinContent && (
               <p style={{
                 fontSize: 15, fontStyle: 'italic', color: 'var(--mid)',

@@ -6,16 +6,125 @@ export type Project = {
   title: string
   company: string
   thumbnail: string
+  thumbnailColor?: string
   images: string[]
   description: string
   stats?: ProjectStat[]
   sections?: ProjectSection[]
   thinContent?: boolean
+  link?: string
 }
 
-export const COMPANIES = ['All', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'Other'] as const
+export const COMPANIES = ['All', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'Other'] as const
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'bad-cards-platform',
+    title: 'Platform & Growth',
+    company: 'Bad Cards',
+    thumbnail: '',
+    thumbnailColor: '#0d0d0d',
+    images: [],
+    description: 'Bad Cards is a modern party-gaming platform built to turn internet culture into playable moments across web, Discord, Twitch, and community-driven surfaces. Led end-to-end product, creative, and distribution strategy \u2014 designing a flexible system that allows games, card packs, and mechanics to evolve as fast as culture itself.',
+    stats: [
+      { value: '10M+', label: 'Players across web and Discord' },
+      { value: '2.7M', label: 'Users in 2025 (7x YoY from 430K)' },
+      { value: '$0', label: 'Paid marketing, ever' },
+      { value: '19.4%', label: 'D30 retention (industry: 2\u20134%)' },
+      { value: '14.7%', label: 'D7 retention (industry: 8\u201312%)' },
+      { value: '500K+', label: 'Email subscribers, 43% open rate' },
+      { value: '91%', label: 'Reduction in infra costs in 2025' },
+      { value: '6M+', label: 'Custom cards created by users' },
+    ],
+    sections: [
+      {
+        title: 'Discord Activity (Launched August 2025)',
+        body: 'Rather than advertising to Discord users, launched as a native Discord Activity enabling instant group play directly inside servers. Cost to build: $8,500. Results: 2M+ users since August, 400K+ email subscribers, played in hundreds of Discord communities.',
+      },
+      {
+        title: 'Twitch Extension (Just Launched)',
+        body: 'Built a Twitch Extension that lets creators host interactive games directly with their audience in real time. Cost to build: $7,000. Early results: one creator getting over 3,000 concurrent users on their weekly game night.',
+      },
+      {
+        title: 'Reddit Game (Coming Soon)',
+        body: 'Exploring a Reddit-native game designed to live inside subreddits themselves. Cost to build: $1,000.',
+      },
+      {
+        title: 'The Bigger Picture',
+        body: 'Bad Cards is proof of concept for Playable \u2014 a platform for interactive party games that turn audiences into participants. The same product, distribution, and monetization playbook applied across new game formats including HeadRush and KnowItAll Trivia.',
+      },
+    ],
+  },
+  {
+    slug: 'gametime-12-days',
+    title: '12 Days of Gametime',
+    company: 'Gametime',
+    thumbnail: '',
+    thumbnailColor: '#14532d',
+    images: [],
+    description: 'Design and launch a holiday activation to drive installs, re-engagement, and seasonal brand momentum during a peak ticketing window. Built and launched cross-channel in under three weeks across CRM, social, PR, and influencer partnerships.\n\nThe original recommendation was to validate the activation through owned and high-intent channels first, then scale distribution once performance was proven. Due to timing and seasonal goals, the campaign launched as a hybrid, pairing performance-led mechanics with a large-scale partner amplification. This structure allowed us to test both experience quality and distribution efficiency in a single window.\n\nFully custom interactive microsite with daily giveaways, streak mechanics, referrals, and lifecycle integrations.',
+    stats: [
+      { value: '12,629', label: 'Registrations' },
+      { value: '14%', label: 'Install rate' },
+      { value: '5,700+', label: 'Reinstalls / app opens' },
+      { value: 'High', label: 'Repeat behavior & high-intent actions' },
+    ],
+    sections: [
+      {
+        title: 'What Worked',
+        body: '- Activation mechanics performed well: Users who arrived understood the value and returned repeatedly.\n- Owned channels drove the highest-quality growth: CRM materially outperformed all other channels, converting at significantly higher rates.\n- Execution under compression: Cross-functional teams shipped a complex, branded experience on a highly compressed timeline.',
+      },
+      {
+        title: 'What We Learned',
+        body: '- Broad partner amplification underperformed materially: ~50M estimated effective audience, ~9,700 non-email entrants, ~0.01\u20130.02% conversion rate.\n- The gap was driven by audience intent mismatch, not creative or product friction.',
+      },
+      {
+        title: 'Outcome & Business Impact',
+        body: 'Running this test at scale created clarity. The results validated the original recommendation to prioritize high-intent distribution before broad amplification and directly informed a shift in channel strategy. That shift helped eliminate repeated inefficient spend and supported an estimated ~$5M in annualized cost savings through smarter partner selection, clearer performance thresholds, and tighter campaign scoping.',
+      },
+    ],
+  },
+  {
+    slug: 'ditch-your-site',
+    title: 'DitchYourSite',
+    company: 'Other',
+    thumbnail: '',
+    thumbnailColor: '#0f172a',
+    images: [],
+    description: 'DitchYourSite is an AI-powered website migration tool that scrapes any public website and outputs a complete migration kit \u2014 structured JSON, downloaded images, and a pre-written Claude Code prompt \u2014 ready to rebuild the site as a modern Next.js application. Built and shipped in under 48 hours from concept to live product with payments.\n\nLeaving Squarespace, Wix, Showit, or any legacy website builder is painful. The platforms don\'t give you your content back in a usable format. Designers charge $3\u20135K to rebuild. Manual migration takes days. There was no fast, affordable, self-serve path from "I hate my website" to "I have a new one."\n\nPaste a URL. Click Scrape. Get a ZIP file containing everything needed to rebuild the site with AI \u2014 all pages, all images, full text content, nav structure, and a ready-to-paste Claude Code prompt. The entire migration goes from weeks to hours.',
+    stats: [
+      { value: '48hrs', label: 'Concept to live product' },
+      { value: '$0', label: 'No agency, no team' },
+      { value: '$2.99', label: 'Entry price per scrape' },
+      { value: '6', label: 'Platforms supported' },
+    ],
+    sections: [
+      {
+        title: 'Technical Stack',
+        body: 'Next.js 14, TypeScript, Tailwind CSS, Puppeteer + Chromium, Supabase, Stripe, Vercel.',
+      },
+      {
+        title: 'Key Features',
+        body: '- Multi-platform support with platform-specific URL placeholders\n- Brand kit generator: upload logo and screenshot, system generates brand guidelines\n- 4 mini-games that load while the scrape runs (Ditch Digger, Whack-a-Web-Builder, Jail Break, 404 Dodger)\n- Free tier: 10 pages, text only. Paid: 50 pages, full ZIP, all images. Pro: $20/month, 250 scrapes',
+      },
+    ],
+    link: 'https://ditchyoursite.com',
+  },
+  {
+    slug: 'personalityhire-ai',
+    title: 'PersonalityHire.ai',
+    company: 'Other',
+    thumbnail: '',
+    thumbnailColor: '#6d28d9',
+    images: [],
+    description: 'A lightweight Slack bot built solo using AI-assisted coding tools including v0.dev and ChatGPT. The bot sends randomized, chaotic-good messages to keep teams entertained, with admins able to add custom messages.\n\nHandled ~90% of the build solo, then brought in an engineer for final polish and Slack submission. A fun experiment to test AI-assisted development capabilities.',
+    stats: [
+      { value: '~$250', label: 'Total cost to build' },
+      { value: '10\u201312hrs', label: 'Total build time' },
+      { value: '~90%', label: 'Built solo' },
+    ],
+    link: 'https://personalityhire.ai',
+  },
   {
     slug: 'creative-marketing-ops-playbook',
     title: 'Creative + Marketing Ops Playbook',

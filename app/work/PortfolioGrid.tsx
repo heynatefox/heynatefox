@@ -33,13 +33,39 @@ export default function PortfolioGrid() {
             href={`/work/${project.slug}`}
             className="portfolio-card"
           >
-            <div className="portfolio-card-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={project.thumbnail}
-                alt={`${project.company}: ${project.title}`}
-                loading="lazy"
-              />
+            <div className="portfolio-card-img" style={project.thumbnailColor ? { background: project.thumbnailColor } : undefined}>
+              {project.thumbnail ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={project.thumbnail}
+                  alt={`${project.company}: ${project.title}`}
+                  loading="lazy"
+                />
+              ) : (
+                <div style={{
+                  width: '100%', height: '100%',
+                  display: 'flex', flexDirection: 'column',
+                  alignItems: 'center', justifyContent: 'center',
+                  padding: 28, textAlign: 'center',
+                }}>
+                  <span style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 11, fontWeight: 600,
+                    letterSpacing: 2, textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.4)',
+                    marginBottom: 8,
+                  }}>
+                    {project.company}
+                  </span>
+                  <span style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: 20, fontWeight: 800,
+                    color: '#fff', lineHeight: 1.2,
+                  }}>
+                    {project.title}
+                  </span>
+                </div>
+              )}
             </div>
             <div className="portfolio-card-info">
               <span className="portfolio-card-company">{project.company}</span>
