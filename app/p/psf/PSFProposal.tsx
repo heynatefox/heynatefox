@@ -819,47 +819,12 @@ export default function PSFProposal({ password }: { password: string }) {
             </div>
           </div>
 
-          {/* Phase 2 */}
-          <div style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
-            <CornerAccent size={80} style={{ top: 0, left: 0 }} />
-            <div style={{ position: 'relative' }}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
-                Phase 2
-              </div>
-              <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: BLACK, marginBottom: 16, marginTop: 0 }}>
-                Launch Support
-              </h3>
-              <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginBottom: 20 }}>
-                {[
-                  { label: 'Duration', value: '3 weeks' },
-                  { label: 'Hours', value: '5 hrs/week' },
-                  { label: 'Total', value: '$1,500' },
-                ].map((item, i) => (
-                  <div key={i}>
-                    <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 4 }}>{item.label}</div>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>{item.value}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 12 }}>Deliverables</div>
-              <BulletList items={[
-                'Weekly check-in to keep execution on track',
-                'Async support for questions and course corrections',
-                'Vendor onboarding guidance as partners are brought on',
-              ]} />
-            </div>
-          </div>
-
           {/* Total block */}
           <div style={{ background: BLACK, borderRadius: 16, padding: '28px 32px', color: '#fff', marginBottom: 48, marginTop: 8 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: 14, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>
-                <span>Phase 1 — Strategy Sprint (60 hrs)</span>
+                <span>Strategy Sprint (60 hrs)</span>
                 <span style={{ flexShrink: 0 }}>$6,000</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: 14, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>
-                <span>Phase 2 — Launch Support (15 hrs)</span>
-                <span style={{ flexShrink: 0 }}>$1,500</span>
               </div>
             </div>
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 20 }}>
@@ -867,10 +832,10 @@ export default function PSFProposal({ password }: { password: string }) {
                 Total Engagement
               </div>
               <div className="psf-total-amount" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 40, color: A, lineHeight: 1, marginBottom: 16 }}>
-                $7,500
+                $6,000
               </div>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 300, lineHeight: 1.65 }}>
-                60% at signing ($4,500) &middot; 40% at playbook delivery end of week 3 ($3,000)
+                60% at signing ($3,600) &middot; 40% at playbook delivery ($2,400)
               </div>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 300, marginTop: 6 }}>
                 Rate: $100/hr
@@ -879,7 +844,7 @@ export default function PSFProposal({ password }: { password: string }) {
           </div>
 
           <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 0 }}>
-            After 6 weeks: Advisory available at $100/hr as needed — no retainer, no minimum commitment.
+            After the sprint, I&apos;m available at $100/hr as needed. No retainer, no minimum, no commitment. Pick up the phone when you need it.
           </p>
         </div>
 
