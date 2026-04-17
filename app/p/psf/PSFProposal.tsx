@@ -698,6 +698,7 @@ function WhyNateSection() {
 
 export default function PSFProposal({ password }: { password: string }) {
   const [unlocked, setUnlocked] = useState(false)
+  const [v3Open, setV3Open] = useState(false)
   const [v2Open, setV2Open] = useState(false)
   const [origOpen, setOrigOpen] = useState(false)
 
@@ -775,110 +776,142 @@ export default function PSFProposal({ password }: { password: string }) {
         </div>
         <hr style={{ ...s.divider, margin: '24px 0 40px' }} />
 
-        {/* ── V3 — Updated Scope — April 8, 2026 (expanded) ── */}
+        {/* ── V4 — Updated Scope — April 16, 2026 (expanded) ── */}
         <div style={s.section}>
           <SectionLabel accent>Updated Scope</SectionLabel>
-          <h2 className="psf-h2" style={s.h2}>Here&apos;s the engagement.</h2>
+          <h2 className="psf-h2" style={s.h2}>Here&apos;s where we landed.</h2>
           <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 36, marginTop: -8 }}>
-            Based on our call, here is the agreed approach. Final agreement to follow.
+            Updated scope based on our conversations. Agreement to follow week of April 21.
           </p>
 
-          {/* Engagement summary block */}
-          <div className="psf-scope-card" style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
-            <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+          {/* Phase 1 */}
+          <div style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
+            <CornerAccent size={80} style={{ top: 0, left: 0 }} />
             <div style={{ position: 'relative' }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
+                Phase 1
+              </div>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: BLACK, marginBottom: 16, marginTop: 0 }}>
+                Strategy Sprint
+              </h3>
+              <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginBottom: 20 }}>
+                {[
+                  { label: 'Duration', value: '3 weeks' },
+                  { label: 'Hours', value: '20 hrs/week' },
+                  { label: 'Total', value: '$6,000' },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 12 }}>Deliverables</div>
+              <BulletList items={[
+                'Full waitlist strategy and technical spec',
+                'Discord architecture and content framework',
+                'Vendor vetting and go/no-go recommendations',
+                'Collab manager sourcing (2\u20133 vetted candidates with briefs)',
+                'Community manager profile and sourcing guidance',
+                'Weekly check-in calls',
+                'Full playbook document',
+              ]} />
+            </div>
+          </div>
+
+          {/* Phase 2 */}
+          <div style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
+            <CornerAccent size={80} style={{ top: 0, left: 0 }} />
+            <div style={{ position: 'relative' }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
+                Phase 2
+              </div>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: BLACK, marginBottom: 16, marginTop: 0 }}>
+                Launch Support
+              </h3>
+              <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginBottom: 20 }}>
+                {[
+                  { label: 'Duration', value: '3 weeks' },
+                  { label: 'Hours', value: '5 hrs/week' },
+                  { label: 'Total', value: '$1,500' },
+                ].map((item, i) => (
+                  <div key={i}>
+                    <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>{item.value}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, marginBottom: 12 }}>Deliverables</div>
+              <BulletList items={[
+                'Weekly check-in to keep execution on track',
+                'Async support for questions and course corrections',
+                'Vendor onboarding guidance as partners are brought on',
+              ]} />
+            </div>
+          </div>
+
+          {/* Total block */}
+          <div style={{ background: BLACK, borderRadius: 16, padding: '28px 32px', color: '#fff', marginBottom: 48, marginTop: 8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 20 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: 14, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>
+                <span>Phase 1 — Strategy Sprint (60 hrs)</span>
+                <span style={{ flexShrink: 0 }}>$6,000</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: 14, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>
+                <span>Phase 2 — Launch Support (15 hrs)</span>
+                <span style={{ flexShrink: 0 }}>$1,500</span>
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 20 }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 10 }}>
+                Total Engagement
+              </div>
+              <div className="psf-total-amount" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 40, color: A, lineHeight: 1, marginBottom: 16 }}>
+                $7,500
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 300, lineHeight: 1.65 }}>
+                60% at signing ($4,500) &middot; 40% at playbook delivery end of week 3 ($3,000)
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', fontWeight: 300, marginTop: 6 }}>
+                Rate: $100/hr
+              </div>
+            </div>
+          </div>
+
+          <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 0 }}>
+            After 6 weeks: Advisory available at $100/hr as needed — no retainer, no minimum commitment.
+          </p>
+        </div>
+
+        <hr style={s.divider} />
+
+        {/* ── Estimated Vendor Budget ── */}
+        <div style={s.section}>
+          <div className="psf-scope-card" style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
+            <CornerAccent size={100} style={{ top: 0, left: 0 }} />
+            <div style={{ position: 'relative' }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
+                Estimated Vendor Budget
+              </div>
+              <p style={{ fontSize: 15, color: '#444', lineHeight: 1.7, fontWeight: 300, marginBottom: 24 }}>
+                These costs are separate from my fee. Final recommendations with vetted options will be in the playbook.
+              </p>
               {[
-                { label: 'Engagement Type', value: 'Strategy Sprint' },
-                { label: 'Duration', value: '3 weeks' },
-                { label: 'Investment', value: '$9,000 total ($4,500 at signing, $4,500 at playbook delivery)' },
-                { label: 'Rate', value: '$100/hr — approximately 30 hours per week' },
+                { label: 'Community manager', value: '$1,500\u2013$3,500/month' },
+                { label: 'Collab manager', value: '$1,000\u2013$2,500/month' },
+                { label: 'Reddit partner (Tip Toe tier)', value: '$2,500/month' },
+                { label: 'Estimated total monthly channel spend', value: '$5,000\u2013$8,500/month' },
               ].map((row, i) => (
-                <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'baseline', marginBottom: i < 3 ? 16 : 0, flexWrap: 'wrap' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, minWidth: 160, flexShrink: 0 }}>
-                    {row.label}
-                  </div>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>
-                    {row.value}
-                  </div>
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 16, paddingBottom: 12, marginBottom: 12, borderBottom: i < 3 ? `1px solid ${BORDER}` : 'none', flexWrap: 'wrap' }}>
+                  <div style={{ fontSize: 15, color: '#444', fontWeight: i === 3 ? 600 : 300 }}>{row.label}</div>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: i === 3 ? 18 : 15, color: i === 3 ? A : BLACK, flexShrink: 0 }}>{row.value}</div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* What's Included — The Playbook */}
-          <div style={{ marginBottom: 48 }}>
-            <div style={{ fontSize: 11, fontFamily: "'Syne', sans-serif", fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: MID, marginBottom: 24 }}>
-              What&apos;s Included — The Playbook
-            </div>
-
-            {/* Week cards */}
-            {[
-              {
-                week: 'Week 1',
-                title: 'Strategy Architecture',
-                items: [
-                  'Waitlist mechanic design — position-based referral system, onboarding flow, expiration mechanics, full technical spec for your team to build',
-                  'Discord server architecture — channel structure, roles, onboarding flow, moderation guidelines, bot recommendations',
-                  'Content strategy framework — posting cadence, content pillars, community tone of voice',
-                  'Organic social and podcast strategy — platform recommendations, format, cadence, distribution approach',
-                ],
-              },
-              {
-                week: 'Week 2',
-                title: 'Partner Vetting and Outreach',
-                items: [
-                  'Collab manager sourced, vetted, and briefed — 2-3 candidates evaluated, one recommended with a full brief',
-                  'Reddit partner scoped and handed off — tier recommendation, target subreddit list, content brief',
-                  'Bad Cards activation scoped — mechanic designed, pricing confirmed, ready for your team to activate',
-                  'All vendor options presented with clear go/no-go recommendations',
-                ],
-              },
-              {
-                week: 'Week 3',
-                title: 'Finalization and Handoff',
-                items: [
-                  'All vendor agreements scoped and ready for your team to sign',
-                  'Launch sequence delivered — week by week execution calendar your team runs after handoff',
-                  'Full playbook document — everything in one place, built so your team can execute without me',
-                  '1-hour handoff call with your team to walk through everything',
-                ],
-              },
-              {
-                week: 'After the Sprint',
-                title: 'Advisory Access',
-                items: [
-                  'Available at $100/hr, 2-hour minimum booking',
-                  'Monthly optional check-in calls to review execution progress',
-                  'Available for vendor questions, course corrections, and strategy pivots',
-                  'Response time: 48 hours on async questions via email',
-                ],
-              },
-            ].map((wk, wi) => (
-              <div key={wi} style={{ background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, padding: '32px 36px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
-                <CornerAccent size={80} style={{ top: 0, left: 0 }} />
-                <div style={{ position: 'relative' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase', color: A, marginBottom: 6 }}>
-                    {wk.week}
-                  </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: BLACK, marginBottom: 16, marginTop: 0 }}>
-                    {wk.title}
-                  </h3>
-                  <BulletList items={wk.items} />
-                </div>
-              </div>
-            ))}
-            <p style={{ fontSize: 13, color: MID, fontWeight: 300, lineHeight: 1.65, marginTop: 8, marginBottom: 0 }}>
-              Post-sprint advisory is optional and booked as needed. Execution outcomes after playbook delivery are the responsibility of the PSF team and their vendors.
-            </p>
-          </div>
-
-          {/* Callout box */}
-          <div style={s.callout}>
-            <p style={{ fontSize: 15, lineHeight: 1.7, color: '#444', fontWeight: 300, marginBottom: 0 }}>
-              I design the system. Your team runs it. Brand voice and positioning recommendations are provided as guidance only, aligned to your existing PSF brand assets. All strategic recommendations are yours to activate on your terms.
-            </p>
-          </div>
-
+          <p style={{ fontSize: 13, color: MID, fontWeight: 300, fontStyle: 'italic', lineHeight: 1.65, marginTop: 16, marginBottom: 0 }}>
+            These are market-rate estimates and will vary based on experience, scope, and availability. I&apos;ll provide specific vetted recommendations at each price point so you can make the right call for your budget.
+          </p>
         </div>
 
         <hr style={s.divider} />
@@ -911,6 +944,60 @@ export default function PSFProposal({ password }: { password: string }) {
         <WhyNateSection />
 
         <hr style={s.divider} />
+
+        {/* ── Collapsible V3 — Updated Scope — April 8 ── */}
+        <div style={{ marginBottom: 16 }}>
+          <button
+            onClick={() => setV3Open(!v3Open)}
+            style={{
+              background: '#fff', border: `1px solid ${BORDER}`, borderRadius: 16, cursor: 'pointer',
+              padding: '32px 36px', width: '100%', textAlign: 'left',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.04)', transition: 'all 0.15s',
+              display: 'flex', alignItems: 'center', gap: 16,
+            }}
+          >
+            <svg
+              width="20" height="20" viewBox="0 0 20 20"
+              style={{ transform: v3Open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s', flexShrink: 0 }}
+            >
+              <path d="M7 4L13 10L7 16" stroke={A} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <div>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 700, color: BLACK, marginBottom: 4 }}>
+                Updated Scope v3 — April 8, 2026 <span style={{ fontWeight: 400, color: MID }}>— click to expand</span>
+              </div>
+            </div>
+          </button>
+
+          {v3Open && (
+            <div style={{ marginTop: 48 }}>
+              <div style={s.section}>
+                <SectionLabel accent>Updated Scope</SectionLabel>
+                <h2 className="psf-h2" style={s.h2}>Here&apos;s the engagement.</h2>
+                <p style={{ fontSize: 15, color: MID, lineHeight: 1.7, fontWeight: 300, marginBottom: 36, marginTop: -8 }}>
+                  Based on our call, here is the agreed approach. Final agreement to follow.
+                </p>
+                <div className="psf-scope-card" style={{ background: '#fff', borderRadius: 16, padding: '40px', boxShadow: '0 2px 20px rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
+                  <CornerAccent size={120} style={{ top: 0, left: 0 }} />
+                  <div style={{ position: 'relative' }}>
+                    {[
+                      { label: 'Engagement Type', value: 'Strategy Sprint' },
+                      { label: 'Duration', value: '3 weeks' },
+                      { label: 'Investment', value: '$9,000 total ($4,500 at signing, $4,500 at playbook delivery)' },
+                      { label: 'Rate', value: '$100/hr — approximately 30 hours per week' },
+                    ].map((row, i) => (
+                      <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'baseline', marginBottom: i < 3 ? 16 : 0, flexWrap: 'wrap' }}>
+                        <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 12, letterSpacing: 1.5, textTransform: 'uppercase', color: MID, minWidth: 160, flexShrink: 0 }}>{row.label}</div>
+                        <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: BLACK }}>{row.value}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <hr style={s.divider} />
+            </div>
+          )}
+        </div>
 
         {/* ── Collapsible V2 — Updated Scope — April 7 ── */}
         <div style={{ marginBottom: 16 }}>
