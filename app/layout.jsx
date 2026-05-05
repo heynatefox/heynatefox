@@ -3,6 +3,36 @@ import './globals.css'
 export const metadata = {
   title: 'Nate Fox — Marketing & Growth Consultant',
   description: 'Senior marketing operator. Brand, product, growth, and ops as one system.',
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  openGraph: {
+    title: 'Nate Fox — Marketing & Growth Consultant',
+    description: 'Senior marketing operator. Brand, product, growth, and ops as one system.',
+    url: 'https://heynatefox.com',
+    siteName: 'Nate Fox',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'heynatefox.com — Marketing and Growth Consultant',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nate Fox — Marketing & Growth Consultant',
+    description: 'Senior marketing operator. Brand, product, growth, and ops as one system.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }) {
