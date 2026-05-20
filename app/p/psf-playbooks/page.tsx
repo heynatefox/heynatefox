@@ -1,7 +1,7 @@
 import PSFPlaybooks from './PSFPlaybooks'
 
 export const metadata = {
-  title: 'Deliverables Hub — PSF Network',
+  title: 'Pre-Launch Growth Strategy — PSF Network',
 }
 
 export default function PSFPlaybooksPage() {
