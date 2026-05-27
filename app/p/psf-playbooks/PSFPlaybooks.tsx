@@ -248,11 +248,27 @@ function TabVendors() {
 
     <hr style={st.divider} />
     <h3 style={{ ...st.h3, marginTop: 0 }}>Reddit Partner: Red Ranked</h3>
-    <p style={st.body}>Red Ranked is a managed Reddit authority building service. Their Tip Toe tier at $1,750/month negotiated for month one, $2,500/month thereafter is the recommended starting point for PSF. This is a Phase 2 activation to coincide with launch, not a pre-launch spend.</p>
+    <p style={st.body}>Red Ranked is a managed Reddit authority building service. Negotiated rate: $1,750/month for the first 3 months (pilot program), $2,500/month thereafter. This is the recommended starting point for PSF. This is a Phase 2 activation to coincide with launch, not a pre-launch spend.</p>
     <p style={{ ...st.body, ...st.subhead }}>Alternatives worth quoting</p>
     <B items={['OutreachBloom (outreachbloom.com): $1,500/month fully managed.', 'Growffic (growffic.com): organic-first Reddit growth starting around $1,000/month.']} />
     <p style={{ ...st.body, ...st.subhead }}>Questions to confirm before signing</p>
     <p style={st.body}>Which specific subreddits will they target? How do they maintain FTC compliance? What results have they driven for fintech or investing products? What does month one look like versus month three?</p>
+
+    <hr style={st.divider} />
+    <h3 style={{ ...st.h3, marginTop: 0 }}>Recommended Upwork Candidates</h3>
+    <p style={st.body}>Based on review of 24 applicants across two job posts, these four candidates are recommended for initial conversations.</p>
+
+    <p style={{ ...st.body, ...st.subhead }}>Michaela A. (Philippines) &mdash; $15/hr</p>
+    <p style={st.body}>Best all-around Discord operator in the applicant pool. 44 completed jobs, 5,431 hours, $200K+ earned, Top Rated Plus, 100% job success. Managed a 400K member Discord for Big Time Studios. Cover letter demonstrated genuine understanding of what kills communities. Start here.</p>
+
+    <p style={{ ...st.body, ...st.subhead }}>Oluwafemi K. (Nigeria) &mdash; $12/hr</p>
+    <p style={st.body}>Investing-specific community background. Managed trading and e-commerce wealth-building communities. Understands Reddit FTC compliance. 100% job success, 1,804 hours. Lower cost option worth a trial.</p>
+
+    <p style={{ ...st.body, ...st.subhead }}>Emmanuel I. (Nigeria) &mdash; $1,000 fixed</p>
+    <p style={st.body}>Strongest Reddit strategic thinking in the applicant pool. 46 completed jobs, Top Rated, 94% job success. Work history includes Reddit Marketing Manager at Beehive House. Portfolio shows Reddit community growth case studies. Best candidate specifically for the Reddit piece.</p>
+
+    <p style={{ ...st.body, ...st.subhead }}>Wojciech P. (Poland) &mdash; $20/hr</p>
+    <p style={st.body}>Most proven Discord track record. 35 completed jobs, 100% job success, 5.0 rating across all reviews. Reviews specifically mention building community from scratch. Strong backup option if primary candidates fall through.</p>
   </>
 }
 
