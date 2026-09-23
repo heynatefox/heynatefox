@@ -124,33 +124,37 @@ export default function AlternateIdeas() {
                         muted loop playsInline preload="none"
                       />
                     ) : (
-                      <img src={c.mediaSrc!} alt="" />
+                      <img src={c.mediaSrc!} alt={c.alt || ''} />
                     )}
                   </div>
                 )}
-                {c.mediaType !== 'none' && <h4 style={st.cardTitle}>{c.title}</h4>}
-                <p style={st.cardBody}>{c.body}</p>
+                <div className="alt-copy">
+                  <span style={st.cardCount}>{String(k + 1).padStart(2, '0')} / {String(CARDS.length).padStart(2, '0')}</span>
+                  <h4 style={st.cardTitle}>{c.title}</h4>
+                  <p style={st.cardBody}>{c.body}</p>
+                </div>
               </article>
             ))}
           </div>
 
-          <button className="alt-nav alt-nav--prev" onClick={() => go(i - 1)} aria-label="Previous idea">
-            <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
-          </button>
-          <button className="alt-nav alt-nav--next" onClick={() => go(i + 1)} aria-label="Next idea">
-            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
-          </button>
-
-          <div className="alt-dots">
-            {CARDS.map((c, k) => (
-              <button
-                key={c.title}
-                className="alt-dot"
-                aria-current={k === i ? 'true' : 'false'}
-                aria-label={`Go to ${c.title}`}
-                onClick={() => go(k)}
-              />
-            ))}
+          <div className="alt-ctrl">
+            <button className="alt-nav" onClick={() => go(i - 1)} aria-label="Previous idea">
+              <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg>
+            </button>
+            <div className="alt-dots">
+              {CARDS.map((c, k) => (
+                <button
+                  key={c.title}
+                  className="alt-dot"
+                  aria-current={k === i ? 'true' : 'false'}
+                  aria-label={`Go to ${c.title}`}
+                  onClick={() => go(k)}
+                />
+              ))}
+            </div>
+            <button className="alt-nav" onClick={() => go(i + 1)} aria-label="Next idea">
+              <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -163,54 +167,57 @@ export default function AlternateIdeas() {
 const st: Record<string, React.CSSProperties> = {
   section: { padding: '92px 0 104px', maxWidth: 'none', margin: 0, background: B.white,
              borderTop: `1px solid ${B.border}` },
-  inner:   { maxWidth: 720, margin: '0 auto', padding: '0 24px' },
+  inner:   { maxWidth: 1460, margin: '0 auto', padding: '0 40px' },
   label:   { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 14, display: 'block' },
   h2:      { fontFamily: DISPLAY, fontSize: 'clamp(34px, 5vw, 56px)', fontWeight: 600, letterSpacing: TRACK,
              lineHeight: 1.02, color: B.ink, margin: 0, opacity: 1, animation: 'none' },
-  intro:   { fontFamily: BODY, fontSize: 18, lineHeight: 1.6, color: B.body, fontWeight: 400,
-             marginTop: 18, maxWidth: '60ch' },
-  typeHead:{ fontFamily: DISPLAY, fontSize: 'clamp(30px, 5.4vw, 56px)', fontWeight: 700,
-             letterSpacing: '-0.03em', lineHeight: 1.02, color: TYPECARD_INK, maxWidth: '14ch',
+  intro:   { fontFamily: BODY, fontSize: 21, lineHeight: 1.58, color: B.body, fontWeight: 400,
+             marginTop: 20, maxWidth: '78ch' },
+  typeHead:{ fontFamily: DISPLAY, fontSize: 'clamp(34px, 4.2vw, 68px)', fontWeight: 700,
+             letterSpacing: '-0.03em', lineHeight: 1.0, color: TYPECARD_INK, maxWidth: '13ch',
              margin: 0, opacity: 1, animation: 'none' },
-  cardTitle:{ fontFamily: DISPLAY, fontSize: 24, fontWeight: 600, letterSpacing: TRACK,
-             color: B.ink, margin: '26px 0 0', opacity: 1, animation: 'none' },
-  cardBody:{ fontFamily: BODY, fontSize: 17, lineHeight: 1.62, color: B.body, fontWeight: 400,
-             margin: '12px 0 0' },
+  cardTitle:{ fontFamily: DISPLAY, fontSize: 30, fontWeight: 600, letterSpacing: TRACK,
+             color: B.ink, margin: 0, opacity: 1, animation: 'none' },
+  cardBody:{ fontFamily: BODY, fontSize: 18, lineHeight: 1.66, color: B.body, fontWeight: 400,
+             margin: '14px 0 0' },
+  cardCount:{ fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.ultramarine,
+             marginBottom: 14, display: 'block', fontVariantNumeric: 'tabular-nums' },
 }
 
 const CSS = `
 .alt-car{position:relative;margin-top:52px}
-.alt-stage{position:relative;width:100%;min-height:clamp(420px,62vw,600px)}
+.alt-stage{position:relative;width:100%;min-height:clamp(380px,32vw,520px)}
 .alt-slide{position:absolute;inset:0;opacity:0;visibility:hidden;
+  display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);gap:clamp(28px,3.4vw,56px);
+  align-items:center;
   transition:opacity .3s ease,visibility 0s linear .3s}
 .alt-slide.on{opacity:1;visibility:visible;transition:opacity .3s ease}
 
-.alt-panel{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:${B.tintDeep};
-  position:relative}
+.alt-panel{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:${B.tintDeep};
+  position:relative;box-shadow:0 12px 40px rgba(0,34,83,.14),0 2px 6px rgba(0,34,83,.05)}
 .alt-panel video,.alt-panel img{width:100%;height:100%;object-fit:cover;display:block}
 .alt-panel--type{background:${TYPECARD_BG};display:flex;align-items:center;
-  justify-content:flex-start;padding:clamp(24px,5vw,52px)}
+  justify-content:flex-start;padding:clamp(28px,3.6vw,64px);box-shadow:none}
+.alt-copy{min-width:0}
 
-.alt-nav{position:absolute;top:0;width:52px;height:52px;border:1px solid ${B.border};
+.alt-ctrl{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:38px}
+.alt-nav{width:52px;height:52px;border:1px solid ${B.border};flex:none;
   background:${B.white};border-radius:50%;cursor:pointer;display:flex;align-items:center;
   justify-content:center;color:${B.ink};transition:border-color .15s,color .15s;padding:0}
 .alt-nav:hover{border-color:${B.ultramarine};color:${B.ultramarine}}
 .alt-nav:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:3px}
 .alt-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round}
-.alt-nav--prev{left:-76px}
-.alt-nav--next{right:-76px}
 
-.alt-dots{display:flex;gap:10px;justify-content:center;margin-top:34px}
+.alt-dots{display:flex;gap:10px;justify-content:center}
 .alt-dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;
   background:${B.border};transition:background .2s,transform .2s}
 .alt-dot[aria-current="true"]{background:${B.ultramarine};transform:scale(1.25)}
 .alt-dot:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:3px}
 
 @media (max-width:900px){
-  .alt-nav--prev{left:8px}
-  .alt-nav--next{right:8px}
-  .alt-nav{background:rgba(255,255,255,.94)}
+  .alt-slide{grid-template-columns:1fr;gap:26px;align-items:start}
+  .alt-stage{min-height:clamp(440px,90vw,640px)}
 }
 @media (prefers-reduced-motion:reduce){ .alt-slide{transition:none} }
 `

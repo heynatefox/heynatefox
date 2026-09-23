@@ -37,9 +37,12 @@ export const GAMMA_MEDIA = {
     { id: 'C', src: '/gamma/hook3_compare.mp4', poster: '/gamma/poster3.jpg' },
   ],
   statics: [
-    { src: '/gamma/static-4x5.png',  label: '4:5 · 2160×2700', alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
-    { src: '/gamma/static-1x1.png',  label: '1:1 · 2160×2160', alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
-    { src: '/gamma/static-9x16.png', label: '9:16 · 2160×3840', alt: 'Chat thread with the Gamma lockup running to the bottom edge' },
+    { src: '/gamma/static-4x5.png',  ratio: '4:5',  spec: '1080 × 1350', use: 'Feed',
+      alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
+    { src: '/gamma/static-1x1.png',  ratio: '1:1',  spec: '1080 × 1080', use: 'Feed · square',
+      alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
+    { src: '/gamma/static-9x16.png', ratio: '9:16', spec: '1080 × 1920', use: 'Story · Reels',
+      alt: 'Chat thread with the Gamma lockup running to the bottom edge' },
   ],
 }
 
@@ -128,25 +131,28 @@ export type AltCard = {
   mediaType: 'video' | 'image' | 'none'
   mediaSrc: string | null
   poster?: string
+  alt?: string
 }
 
 export const GAMMA_ALTERNATES: AltCard[] = [
   {
     title: 'Sexy Decksy',
-    body: 'Dexter Lawrence is "Sexy Dexy" to every NFL fan right now. Sexy Decksy borrows the zeitgeist during season, with a talent partnership and a domain to match. Highest attention ceiling of anything here. Needs licensing, so it\u2019s a real campaign, not a four-hour test.',
+    body: 'Dexter Lawrence is “Sexy Dexy” to every NFL fan right now. Sexy Decksy borrows the zeitgeist during season, with a talent partnership and a domain to match. Highest attention ceiling of anything here. Needs licensing, so it\u2019s a real campaign, not a four-hour test.',
     mediaType: 'video',
     mediaSrc: '/gamma/sexy-decksy.mp4',
     poster: '/gamma/sexy-decksy-poster.jpg',
+    alt: 'Gamma\u2019s deck editor laid over the footage, with a sexydecksy.gamma.app lockup',
   },
   {
     title: 'Gamma Grandma',
-    body: '"So easy your grandma can use it." Character-led humor, tests the attention axis the main concept doesn\u2019t touch. The risk is the pattern the brief flags: great CTR, no signups. Worth one variant to find out where the line is.',
+    body: '“So easy your grandma can use it.” Character-led humor, tests the attention axis the main concept doesn\u2019t touch. The risk is the pattern the brief flags: great CTR, no signups. Worth one variant to find out where the line is.',
     mediaType: 'image',
     mediaSrc: '/gamma/gamma-grandma.jpg',
+    alt: '\u201cSo easy your grandma can use it\u201d set against a finished Gamma deck',
   },
   {
-    title: 'From "meh" to MEL',
-    body: 'Magical, Expressive, Limitless is the only language in Gamma\u2019s brand book with real heat, and it\u2019s sitting in the design system section instead of in market. Every performing angle in the brief is pain-removal. MEL is the aspiration side. Untested hypothesis: does "limitless" beat "effortless" for cold traffic?',
+    title: 'From “meh” to MEL',
+    body: 'Magical, Expressive, Limitless is the only language in Gamma\u2019s brand book with real heat, and it\u2019s sitting in the design system section instead of in market. Every performing angle in the brief is pain-removal. MEL is the aspiration side. Untested hypothesis: does “limitless” beat “effortless” for cold traffic?',
     mediaType: 'none',
     mediaSrc: null,
   },

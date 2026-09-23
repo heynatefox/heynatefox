@@ -16,10 +16,10 @@ const TRACK = '-0.02em'
 
 const s: Record<string, React.CSSProperties> = {
   page:   { background: B.tint, color: B.ink, fontFamily: BODY, minHeight: '100vh' },
-  inner:  { maxWidth: 1120, margin: '0 auto', padding: '0 24px' },
+  inner:  { maxWidth: 1460, margin: '0 auto', padding: '0 40px' },
 
   bar:    { position: 'sticky', top: 0, zIndex: 50, background: 'rgba(232,238,252,0.9)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${B.border}` },
-  barIn:  { maxWidth: 1120, margin: '0 auto', padding: '13px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
+  barIn:  { maxWidth: 1460, margin: '0 auto', padding: '13px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
   back:   { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.muted, textDecoration: 'none' },
   barTag: { fontFamily: DISPLAY, fontSize: 13, fontWeight: 600, color: B.ultramarine, letterSpacing: TRACK },
 
@@ -29,16 +29,16 @@ const s: Record<string, React.CSSProperties> = {
   heroIn: { position: 'relative' },
 
   eyebrow:{ fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 22, display: 'block' },
-  h1:     { fontFamily: DISPLAY, fontSize: 'clamp(58px, 11vw, 140px)', fontWeight: 700, letterSpacing: TRACK,
-            lineHeight: 0.92, margin: 0, color: B.ink, opacity: 1, animation: 'none' },
-  dek:    { fontFamily: BODY, fontSize: 'clamp(19px, 2.3vw, 26px)', lineHeight: 1.45, color: B.body,
-            fontWeight: 400, maxWidth: '26ch', marginTop: 30 },
+  h1:     { fontFamily: DISPLAY, fontSize: 'clamp(62px, 14.6vw, 212px)', fontWeight: 700, letterSpacing: '-0.035em',
+            lineHeight: 0.88, margin: 0, color: B.ink, opacity: 1, animation: 'none' },
+  dek:    { fontFamily: BODY, fontSize: 'clamp(19px, 1.7vw, 25px)', lineHeight: 1.45, color: B.body,
+            fontWeight: 400, margin: 0 },
 
-  taglineWrap: { marginTop: 48, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px 20px' },
+  taglineWrap: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 18px' },
   tagline:{ fontFamily: DISPLAY, fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 600, letterSpacing: TRACK, color: B.ink },
   chip:   { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.deepOcean, background: B.tintDeep,
             borderRadius: 14, padding: '10px 18px' },
-  heroNote:{ fontFamily: BODY, fontSize: 16, color: B.muted, fontWeight: 400, marginTop: 30, maxWidth: '56ch' },
+  heroNote:{ fontFamily: BODY, fontSize: 17, color: B.muted, fontWeight: 400, margin: 0 },
 
   section:{ padding: '92px 0', maxWidth: 'none', margin: 0 },
   label:  { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 14, display: 'block' },
@@ -46,8 +46,8 @@ const s: Record<string, React.CSSProperties> = {
             lineHeight: 1.02, color: B.ink, margin: 0, opacity: 1, animation: 'none' },
   h3:     { fontFamily: DISPLAY, fontSize: 23, fontWeight: 600, letterSpacing: TRACK, color: B.ink,
             margin: '0 0 10px', opacity: 1, animation: 'none' },
-  sdek:   { fontFamily: BODY, fontSize: 19, lineHeight: 1.6, color: B.body, fontWeight: 400, maxWidth: '62ch', marginTop: 18 },
-  body:   { fontFamily: BODY, fontSize: 17, lineHeight: 1.7, color: B.body, fontWeight: 400, margin: '0 0 15px' },
+  sdek:   { fontFamily: BODY, fontSize: 21, lineHeight: 1.58, color: B.body, fontWeight: 400, maxWidth: '78ch', marginTop: 20 },
+  body:   { fontFamily: BODY, fontSize: 18, lineHeight: 1.72, color: B.body, fontWeight: 400, margin: '0 0 16px' },
 
   card:   { background: B.white, borderRadius: 22, boxShadow: '0 10px 34px rgba(0,34,83,.10), 0 2px 6px rgba(0,34,83,.05)' },
   vmeta:  { padding: '22px 24px 26px' },
@@ -68,14 +68,16 @@ const s: Record<string, React.CSSProperties> = {
             padding: '22px 26px', margin: '30px 0', fontFamily: BODY, fontSize: 16, lineHeight: 1.65,
             color: B.body, fontWeight: 400 },
 
-  end:    { background: B.deepOcean, color: B.white, padding: '104px 0 112px', textAlign: 'center' },
-  endRule:{ width: 96, height: 7, background: B.sky, margin: '0 auto 40px' },
-  endLine:{ fontFamily: DISPLAY, fontSize: 'clamp(36px, 6vw, 76px)', fontWeight: 700, letterSpacing: TRACK,
-            lineHeight: 1.04, color: B.white, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' },
-  endUrl: { fontFamily: BODY, fontSize: 26, color: B.sky, marginTop: 30, fontWeight: 400 },
-  endTrust:{ fontFamily: BODY, fontSize: 17, color: B.tintDeep, marginTop: 12, fontWeight: 400, opacity: .85 },
-  endFine:{ fontFamily: BODY, fontSize: 13, color: 'rgba(205,218,250,0.55)', marginTop: 44, fontWeight: 400,
-            maxWidth: '62ch', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 },
+  /* beats globals.css, which lays every footer out as a 1200px flex row */
+  end:    { background: B.deepOcean, color: B.white, padding: '76px 0 60px', maxWidth: 'none',
+            margin: 0, display: 'block', borderTop: 'none' },
+  endName:{ fontFamily: DISPLAY, fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 700,
+            letterSpacing: TRACK, lineHeight: 1, color: B.white, opacity: 1, animation: 'none' },
+  endLink:{ fontFamily: BODY, fontSize: 20, color: B.sky, textDecoration: 'none',
+            display: 'inline-block', marginTop: 16 },
+  endFor: { fontFamily: BODY, fontSize: 15, color: 'rgba(205,218,250,0.72)' },
+  endFine:{ fontFamily: BODY, fontSize: 13, color: 'rgba(205,218,250,0.5)',
+            fontWeight: 400, maxWidth: '78ch', lineHeight: 1.6, margin: 0 },
 }
 
 export default function GammaCase() {
@@ -94,12 +96,20 @@ export default function GammaCase() {
         <div style={{ ...s.inner, ...s.heroIn }}>
           <span style={s.eyebrow}>{GAMMA_HERO.eyebrow}</span>
           <h1 style={s.h1}>{GAMMA_HERO.title}</h1>
-          <p style={s.dek}>{GAMMA_HERO.dek}</p>
-          <div style={s.taglineWrap}>
-            <span style={s.tagline}>{GAMMA_HERO.tagline}</span>
-            {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
+          <div className="g-hero-grid">
+            <div className="g-hero-l">
+              <div style={s.taglineWrap}>
+                <span style={s.tagline}>{GAMMA_HERO.tagline}</span>
+              </div>
+              <div style={{ ...s.taglineWrap, marginTop: 22 }}>
+                {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
+              </div>
+            </div>
+            <div className="g-hero-r">
+              <p style={s.dek}>{GAMMA_HERO.dek}</p>
+              <p style={s.heroNote}>{GAMMA_HERO.note}</p>
+            </div>
           </div>
-          <p style={s.heroNote}>{GAMMA_HERO.note}</p>
         </div>
       </header>
 
@@ -154,16 +164,26 @@ export default function GammaCase() {
           <p style={s.sdek}>
             Nothing in the image claims speed — the clock does. The boss asks at 9:46, the deck
             lands at 9:47, and the reaction at 9:52 asks the question the viewer is already forming.
-            Rendered at 2x, with the wordmark held at its full clearspace of one “M”.
+            Delivered at the brief’s sizes, with the wordmark held at its full clearspace of one “M”.
           </p>
           <div className="g-sgrid">
             {GAMMA_MEDIA.statics.map(st => (
-              <figure key={st.src} style={{ margin: 0 }}>
-                <img className="g-static" src={st.src} alt={st.alt} />
-                <figcaption style={s.cap}>{st.label}</figcaption>
+              <figure key={st.src} className={`g-sfig g-sfig--${st.ratio.replace(':', 'x')}`}>
+                <a className="g-sframe" href={st.src} target="_blank" rel="noreferrer">
+                  <img className="g-static" src={st.src} alt={st.alt} />
+                </a>
+                <figcaption className="g-scap">
+                  <span className="g-sratio">{st.ratio}</span>
+                  <span className="g-sspec">{st.spec}</span>
+                  <span className="g-suse">{st.use}</span>
+                </figcaption>
               </figure>
             ))}
           </div>
+          <p style={{ ...s.cap, marginTop: 24 }}>
+            Each one links to the full-resolution file. Supplied at 2× for retina placements;
+            the trafficked sizes are the ones listed.
+          </p>
         </div>
       </section>
 
@@ -173,7 +193,7 @@ export default function GammaCase() {
           <span style={s.label}>Deliverable 3 — process note</span>
           <h2 style={s.h2}>How it got made</h2>
 
-          <div style={{ maxWidth: 760, marginTop: 42 }}>
+          <div className="g-prose" style={{ marginTop: 46 }}>
             <h3 style={{ ...s.h3, marginTop: 8 }}>Tools, and what each one was for</h3>
             <table className="g-tbl">
               <tbody>
@@ -246,7 +266,7 @@ export default function GammaCase() {
           </p>
 
           <h3 style={{ ...s.h3, marginTop: 52 }}>Layer manifest</h3>
-          <p style={{ ...s.body, maxWidth: '62ch' }}>
+          <p style={{ ...s.body, maxWidth: '78ch' }}>
             Four layers, nothing flattened. Timecodes are M:SS.ff at 30&nbsp;fps. Alpha layers ship as
             ProRes 4444 and VP9, so any line can be repositioned or reworded without re-rendering the base.
           </p>
@@ -285,15 +305,24 @@ export default function GammaCase() {
 
       <AlternateIdeas />
 
-      <footer style={s.end}>
+      <footer style={s.end} className="g-foot">
         <div style={s.inner}>
-          <div style={s.endRule} />
-          <div style={s.endLine}>{GAMMA_HERO.tagline}</div>
-          <p style={s.endUrl}>gamma.app</p>
-          <p style={s.endTrust}>Export to PowerPoint anytime</p>
+          <div className="g-foot-top">
+            <div>
+              <div style={s.endName}>Nate Fox</div>
+              <a href="https://heynatefox.com" style={s.endLink}>heynatefox.com</a>
+            </div>
+            <div className="g-foot-mark">
+              <span style={s.endFor}>Creative Strategist take-home for</span>
+              <a href="https://gamma.app" className="g-mark" aria-label="Gamma">
+                <img src="/gamma/wordmark-white.svg" alt="Gamma" />
+              </a>
+            </div>
+          </div>
+          <div className="g-foot-rule" />
           <p style={s.endFine}>
             Spec work produced for a take-home exercise. Not affiliated with, commissioned by, or endorsed
-            by Gamma. Product UI reconstructed from Gamma’s own published product footage and public brand book.
+            by Gamma. Product UI reconstructed from Gamma&rsquo;s own published product footage and public brand book.
           </p>
         </div>
       </footer>
@@ -322,16 +351,29 @@ const GAMMA_CSS = `
 .gamma-case strong{font-weight:600;color:${B.ink}}
 .gamma-case a{color:${B.ultramarine}}
 
-.g-vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:46px}
+.g-vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
 .g-vcard{overflow:hidden;display:flex;flex-direction:column}
 .g-video{width:100%;aspect-ratio:9/16;display:block;background:${B.tint};border-radius:22px 22px 0 0}
 .g-beats{display:grid;grid-template-columns:repeat(5,1fr)}
 .g-beat{padding:22px 26px;border-right:1px solid ${B.border}}
 .g-beat:last-child{border-right:0}
-.g-sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start;margin-top:46px}
-.g-static{width:100%;display:block;border-radius:14px}
+.g-sgrid{display:grid;gap:40px;margin-top:52px;align-items:start;
+  /* columns sized so all three ratios share one height and each runs as big as the row allows */
+  grid-template-columns:0.8fr 1fr 0.5625fr}
+.g-sfig{margin:0;display:flex;flex-direction:column;gap:16px}
+.g-sframe{display:block;border-radius:16px;overflow:hidden;background:${B.white};
+  box-shadow:0 10px 34px rgba(0,34,83,.12),0 2px 6px rgba(0,34,83,.05);
+  transition:transform .18s ease,box-shadow .18s ease}
+.g-sframe:hover{transform:translateY(-3px);box-shadow:0 18px 46px rgba(0,34,83,.18)}
+.g-sframe:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:4px}
+.g-static{width:100%;display:block}
+.g-scap{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px}
+.g-sratio{font-family:ESBuild;font-size:17px;font-weight:600;letter-spacing:-.02em;color:${B.ink}}
+.g-sspec{font-size:15px;font-weight:500;color:${B.ultramarine};font-variant-numeric:tabular-nums}
+.g-suse{font-size:14px;color:${B.muted}}
 
-.g-tbl{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:16px}
+.g-prose{max-width:1040px}
+.g-tbl{width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:17px}
 .g-tbl th{text-align:left;font-size:16px;font-weight:600;color:${B.ink};
   padding:13px 22px 13px 0;border-bottom:1px solid ${B.border};vertical-align:top;width:34%}
 .g-tbl td{padding:13px 0;border-bottom:1px solid ${B.border};color:${B.body};
@@ -341,11 +383,11 @@ const GAMMA_CSS = `
 .g-tbl-num th{width:auto}
 .g-total th,.g-total td{border-bottom:0;color:${B.ultramarine}}
 
-.g-ol,.g-ul{margin:16px 0 0;padding-left:22px;color:${B.body};font-weight:400;font-size:17px;line-height:1.7}
+.g-ol,.g-ul{margin:16px 0 0;padding-left:22px;color:${B.body};font-weight:400;font-size:18px;line-height:1.72;max-width:88ch}
 .g-ol li,.g-ul li{margin-bottom:13px}
 
 .g-scroll{overflow-x:auto;margin:18px 0 10px}
-.g-man{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.g-man{width:100%;border-collapse:collapse;font-size:16px;min-width:720px}
 .g-man th{text-align:left;font-size:14px;font-weight:600;color:${B.ultramarine};
   padding:0 16px 12px 0;border-bottom:2px solid ${B.sky}}
 .g-man td{padding:11px 16px 11px 0;border-bottom:1px solid ${B.border};color:${B.body};
@@ -356,8 +398,27 @@ const GAMMA_CSS = `
 .gamma-case code{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:${B.tint};
   padding:2px 7px;border-radius:6px;color:${B.ink}}
 
+.g-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(32px,4vw,72px);margin-top:54px;align-items:start}
+.g-hero-l{display:flex;flex-direction:column}
+.g-hero-r{display:flex;flex-direction:column;gap:22px;padding-top:4px}
+
+/* full bleed, and no inherited 1200px flex row from globals.css */
+.gamma-case .g-foot{display:block;max-width:none;margin:0;border-top:0;width:100%}
+.g-foot-top{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.g-foot-mark{display:flex;flex-direction:column;align-items:flex-end;
+  /* wordmark is 240px wide -> clearspace is one M = 240 x .239 = 58px */
+  gap:58px}
+.g-mark{display:block;width:240px}
+.g-mark img{display:block;width:100%}
+.g-foot-rule{height:1px;background:rgba(205,218,250,.18);margin:56px 0 30px}
+
 @media (max-width:900px){
+  .g-hero-grid{grid-template-columns:1fr;gap:34px}
+  .g-foot-top{align-items:flex-start}
+  .g-foot-mark{align-items:flex-start}
   .g-vgrid,.g-sgrid{grid-template-columns:1fr}
+  .g-suse{margin-left:0}
   .g-beats{grid-template-columns:1fr 1fr}
   .g-beat{border-right:0;border-bottom:1px solid ${B.border}}
   .g-tbl th{width:auto;display:block;padding-bottom:4px;border-bottom:0}
