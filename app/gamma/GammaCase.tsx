@@ -16,14 +16,14 @@ const TRACK = '-0.02em'
 
 const s: Record<string, React.CSSProperties> = {
   page:   { background: B.tint, color: B.ink, fontFamily: BODY, minHeight: '100vh' },
-  inner:  { maxWidth: 1460, margin: '0 auto', padding: '0 40px' },
+  inner:  { maxWidth: 1460, margin: '0 auto', padding: '0 clamp(20px, 2.8vw, 40px)' },
 
   bar:    { position: 'sticky', top: 0, zIndex: 50, background: 'rgba(232,238,252,0.9)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${B.border}` },
-  barIn:  { maxWidth: 1460, margin: '0 auto', padding: '13px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
+  barIn:  { maxWidth: 1460, margin: '0 auto', padding: '13px clamp(20px, 2.8vw, 40px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
   back:   { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.muted, textDecoration: 'none' },
   barTag: { fontFamily: DISPLAY, fontSize: 13, fontWeight: 600, color: B.ultramarine, letterSpacing: TRACK },
 
-  hero:   { position: 'relative', overflow: 'hidden', padding: '104px 0 96px' },
+  hero:   { position: 'relative', overflow: 'hidden', padding: 'clamp(56px, 7vw, 104px) 0 clamp(56px, 6.5vw, 96px)' },
   wash:   { position: 'absolute', inset: '-30% -10% auto -10%', height: '150%', pointerEvents: 'none',
             background: 'radial-gradient(44% 40% at 22% 24%, rgba(132,193,250,.50), transparent 70%), radial-gradient(40% 36% at 78% 18%, rgba(205,218,250,.75), transparent 72%), radial-gradient(46% 40% at 60% 92%, rgba(132,193,250,.30), transparent 74%)' },
   heroIn: { position: 'relative' },
@@ -36,11 +36,13 @@ const s: Record<string, React.CSSProperties> = {
 
   taglineWrap: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 18px' },
   tagline:{ fontFamily: DISPLAY, fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 600, letterSpacing: TRACK, color: B.ink },
+  chipsRow:{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(186px, 1fr))',
+            gap: 10, marginTop: 24 },
   chip:   { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.deepOcean, background: B.tintDeep,
-            borderRadius: 14, padding: '10px 18px' },
+            borderRadius: 14, padding: '12px 18px' },
   heroNote:{ fontFamily: BODY, fontSize: 17, color: B.muted, fontWeight: 400, margin: 0 },
 
-  section:{ padding: '92px 0', maxWidth: 'none', margin: 0 },
+  section:{ padding: 'clamp(58px, 6.5vw, 92px) 0', maxWidth: 'none', margin: 0 },
   label:  { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 14, display: 'block' },
   h2:     { fontFamily: DISPLAY, fontSize: 'clamp(34px, 5vw, 60px)', fontWeight: 600, letterSpacing: TRACK,
             lineHeight: 1.02, color: B.ink, margin: 0, opacity: 1, animation: 'none' },
@@ -69,8 +71,8 @@ const s: Record<string, React.CSSProperties> = {
             color: B.body, fontWeight: 400 },
 
   /* beats globals.css, which lays every footer out as a 1200px flex row */
-  end:    { background: B.deepOcean, color: B.white, padding: '76px 0 60px', maxWidth: 'none',
-            margin: 0, display: 'block', borderTop: 'none' },
+  end:    { background: B.deepOcean, color: B.white, padding: 'clamp(56px, 5.4vw, 76px) 0 clamp(46px, 4.2vw, 60px)', maxWidth: 'none',
+            margin: 0, display: 'block', borderTop: 'none', textAlign: 'left' },
   endName:{ fontFamily: DISPLAY, fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 700,
             letterSpacing: TRACK, lineHeight: 1, color: B.white, opacity: 1, animation: 'none' },
   endLink:{ fontFamily: BODY, fontSize: 20, color: B.sky, textDecoration: 'none',
@@ -101,7 +103,7 @@ export default function GammaCase() {
               <div style={s.taglineWrap}>
                 <span style={s.tagline}>{GAMMA_HERO.tagline}</span>
               </div>
-              <div style={{ ...s.taglineWrap, marginTop: 22 }}>
+              <div style={s.chipsRow}>
                 {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
               </div>
             </div>
@@ -414,15 +416,27 @@ const GAMMA_CSS = `
 .g-foot-rule{height:1px;background:rgba(205,218,250,.18);margin:56px 0 30px}
 
 @media (max-width:900px){
-  .g-hero-grid{grid-template-columns:1fr;gap:34px}
+  /* the dek explains the headline, so on one column it follows it directly */
+  .g-hero-grid{grid-template-columns:1fr;gap:30px;margin-top:34px}
+  .g-hero-r{order:-1;gap:18px;padding-top:0}
   .g-foot-top{align-items:flex-start}
-  .g-foot-mark{align-items:flex-start}
+  .g-foot-mark{align-items:flex-start;gap:43px}
+  .g-mark{width:180px}
   .g-vgrid,.g-sgrid{grid-template-columns:1fr}
   .g-suse{margin-left:0}
   .g-beats{grid-template-columns:1fr 1fr}
   .g-beat{border-right:0;border-bottom:1px solid ${B.border}}
   .g-tbl th{width:auto;display:block;padding-bottom:4px;border-bottom:0}
   .g-tbl td{display:block;padding-top:0}
+}
+@media (max-width:640px){
+  /* globals.css centres every footer below 900px; this page's is left-set */
+  .gamma-case .g-foot,.gamma-case .g-foot *{text-align:left}
+  .g-foot-rule{margin:40px 0 24px}
+  /* five beats never split evenly into two columns — run them as one list */
+  .g-beats{grid-template-columns:1fr}
+  .g-beat{padding:18px 22px}
+  .g-beat:last-child{border-bottom:0}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 `

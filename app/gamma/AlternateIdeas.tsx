@@ -165,9 +165,9 @@ export default function AlternateIdeas() {
 }
 
 const st: Record<string, React.CSSProperties> = {
-  section: { padding: '92px 0 104px', maxWidth: 'none', margin: 0, background: B.white,
+  section: { padding: 'clamp(58px, 6.5vw, 92px) 0 clamp(64px, 7vw, 104px)', maxWidth: 'none', margin: 0, background: B.white,
              borderTop: `1px solid ${B.border}` },
-  inner:   { maxWidth: 1460, margin: '0 auto', padding: '0 40px' },
+  inner:   { maxWidth: 1460, margin: '0 auto', padding: '0 clamp(20px, 2.8vw, 40px)' },
   label:   { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 14, display: 'block' },
   h2:      { fontFamily: DISPLAY, fontSize: 'clamp(34px, 5vw, 56px)', fontWeight: 600, letterSpacing: TRACK,
              lineHeight: 1.02, color: B.ink, margin: 0, opacity: 1, animation: 'none' },
@@ -216,8 +216,9 @@ const CSS = `
 .alt-dot:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:3px}
 
 @media (max-width:900px){
-  .alt-slide{grid-template-columns:1fr;gap:26px;align-items:start}
+  .alt-slide{grid-template-columns:1fr;gap:24px;align-items:start}
   .alt-stage{min-height:clamp(440px,90vw,640px)}
+  .alt-ctrl{gap:18px;margin-top:30px}
 }
 @media (prefers-reduced-motion:reduce){ .alt-slide{transition:none} }
 `
