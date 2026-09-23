@@ -112,3 +112,54 @@ export const GAMMA_RULES = [
   ['Type.', 'ES Build for headlines at −2% tracking, PP Mori for body. Where the wordmark leads, the headline drops to a lighter weight so the two don’t compete.'],
   ['Designed for sound off.', 'Captions burned in; the whole spot reads silent. The score is additive, not load-bearing.'],
 ]
+
+/* ============================================================
+   Alternate Ideas — explored, not built.
+   Edit copy, swap media, or reorder here. The carousel logic
+   never needs to change.
+   ============================================================ */
+export const GAMMA_ALT_INTRO =
+  'Directions explored, not built. The concept I shipped is the one that clears the ' +
+  'three-second clarity bar for cold traffic. These are the ones I\u2019d want to test next.'
+
+export type AltCard = {
+  title: string
+  body: string
+  mediaType: 'video' | 'image' | 'none'
+  mediaSrc: string | null
+  poster?: string
+}
+
+export const GAMMA_ALTERNATES: AltCard[] = [
+  {
+    title: 'Sexy Decksy',
+    body: 'Dexter Lawrence is "Sexy Dexy" to every NFL fan right now. Sexy Decksy borrows the zeitgeist during season, with a talent partnership and a domain to match. Highest attention ceiling of anything here. Needs licensing, so it\u2019s a real campaign, not a four-hour test.',
+    mediaType: 'video',
+    mediaSrc: '/gamma/sexy-decksy.mp4',
+    poster: '/gamma/sexy-decksy-poster.jpg',
+  },
+  {
+    title: 'Gamma Grandma',
+    body: '"So easy your grandma can use it." Character-led humor, tests the attention axis the main concept doesn\u2019t touch. The risk is the pattern the brief flags: great CTR, no signups. Worth one variant to find out where the line is.',
+    mediaType: 'image',
+    mediaSrc: '/gamma/gamma-grandma.jpg',
+  },
+  {
+    title: 'From "meh" to MEL',
+    body: 'Magical, Expressive, Limitless is the only language in Gamma\u2019s brand book with real heat, and it\u2019s sitting in the design system section instead of in market. Every performing angle in the brief is pain-removal. MEL is the aspiration side. Untested hypothesis: does "limitless" beat "effortless" for cold traffic?',
+    mediaType: 'none',
+    mediaSrc: null,
+  },
+  {
+    title: 'All hands off deck',
+    body: 'The rallying cry for an all-nighter, inverted. Nobody has to stay late. The pun carries the actual product benefit rather than just being clever about the category.',
+    mediaType: 'none',
+    mediaSrc: null,
+  },
+  {
+    title: 'Just a sec: the series',
+    body: 'The framing extends past one spot into episodic content about workplace time pressure, closer to Built\u2019s Roomies than to a performance ad. Wrong tool for CPA, right tool for the brand layer that makes performance ads cheaper over time.',
+    mediaType: 'none',
+    mediaSrc: null,
+  },
+]

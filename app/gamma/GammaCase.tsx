@@ -1,3 +1,4 @@
+import AlternateIdeas from './AlternateIdeas'
 import {
   GAMMA_BRAND, GAMMA_HERO, GAMMA_MEDIA, GAMMA_HOOKS, GAMMA_SPINE,
   GAMMA_TOOLS, GAMMA_TIME, GAMMA_TESTS, GAMMA_MANIFEST, GAMMA_RULES,
@@ -281,6 +282,8 @@ export default function GammaCase() {
           </ul>
         </div>
       </section>
+
+      <AlternateIdeas />
 
       <footer style={s.end}>
         <div style={s.inner}>
