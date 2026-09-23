@@ -109,8 +109,9 @@ export default function GammaCase() {
           <h2 style={s.h2}>Three hooks, one spine</h2>
           <p style={s.sdek}>
             Three genuinely different opening mechanisms, not three edits of one. 9:16, 1080×1920,
-            20 seconds, captions burned in, designed for sound off. Each hook runs 0:00–0:03,
-            then all three converge.
+            20 seconds, captions burned in, scored to a track that resolves on the final frame.
+            After the opener all three run the same spine — including one unbroken 11.7-second
+            take of the product, which is 58% of the ad.
           </p>
 
           <div className="g-vgrid">
@@ -148,11 +149,11 @@ export default function GammaCase() {
       <section style={s.section}>
         <div style={s.inner}>
           <span style={s.label}>Deliverable 2 — static</span>
-          <h2 style={s.h2}>The transformation is in the image</h2>
+          <h2 style={s.h2}>The clock makes the argument</h2>
           <p style={s.sdek}>
-            Not a nice screenshot under a headline. Messy notes and the finished deck share every
-            frame, with a marker on the seam — adapted to each ratio rather than cropped from one
-            master. Flat throughout: no shadows, no gradients, no effects in the ad layer.
+            Nothing in the image claims speed — the clock does. The boss asks at 9:46, the deck
+            lands at 9:47, and the reaction at 9:52 asks the question the viewer is already forming.
+            Rendered at 2x, with the wordmark held at its full clearspace of one “M”.
           </p>
           <div className="g-sgrid">
             {GAMMA_MEDIA.statics.map(st => (

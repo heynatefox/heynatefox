@@ -24,40 +24,40 @@ export const GAMMA_HERO = {
   eyebrow: 'Gamma · Creative Strategist · take-home',
   title: 'Just a sec',
   dek: 'A last-minute deck request lands. The reply is “just a sec.” Two seconds later, a finished deck goes back.',
-  tagline: 'From grunt work to great work',
-  taglineAlt: 'Need a deck? — just a sec',
-  meta: ['Angle — time recovery', '3 video · 3 static · 1 note', '9:16 · 20s · sound off'],
+  tagline: 'Need a deck? just a sec.',
+  taglineAlt: 'From grunt work to great work',
+  meta: ['Angle — time recovery', '3 video · 3 static · 1 note', '9:16 · 20s · scored'],
   note: 'The joke is that “just a sec” is normally a lie, and here it isn’t.',
 }
 
 export const GAMMA_MEDIA = {
   hooks: [
-    { id: 'A', src: '/gamma/hookA.mp4', poster: '/gamma/posterA.jpg' },
-    { id: 'B', src: '/gamma/hookB.mp4', poster: '/gamma/posterB.jpg' },
-    { id: 'C', src: '/gamma/hookC.mp4', poster: '/gamma/posterC.jpg' },
+    { id: 'A', src: '/gamma/hook1_person.mp4',  poster: '/gamma/poster1.jpg' },
+    { id: 'B', src: '/gamma/hook2_chat.mp4',    poster: '/gamma/poster2.jpg' },
+    { id: 'C', src: '/gamma/hook3_compare.mp4', poster: '/gamma/poster3.jpg' },
   ],
   statics: [
-    { src: '/gamma/static-4x5.png',  label: '4:5 · 1080×1350 · vertical split',    alt: 'Messy notes above, finished deck below, headline beneath' },
-    { src: '/gamma/static-1x1.png',  label: '1:1 · 1080×1080 · horizontal split',  alt: 'Messy notes left, finished deck right, copy stacked below' },
-    { src: '/gamma/static-9x16.png', label: '9:16 · 1080×1920 · platform-safe',    alt: 'Notes upper, deck centre, headline lower-middle, primary text near the bottom' },
+    { src: '/gamma/static-4x5.png',  label: '4:5 · 2160×2700', alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
+    { src: '/gamma/static-1x1.png',  label: '1:1 · 2160×2160', alt: 'Chat thread: boss asks at 9:46, deck delivered 9:47, reaction at 9:52' },
+    { src: '/gamma/static-9x16.png', label: '9:16 · 2160×3840', alt: 'Chat thread with the Gamma lockup running to the bottom edge' },
   ],
 }
 
 export const GAMMA_HOOKS = [
-  { id: 'A', kind: 'Situational', name: 'The Ask',
-    copy: 'The message lands with no caption and no setup. The situation is the hook. One SFX cue marked at 0:00.28.' },
-  { id: 'B', kind: 'Tension', name: 'The Typing Indicator',
-    copy: 'Three dots, no context whatsoever, held two full beats. The discomfort of waiting is the hook. Hard cut into the spine.' },
+  { id: 'A', kind: 'Person', name: 'The Ask',
+    copy: 'Opens mid-squint, reading the message. No setup, no establishing shot — the situation is the hook.' },
+  { id: 'B', kind: 'Situational', name: 'The Thread',
+    copy: 'A team chat. The boss posts, you reply, and it cuts. Shortest opener of the three because there is no one to establish.' },
   { id: 'C', kind: 'Comparison', name: 'Split Screen',
-    copy: 'Same text box nudged on the left, paste and done on the right. Both timers start together. One stops at 0:02; the other never does.' },
+    copy: 'The same text box nudged on the left, paste and done on the right. Both timers start together. One stops at 0:02; the other never does.' },
 ]
 
 export const GAMMA_SPINE = [
-  { tc: '0:03–0:06', beat: 'Reply typed: “just a sec”' },
-  { tc: '0:06–0:11', beat: 'Rough notes hit the Gamma input' },
-  { tc: '0:11–0:16', beat: 'Deck generates, layout forming' },
-  { tc: '0:16–0:19', beat: 'Fast scroll, then the deck goes back' },
-  { tc: '0:19–0:20', beat: 'From grunt work to great work' },
+  { tc: '0:00–0:02.7', beat: '“Hey, I need a deck” → “just a sec”' },
+  { tc: '0:02.7–0:14.4', beat: 'One unbroken product take — paste, generate, six slides build' },
+  { tc: '0:14.4–0:16.1', beat: 'The link goes back' },
+  { tc: '0:16.1–0:17.8', beat: '“how did you do that so fast??”' },
+  { tc: '0:17.8–0:20', beat: 'Need a deck? just a sec.' },
 ]
 
 export const GAMMA_TOOLS = [
@@ -86,28 +86,29 @@ export const GAMMA_TESTS = [
 ]
 
 export const GAMMA_MANIFEST = [
-  { layer: 'bg',     what: 'Brand ground and wash, loopable',            in: '0:00.00', out: '0:20.00', alpha: false },
-  { layer: 'ui',     what: 'All product and chat screens; camera baked in', in: '0:00.00', out: '0:19.00', alpha: true },
-  { sub: true, what: '· Hook A — incoming message lands',  in: '0:00.28', out: '0:06.00' },
-  { sub: true, what: '· Hook B — three-dot indicator',     in: '0:00.00', out: '0:03.00' },
-  { sub: true, what: '· Hook C — split, right side done',  in: '0:00.00', out: '0:02.00' },
-  { sub: true, what: '· Reply lands: “just a sec”',        in: '0:03.50', out: '0:03.72' },
-  { sub: true, what: '· Rough notes land (single paste)',  in: '0:06.75', out: '0:06.92' },
-  { sub: true, what: '· Smart zoom — the paste',           in: '0:07.20', out: '0:10.40' },
-  { sub: true, what: '· Smart zoom — the generation',      in: '0:11.90', out: '0:12.70' },
-  { sub: true, what: '· Six slides materialise',           in: '0:13.60', out: '0:15.40' },
-  { sub: true, what: '· Fast scroll',                      in: '0:16.00', out: '0:18.15' },
-  { sub: true, what: '· Deck returns to the chat',         in: '0:18.42', out: '0:19.00' },
-  { layer: 'cursor', what: 'Spine cursor and click rings',  in: '0:06.10', out: '0:13.80', alpha: true },
-  { layer: 'text',   what: 'Burned-in captions and end card', in: '0:06.15', out: '0:20.00', alpha: true },
+  { layer: 'opener',  what: 'Live action / chat / split, depending on hook', in: '0:00.00', out: '0:02.73', alpha: false },
+  { layer: 'thread',  what: '“Hey, I need a deck” then “just a sec”, stacked', in: '0:00.05', out: '0:02.74', alpha: true },
+  { layer: 'product', what: 'One unbroken take of the real Gamma flow',     in: '0:02.73', out: '0:14.43', alpha: false },
+  { sub: true, what: '· Rough notes land in Paste in text', in: '0:03.00', out: '0:03.20' },
+  { sub: true, what: '· Notes scroll, Continue',            in: '0:05.10', out: '0:07.00' },
+  { sub: true, what: '· Generate, outline streams',         in: '0:07.10', out: '0:09.50' },
+  { sub: true, what: '· Six slides materialise',            in: '0:09.80', out: '0:12.20' },
+  { sub: true, what: '· Fast scroll, finished deck',        in: '0:12.30', out: '0:14.43' },
+  { layer: 'captions', what: 'Three lines + a gamma.app badge that holds', in: '0:03.03', out: '0:14.43', alpha: true },
+  { layer: 'link',    what: 'The deck goes back as a share link',  in: '0:14.63', out: '0:16.13', alpha: true },
+  { layer: 'react',   what: '“how did you do that so fast??”',     in: '0:16.23', out: '0:17.79', alpha: true },
+  { layer: 'endcard', what: 'GAMMA · Need a deck? just a sec. · gamma.app', in: '0:17.79', out: '0:20.00', alpha: true },
+  { layer: 'music',   what: '~95 BPM, aligned so the track resolves on the last frame', in: '0:00.00', out: '0:20.00', alpha: false },
 ]
 
 export const GAMMA_RULES = [
-  ['Outcome, not technology.', 'Nothing in the copy names AI. The mechanism is shown; the benefit is the finished deck going back.'],
-  ['Pain named specifically.', '“No text boxes nudged” — and Hook C shows the nudging rather than describing it.'],
-  ['No competitor framing.', 'Hook C is the same person before and after, which is why both panes are unlabelled.'],
-  ['No superlatives, no hype.', 'Banned-word list audited against every caption, the end card and both static fields.'],
-  ['Real product UI only.', 'Every Gamma screen is rebuilt from their own first-party captures. The chat is deliberately generic work-chat chrome — no real product’s trade dress.'],
-  ['PowerPoint export.', 'Placed where it fits naturally: a quiet trust line under the URL on the end card, and the last sentence of the static.'],
-  ['Sound off.', 'Everything ships silent and reads silent. Hook A has one SFX cue marked at 0:00.28 if a chime is wanted.'],
+  ['Outcome, not technology.', 'Nothing in the copy names AI. The mechanism is shown; the benefit is the deck going back.'],
+  ['Pain named specifically.', 'Hook C shows the same text box being nudged rather than describing the frustration.'],
+  ['No competitor framing.', 'The comparison panes carry no labels. Two timers start together; one stops. Nothing on screen says “without”.'],
+  ['No superlatives, no hype.', 'Banned-word list audited against every caption, both taglines and all three statics.'],
+  ['Real product UI only.', 'Every Gamma screen is rebuilt from their own first-party product captures. The chat is generic work-chat chrome — no real product’s trade dress.'],
+  ['Wordmark clearspace.', 'Measured off the SVG: the “M” is 23.9% of the wordmark’s width. Held on every side — 134px on the end card, 48/40/124px across the three statics.'],
+  ['Wordmark and avatar never locked up.', 'The Floating G appears nowhere, per the brand book’s rule against pairing them.'],
+  ['Type.', 'ES Build for headlines at −2% tracking, PP Mori for body. Where the wordmark leads, the headline drops to a lighter weight so the two don’t compete.'],
+  ['Designed for sound off.', 'Captions burned in; the whole spot reads silent. The score is additive, not load-bearing.'],
 ]
