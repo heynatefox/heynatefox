@@ -209,11 +209,13 @@ const CSS = `
 .alt-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;
   stroke-linecap:round;stroke-linejoin:round}
 
-.alt-dots{display:flex;gap:10px;justify-content:center}
-.alt-dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;
+.alt-dots{display:flex;gap:0;justify-content:center}
+.alt-dot{width:34px;height:34px;border:0;padding:0;cursor:pointer;background:none;
+  display:flex;align-items:center;justify-content:center;border-radius:50%}
+.alt-dot::before{content:"";width:9px;height:9px;border-radius:50%;
   background:${B.border};transition:background .2s,transform .2s}
-.alt-dot[aria-current="true"]{background:${B.ultramarine};transform:scale(1.25)}
-.alt-dot:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:3px}
+.alt-dot[aria-current="true"]::before{background:${B.ultramarine};transform:scale(1.25)}
+.alt-dot:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:-2px}
 
 @media (max-width:900px){
   .alt-slide{grid-template-columns:1fr;gap:24px;align-items:start}

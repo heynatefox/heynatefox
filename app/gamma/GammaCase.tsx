@@ -24,7 +24,8 @@ const s: Record<string, React.CSSProperties> = {
 
   bar:    { position: 'sticky', top: 0, zIndex: 50, background: 'rgba(232,238,252,0.9)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${B.border}` },
   barIn:  { maxWidth: 1460, margin: '0 auto', padding: '13px clamp(20px, 2.8vw, 40px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
-  back:   { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.muted, textDecoration: 'none' },
+  back:   { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.muted, textDecoration: 'none',
+            display: 'inline-flex', alignItems: 'center', padding: '11px 4px', margin: '-11px -4px' },
   barPill:{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '7px 16px',
             borderRadius: 999, background: B.deepOcean, whiteSpace: 'nowrap' },
   barName:{ fontFamily: DISPLAY, fontSize: 14, fontWeight: 700, color: B.white, letterSpacing: TRACK },
@@ -88,7 +89,7 @@ const s: Record<string, React.CSSProperties> = {
   endName:{ fontFamily: DISPLAY, fontSize: 'clamp(40px, 5vw, 68px)', fontWeight: 700,
             letterSpacing: TRACK, lineHeight: 1, color: B.white, opacity: 1, animation: 'none' },
   endLink:{ fontFamily: BODY, fontSize: 20, color: B.sky, textDecoration: 'none',
-            display: 'inline-block', marginTop: 16 },
+            display: 'inline-flex', alignItems: 'center', marginTop: 10, padding: '9px 4px', marginLeft: -4 },
   endFor: { fontFamily: BODY, fontSize: 15, color: 'rgba(205,218,250,0.72)' },
   endFine:{ fontFamily: BODY, fontSize: 13, color: 'rgba(205,218,250,0.5)',
             fontWeight: 400, maxWidth: '78ch', lineHeight: 1.6, margin: 0 },
@@ -377,7 +378,7 @@ const GAMMA_CSS = `
 .g-foot-mark{display:flex;flex-direction:column;align-items:flex-end;
   /* wordmark is 240px wide -> clearspace is one M = 240 x .239 = 58px */
   gap:58px}
-.g-mark{display:block;width:240px}
+.g-mark{display:block;width:240px;padding:8px 0}
 .g-mark img{display:block;width:100%}
 .g-foot-rule{height:1px;background:rgba(205,218,250,.18);margin:56px 0 30px}
 
