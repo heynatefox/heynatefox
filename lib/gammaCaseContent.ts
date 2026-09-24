@@ -74,9 +74,9 @@ export const GAMMA_HOOKS = [
 
 export const GAMMA_SPINE = [
   { tc: '0:00–0:03', beat: 'The opener. Person, channel, or title card' },
-  { tc: '0:03–0:14.4', beat: 'One unbroken product take, captions above the UI' },
-  { tc: '0:14.4–0:15.5', beat: 'The finished deck becomes a Send button, and is pressed' },
-  { tc: '0:15.5–0:18.1', beat: 'The reply, where each hook opened' },
+  { tc: '0:03–0:14.1', beat: 'One unbroken product take, captions above the UI' },
+  { tc: '0:14.1–0:15.8', beat: 'The finished deck becomes a Send button, and is pressed' },
+  { tc: '0:15.8–0:18.1', beat: 'The reply, where each hook opened' },
   { tc: '0:18.1–0:20', beat: 'Need a deck? just a sec.' },
 ]
 
@@ -88,6 +88,7 @@ export const GAMMA_MADE_LEDE =
 export const GAMMA_TOOLS = [
   ['Claude Code (Opus 5)', 'The build environment. Research, asset acquisition, writing the animation engine, driving every render.'],
   ['Gamma’s own product footage', 'Reference. Their CDN serves first-party 1200×950 captures of the real Generate flow, frame-sampled for exact colours, radii and spacing.'],
+  ['Figma', 'Design layouts and pacing. Boards for the three ratios and a beat strip for the 20 seconds, so timing was settled before anything rendered.'],
   ['Gamma brand book + kit', 'Canonical palette, the −2% headline tracking rule, wordmark files.'],
   ['ES Build + PP Mori', 'Gamma’s actual typefaces inside the work itself. Not lookalikes.'],
   ['Custom HTML/CSS/JS engine', 'The UI is rebuilt as vector, not filmed. One seek(t) function describes any frame of any variant in any ratio.'],
@@ -96,10 +97,10 @@ export const GAMMA_TOOLS = [
 
 /* [X] and [Y] are placeholders. Fill them in before this goes out. */
 export const GAMMA_THROUGHPUT =
-  'These three took [X]. The next thirty take roughly [Y], because most of that time went into ' +
-  'things that outlive the asset: the layer template, the prompt set, and the render config. ' +
-  'A new variant changes contents, not structure. Past that point the constraint is review, ' +
-  'not production.'
+  'These three took about three and a half hours. The next thirty take one to two, because most ' +
+  'of that time went into things that outlive the asset: the layer template, the prompt set, and ' +
+  'the render config. A new variant changes contents, not structure. Past that point the ' +
+  'constraint is review, not production.'
 
 export const GAMMA_QA =
   'Nothing ships until the benefit reads with sound off and the caption hidden, the text clears ' +
@@ -107,13 +108,13 @@ export const GAMMA_QA =
   'goes back rather than shipping as a lower tier variant.'
 
 export const GAMMA_TIME = [
-  ['Research, brand and asset acquisition', '~20 min'],
-  ['Animation engine: chat, typing indicator, title card, spine', '~50 min'],
-  ['Three hook variants, 9:16', '~4 min render'],
-  ['Layered alpha exports (ProRes 4444 + VP9)', '~12 min'],
-  ['Statics, three ratios, layered', '~30 min'],
-  ['Layer template', '~10 min'],
-  ['Process note and this page', '~20 min'],
+  ['Research, brand and asset acquisition', '30 min'],
+  ['Animation engine: chat, title card, spine', '50 min'],
+  ['Three hook variants, 9:16', '10 to 15 min each'],
+  ['Layered alpha exports (ProRes 4444 + VP9)', '15 to 20 min'],
+  ['Statics, three ratios, layered', '30 min'],
+  ['Process note and this page', '30 min'],
+  ['Further iterations and concepts', '30 to 45 min'],
 ]
 
 export const GAMMA_BRIEF_NOTE =
@@ -127,6 +128,7 @@ export const GAMMA_TESTS = [
   ['How fast this story can be told.', 'The 5 second cut of this exact concept, down to the paste and the result, against the 20. If the short one holds CPA, the long one is overhead.'],
   ['A 5-second cut.', 'The mechanism resolves fast enough that 20 seconds may be longer than it needs to be. Worth finding the floor.'],
   ['The humor axis.', 'This concept works on recognition, the viewer seeing their own situation. A character-led comedic version could pull much higher attention, with the risk being the CTR-without-signup pattern the brief flags as a non-performer. Worth one variant to find out.'],
+  ['Channels past Meta.', 'These are built for Meta feed and Reels because the brief asks for that. Discord and adjacent communities reach the same people at a fraction of the CPM, and the format here travels: the spine is a screen and a line, which is native there in a way a polished feed ad is not. I have specific placements in mind and would want to talk through them.'],
   ['“Just a sec” as a series.', 'The framing extends past a single spot into episodic content about workplace time pressure, closer to brand than DR. Wrong tool for CPA, right tool for the brand layer that makes performance ads cheaper over time. I’d want to know whether that budget exists before recommending it.'],
 ]
 

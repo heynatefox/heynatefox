@@ -131,12 +131,6 @@ export default function GammaCase() {
         <div style={s.inner}>
           <span style={s.label}>Deliverable 1: video</span>
           <h2 style={s.h2}>Three hooks, one spine</h2>
-          <p style={s.sdek}>
-            Three genuinely different opening mechanisms, not three edits of one. 9:16, 1080×1920,
-            20 seconds, captions burned in, scored to a track that resolves on the final frame.
-            After the opener all three run the same spine, including one unbroken 11.1-second
-            take of the product.
-          </p>
 
           <p style={s.sdek}>{GAMMA_HOOKS_AUDIENCE}</p>
 
@@ -211,21 +205,17 @@ export default function GammaCase() {
                 ))}
               </tbody>
             </table>
-            <p style={s.body}>No After Effects, no Premiere, nothing screen-recorded.</p>
 
-            <h3 style={{ ...s.h3, marginTop: 44 }}>Why the UI is rebuilt rather than edited</h3>
+            <h3 style={{ ...s.h3, marginTop: 44 }}>Build the pieces first</h3>
             <p style={s.body}>
-              The whole piece is data. Copy, timing, camera moves, cursor path, caption text and the
-              slides themselves live in one config file. Three hooks cost minutes, not afternoons.
-              Nothing needs repairing. A synthetic cursor is smooth by construction, and the camera
-              is already a keyframe track. Layers are free, because they were never combined. That is the
-              answer to whether this could run ten times next week. The config is the asset. A new
-              variant is a new config, not a new build.
+              The first pass built the system, not the spot. Copy, timing, camera, captions and the
+              slides live in one config, and the UI is built rather than filmed, so a variant is a
+              config change and not a new edit.
             </p>
             <p style={s.body}>
-              That got tested mid-build: the concept changed completely. New scene, new hooks, new
-              campaign line, new spine. The rebuild took about 50 minutes, and the previous concept
-              still renders untouched from its archived config.
+              That got tested mid-build. The concept changed completely: new scene, new hooks, new
+              line, new spine. The rebuild took about 50 minutes, and the previous concept still
+              renders untouched from its archived config. The config is the asset.
             </p>
 
             <h3 style={{ ...s.h3, marginTop: 44 }}>Time per piece</h3>
@@ -234,7 +224,7 @@ export default function GammaCase() {
                 {GAMMA_TIME.map(([k, v]) => (
                   <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>
                 ))}
-                <tr className="g-total"><th scope="row">Total</th><td>~2.5 hours</td></tr>
+                <tr className="g-total"><th scope="row">Total</th><td>~3.5 hours</td></tr>
               </tbody>
             </table>
             <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_THROUGHPUT}</p>
