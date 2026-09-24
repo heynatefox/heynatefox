@@ -1,5 +1,6 @@
 import AlternateIdeas from './AlternateIdeas'
 import HookVideos from './HookVideos'
+import OpenPing from './OpenPing'
 import {
   GAMMA_BRAND, GAMMA_HERO, GAMMA_MEDIA, GAMMA_SPINE,
   GAMMA_TOOLS, GAMMA_TIME, GAMMA_TESTS,
@@ -96,6 +97,7 @@ const s: Record<string, React.CSSProperties> = {
 export default function GammaCase() {
   return (
     <div style={s.page} className="gamma-case">
+      <OpenPing page="/gamma" />
       <div style={s.bar}>
         <div style={s.barIn}>
           <a href="/" style={s.back} className="g-back">
