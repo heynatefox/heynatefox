@@ -2,6 +2,8 @@ import AlternateIdeas from './AlternateIdeas'
 import {
   GAMMA_BRAND, GAMMA_HERO, GAMMA_MEDIA, GAMMA_HOOKS, GAMMA_SPINE,
   GAMMA_TOOLS, GAMMA_TIME, GAMMA_TESTS, GAMMA_MANIFEST, GAMMA_RULES,
+  GAMMA_HOOKS_NOTE, GAMMA_THROUGHPUT, GAMMA_TEMPLATE_DEK,
+  GAMMA_GATE, GAMMA_GATE_INTRO, GAMMA_GATE_CLOSE,
 } from '@/lib/gammaCaseContent'
 
 const B = GAMMA_BRAND
@@ -56,6 +58,10 @@ const s: Record<string, React.CSSProperties> = {
   vmeta:  { padding: '22px 24px 26px' },
   vkind:  { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.ultramarine, marginBottom: 8, display: 'block' },
   vcopy:  { fontFamily: BODY, fontSize: 15, lineHeight: 1.55, color: B.muted, fontWeight: 400, margin: 0 },
+  vtest:  { fontFamily: BODY, fontSize: 13.5, lineHeight: 1.5, color: B.muted, fontWeight: 400,
+            margin: '16px 0 0', paddingTop: 15, borderTop: `1px solid ${B.border}`, opacity: 0.92 },
+  hooksNote:{ fontFamily: BODY, fontSize: 17, lineHeight: 1.6, color: B.ink, fontWeight: 500,
+            margin: '30px 0 0', maxWidth: '78ch' },
 
   spineWrap:{ marginTop: 48, background: B.white, borderRadius: 22, overflow: 'hidden',
               boxShadow: '0 10px 34px rgba(0,34,83,.10), 0 2px 6px rgba(0,34,83,.05)' },
@@ -118,13 +124,13 @@ export default function GammaCase() {
       {/* ───────── deliverable 1 ───────── */}
       <section style={{ ...s.section, background: B.white }}>
         <div style={s.inner}>
-          <span style={s.label}>Deliverable 1 — video</span>
+          <span style={s.label}>Deliverable 1: video</span>
           <h2 style={s.h2}>Three hooks, one spine</h2>
           <p style={s.sdek}>
             Three genuinely different opening mechanisms, not three edits of one. 9:16, 1080×1920,
             20 seconds, captions burned in, scored to a track that resolves on the final frame.
-            After the opener all three run the same spine — including one unbroken 11.7-second
-            take of the product, which is 58% of the ad.
+            After the opener all three run the same spine, including one unbroken 11.1-second
+            take of the product.
           </p>
 
           <div className="g-vgrid">
@@ -138,11 +144,15 @@ export default function GammaCase() {
                     <span style={s.vkind}>Hook {h.id} · {h.kind}</span>
                     <h3 style={s.h3}>{h.name}</h3>
                     <p style={s.vcopy}>{h.copy}</p>
+                    <p style={s.vtest}><strong>{h.test.split('. ')[0]}.</strong>{' '}
+                      {h.test.split('. ').slice(1).join('. ')}</p>
                   </div>
                 </article>
               )
             })}
           </div>
+
+          <p style={s.hooksNote}>{GAMMA_HOOKS_NOTE}</p>
 
           <div style={s.spineWrap}>
             <div style={s.spineH}>Shared spine · 0:03–0:20</div>
@@ -161,10 +171,10 @@ export default function GammaCase() {
       {/* ───────── deliverable 2 ───────── */}
       <section style={s.section}>
         <div style={s.inner}>
-          <span style={s.label}>Deliverable 2 — static</span>
+          <span style={s.label}>Deliverable 2: static</span>
           <h2 style={s.h2}>The clock makes the argument</h2>
           <p style={s.sdek}>
-            Nothing in the image claims speed — the clock does. The boss asks at 9:46, the deck
+            Nothing in the image claims speed. The clock does. The boss asks at 9:46, the deck
             lands at 9:47, and the reaction at 9:52 asks the question the viewer is already forming.
             Delivered at the brief’s sizes, with the wordmark held at its full clearspace of one “M”.
           </p>
@@ -192,7 +202,7 @@ export default function GammaCase() {
       {/* ───────── deliverable 3 ───────── */}
       <section style={{ ...s.section, background: B.white }}>
         <div style={s.inner}>
-          <span style={s.label}>Deliverable 3 — process note</span>
+          <span style={s.label}>Deliverable 3: process note</span>
           <h2 style={s.h2}>How it got made</h2>
 
           <div className="g-prose" style={{ marginTop: 46 }}>
@@ -210,11 +220,11 @@ export default function GammaCase() {
             <p style={s.body}>
               The whole piece is data. Copy, timing, camera moves, cursor path, caption text and the
               slides themselves live in one config file. Three hooks cost minutes, not afternoons.
-              Nothing needs repairing — a synthetic cursor is smooth by construction, and the camera
+              Nothing needs repairing. A synthetic cursor is smooth by construction, and the camera
               is already a keyframe track. Layers are free, because they were never combined.
             </p>
             <p style={s.body}>
-              That got tested mid-build: the concept changed completely — new scene, new hooks, new
+              That got tested mid-build: the concept changed completely. New scene, new hooks, new
               campaign line, new spine. The rebuild took about 50 minutes, and the previous concept
               still renders untouched from its archived config.
             </p>
@@ -228,25 +238,15 @@ export default function GammaCase() {
                 <tr className="g-total"><th scope="row">Total</th><td>~2.5 hours</td></tr>
               </tbody>
             </table>
-            <p style={s.body}>
-              The row worth noticing is the third. The marginal cost of a fourth hook is a config edit.
-            </p>
+            <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_THROUGHPUT}</p>
 
-            <h3 style={{ ...s.h3, marginTop: 44 }}>One thing I’d change about the brief</h3>
-            <p style={s.body}>
-              The brief identifies <strong>hold rate as the weak spot, not hook rate</strong>, then asks
-              for three hook variants against one shared spine. I’d rather have tested two different
-              middle structures against one fixed hook, since that’s closer to the stated problem.
-            </p>
-            <p style={s.body}>
-              Concretely: one middle that stays inside the product the whole time, against one that cuts
-              back to the chat partway through. Both are cheap to build here. As specified, the test can
-              only tell us which opening wins — which is the question the brief says is already answered.
-            </p>
-            <p style={s.body}>
-              A smaller second note: the source is given as a screen recording. A recreation is not
-              evidence the product works, and for a paid ad whose claim is speed, that matters. I’d want
-              one variant cut from real capture on the generation beat, where the proof actually lives.
+            <h3 style={{ ...s.h3, marginTop: 44 }}>One thing the brief doesn’t account for</h3>
+            <p style={{ ...s.body, maxWidth: '78ch' }}>
+              The brief measures hook rate and hold rate, which are properties of a single asset. It
+              doesn’t account for how fast a winner decays. On Meta a creative that works is spent in
+              two to three weeks, so the number that governs cost over a quarter is how quickly the
+              replacement lands, not how well the first one performs. That is the number this build
+              was made to move.
             </p>
 
             <h3 style={{ ...s.h3, marginTop: 44 }}>What I’d test next</h3>
@@ -260,22 +260,19 @@ export default function GammaCase() {
       {/* ───────── appendix ───────── */}
       <section style={s.section}>
         <div style={s.inner}>
-          <span style={s.label}>Appendix — not part of the deliverables</span>
-          <h2 style={s.h2}>Extended thinking</h2>
-          <p style={s.sdek}>
-            Construction detail, the layer manifest, and the one place this deviates from the brief.
-            Skip it; the work above stands without it.
-          </p>
+          <span style={s.label}>The system</span>
+          <h2 style={s.h2}>Template spec</h2>
+          <p style={s.sdek}>{GAMMA_TEMPLATE_DEK}</p>
 
-          <h3 style={{ ...s.h3, marginTop: 52 }}>Layer manifest</h3>
+          <h3 style={{ ...s.h3, marginTop: 52 }}>Layer template</h3>
           <p style={{ ...s.body, maxWidth: '78ch' }}>
-            Four layers, nothing flattened. Timecodes are M:SS.ff at 30&nbsp;fps. Alpha layers ship as
-            ProRes 4444 and VP9, so any line can be repositioned or reworded without re-rendering the base.
+            Nothing flattened. Timecodes are M:SS.ff at 30&nbsp;fps. Alpha layers ship as ProRes 4444
+            and VP9, so any line can be repositioned or reworded without re-rendering the base.
           </p>
           <div className="g-scroll">
             <table className="g-man">
               <thead>
-                <tr><th>Layer</th><th>Contents</th><th>In</th><th>Out</th><th>Alpha</th></tr>
+                <tr><th>Layer</th><th>Contents</th><th>In</th><th>Out</th><th>Alpha</th><th>Varies</th></tr>
               </thead>
               <tbody>
                 {GAMMA_MANIFEST.map((r, i) => (
@@ -284,7 +281,8 @@ export default function GammaCase() {
                     <td>{r.what}</td>
                     <td className="g-tc">{r.in}</td>
                     <td className="g-tc">{r.out}</td>
-                    <td>{r.layer ? (r.alpha ? 'yes' : '—') : ''}</td>
+                    <td>{r.layer ? (r.alpha ? 'yes' : '·') : ''}</td>
+                    <td className={r.varies ? 'g-var' : undefined}>{r.varies ? 'yes' : (r.layer ? '·' : '')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -292,11 +290,19 @@ export default function GammaCase() {
           </div>
 
           <div style={s.callout}>
-            <strong>The one deviation.</strong> The brief gives 0:16–0:19 to the fast scroll. Here the
-            scroll runs 0:16.00–0:18.15 and the last 0.7&nbsp;s returns the deck to the chat, because the
-            concept’s joke doesn’t land until the deck goes back. It’s a switch, not a rewrite: setting
-            <code> returnBeat: false </code> restores the literal spine.
+            <strong>The one deviation.</strong> The brief’s spine ends on the fast scroll. Here the
+            scroll ends at 0:13.83 and the last 6.2&nbsp;s go to the send, the reply and the end card,
+            because the claim isn’t proved until the deck reaches the person who asked for it. It is a
+            field, not a rewrite: <code>close</code> in <code>build-hooks.js</code> is per hook, and the
+            three lengths trade against each other so every cut still lands on 20.00.
           </div>
+
+          <h3 style={{ ...s.h3, marginTop: 48 }}>What gets rejected</h3>
+          <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_GATE_INTRO}</p>
+          <ul className="g-ul g-gate">
+            {GAMMA_GATE.map(g => <li key={g}>{g}</li>)}
+          </ul>
+          <p style={{ ...s.body, maxWidth: '78ch', marginTop: 18 }}>{GAMMA_GATE_CLOSE}</p>
 
           <h3 style={{ ...s.h3, marginTop: 48 }}>Brand rules, checked</h3>
           <ul className="g-ul">
@@ -396,6 +402,8 @@ const GAMMA_CSS = `
   font-weight:400;vertical-align:top}
 .g-man .g-tc{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;color:${B.ultramarine}}
 .g-man .g-sub td{color:${B.muted};padding-top:7px;padding-bottom:7px}
+.g-man td.g-var{font-weight:600;color:${B.ultramarine}}
+.g-gate li::marker{color:${B.ultramarine}}
 
 .gamma-case code{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:${B.tint};
   padding:2px 7px;border-radius:6px;color:${B.ink}}
