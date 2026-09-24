@@ -22,11 +22,11 @@ export const GAMMA_BRAND = {
 
 export const GAMMA_HERO = {
   eyebrow: 'Gamma · Creative Strategist · take-home',
-  title: 'Just a sec',
+  title: 'Need a deck?',
+  titleReply: 'just a sec.',
   dek: 'A last-minute deck request lands. The reply is “just a sec.” Two seconds later, a finished deck goes back.',
-  tagline: 'Need a deck? just a sec.',
   taglineAlt: 'From grunt work to great work',
-  meta: ['Angle — time recovery', '3 video · 3 static · 1 note', '9:16 · 20s · scored'],
+  meta: ['Angle — time recovery', '3 video · 3 static · 1 note', '9:16 · 20.00s · scored'],
   note: 'The joke is that “just a sec” is normally a lie, and here it isn’t.',
 }
 
@@ -50,17 +50,17 @@ export const GAMMA_HOOKS = [
   { id: 'A', kind: 'Person', name: 'The Ask',
     copy: 'Opens mid-squint, reading the message. No setup, no establishing shot — the situation is the hook.' },
   { id: 'B', kind: 'Situational', name: 'The Thread',
-    copy: 'A team chat. The boss posts, you reply, and it cuts. Shortest opener of the three because there is no one to establish.' },
-  { id: 'C', kind: 'Comparison', name: 'Split Screen',
-    copy: 'The same text box nudged on the left, paste and done on the right. Both timers start together. One stops at 0:02; the other never does.' },
+    copy: 'A team chat with the ask already in it — the situation isn’t an event, it’s where you are. Only the reply animates, and it holds 2.3 seconds so the joke has room to land.' },
+  { id: 'C', kind: 'Title card', name: 'The Line',
+    copy: 'No product, no person — just the line, big, on Deep Ocean. “Need a deck?” lands and holds a beat before it answers itself. The wordmark sits at the bottom, branded but not the point.' },
 ]
 
 export const GAMMA_SPINE = [
-  { tc: '0:00–0:02.7', beat: '“Hey, I need a deck” → “just a sec”' },
-  { tc: '0:02.7–0:14.4', beat: 'One unbroken product take — paste, generate, six slides build' },
-  { tc: '0:14.4–0:16.1', beat: 'The link goes back' },
-  { tc: '0:16.1–0:17.8', beat: '“how did you do that so fast??”' },
-  { tc: '0:17.8–0:20', beat: 'Need a deck? just a sec.' },
+  { tc: '0:00–0:02.7', beat: 'The opener — this is the only part that changes' },
+  { tc: '0:02.7–0:14.4', beat: 'One unbroken product take, captions above the UI' },
+  { tc: '0:14.4–0:15.8', beat: 'The deck folds into a paper plane and goes' },
+  { tc: '0:15.8–0:18.0', beat: '“OH MY GOD THIS IS AMAZING”' },
+  { tc: '0:18.0–0:20', beat: 'Need a deck? just a sec.' },
 ]
 
 export const GAMMA_TOOLS = [
@@ -89,25 +89,26 @@ export const GAMMA_TESTS = [
 ]
 
 export const GAMMA_MANIFEST = [
-  { layer: 'opener',  what: 'Live action / chat / split, depending on hook', in: '0:00.00', out: '0:02.73', alpha: false },
+  { layer: 'opener',  what: 'Live action / chat / title card, depending on hook', in: '0:00.00', out: '0:02.73', alpha: false },
   { layer: 'thread',  what: '“Hey, I need a deck” then “just a sec”, stacked', in: '0:00.05', out: '0:02.74', alpha: true },
+  { layer: 'titlecard', what: 'Hook C — “Need a deck? / just a sec!” on Deep Ocean', in: '0:00.00', out: '0:03.20', alpha: false },
   { layer: 'product', what: 'One unbroken take of the real Gamma flow',     in: '0:02.73', out: '0:14.43', alpha: false },
   { sub: true, what: '· Rough notes land in Paste in text', in: '0:03.00', out: '0:03.20' },
   { sub: true, what: '· Notes scroll, Continue',            in: '0:05.10', out: '0:07.00' },
   { sub: true, what: '· Generate, outline streams',         in: '0:07.10', out: '0:09.50' },
   { sub: true, what: '· Six slides materialise',            in: '0:09.80', out: '0:12.20' },
   { sub: true, what: '· Fast scroll, finished deck',        in: '0:12.30', out: '0:14.43' },
-  { layer: 'captions', what: 'Three lines + a gamma.app badge that holds', in: '0:03.03', out: '0:14.43', alpha: true },
-  { layer: 'link',    what: 'The deck goes back as a share link',  in: '0:14.63', out: '0:16.13', alpha: true },
-  { layer: 'react',   what: '“how did you do that so fast??”',     in: '0:16.23', out: '0:17.79', alpha: true },
-  { layer: 'endcard', what: 'GAMMA · Need a deck? just a sec. · gamma.app', in: '0:17.79', out: '0:20.00', alpha: true },
+  { layer: 'captions', what: 'Three lines above the UI + a gamma.app badge that holds', in: '0:03.03', out: '0:14.43', alpha: true },
+  { layer: 'fly',     what: 'The finished slide folds into a paper plane and leaves', in: '0:14.43', out: '0:15.83', alpha: false },
+  { layer: 'react',   what: '“OH MY GOD THIS IS AMAZING”, over the smile', in: '0:15.83', out: '0:18.00', alpha: true },
+  { layer: 'endcard', what: 'GAMMA · Need a deck? just a sec. · gamma.app', in: '0:18.00', out: '0:20.00', alpha: true },
   { layer: 'music',   what: '~95 BPM, aligned so the track resolves on the last frame', in: '0:00.00', out: '0:20.00', alpha: false },
 ]
 
 export const GAMMA_RULES = [
   ['Outcome, not technology.', 'Nothing in the copy names AI. The mechanism is shown; the benefit is the deck going back.'],
   ['Pain named specifically.', 'Hook C shows the same text box being nudged rather than describing the frustration.'],
-  ['No competitor framing.', 'The comparison panes carry no labels. Two timers start together; one stops. Nothing on screen says “without”.'],
+  ['No competitor framing.', 'Nothing is positioned against anything. Hook C dropped a before/after comparison entirely — the brief bans “with X vs without X”, and the line carries the idea better than a split screen did.'],
   ['No superlatives, no hype.', 'Banned-word list audited against every caption, both taglines and all three statics.'],
   ['Real product UI only.', 'Every Gamma screen is rebuilt from their own first-party product captures. The chat is generic work-chat chrome — no real product’s trade dress.'],
   ['Wordmark clearspace.', 'Measured off the SVG: the “M” is 23.9% of the wordmark’s width. Held on every side — 134px on the end card, 48/40/124px across the three statics.'],

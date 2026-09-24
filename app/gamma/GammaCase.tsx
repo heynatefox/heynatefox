@@ -29,15 +29,16 @@ const s: Record<string, React.CSSProperties> = {
   heroIn: { position: 'relative' },
 
   eyebrow:{ fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.ultramarine, marginBottom: 22, display: 'block' },
-  h1:     { fontFamily: DISPLAY, fontSize: 'clamp(62px, 14.6vw, 212px)', fontWeight: 700, letterSpacing: '-0.035em',
-            lineHeight: 0.88, margin: 0, color: B.ink, opacity: 1, animation: 'none' },
+  h1:     { fontFamily: DISPLAY, fontSize: 'clamp(48px, 10.6vw, 158px)', fontWeight: 700, letterSpacing: '-0.035em',
+            lineHeight: 0.92, margin: 0, color: B.ink, opacity: 1, animation: 'none' },
+  h1b:    { color: B.ultramarine, display: 'block' },
   dek:    { fontFamily: BODY, fontSize: 'clamp(19px, 1.7vw, 25px)', lineHeight: 1.45, color: B.body,
             fontWeight: 400, margin: 0 },
 
   taglineWrap: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 18px' },
   tagline:{ fontFamily: DISPLAY, fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 600, letterSpacing: TRACK, color: B.ink },
   chipsRow:{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(186px, 1fr))',
-            gap: 10, marginTop: 24 },
+            gap: 10, marginTop: 0 },
   chip:   { fontFamily: BODY, fontSize: 15, fontWeight: 500, color: B.deepOcean, background: B.tintDeep,
             borderRadius: 14, padding: '12px 18px' },
   heroNote:{ fontFamily: BODY, fontSize: 17, color: B.muted, fontWeight: 400, margin: 0 },
@@ -97,12 +98,11 @@ export default function GammaCase() {
         <div style={s.wash} aria-hidden="true" />
         <div style={{ ...s.inner, ...s.heroIn }}>
           <span style={s.eyebrow}>{GAMMA_HERO.eyebrow}</span>
-          <h1 style={s.h1}>{GAMMA_HERO.title}</h1>
+          <h1 style={s.h1}>
+            {GAMMA_HERO.title}<span style={s.h1b}>{GAMMA_HERO.titleReply}</span>
+          </h1>
           <div className="g-hero-grid">
             <div className="g-hero-l">
-              <div style={s.taglineWrap}>
-                <span style={s.tagline}>{GAMMA_HERO.tagline}</span>
-              </div>
               <div style={s.chipsRow}>
                 {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
               </div>
@@ -401,7 +401,7 @@ const GAMMA_CSS = `
   padding:2px 7px;border-radius:6px;color:${B.ink}}
 
 .g-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(32px,4vw,72px);margin-top:54px;align-items:start}
+  gap:clamp(32px,4vw,72px);margin-top:58px;align-items:start}
 .g-hero-l{display:flex;flex-direction:column}
 .g-hero-r{display:flex;flex-direction:column;gap:22px;padding-top:4px}
 
