@@ -1,9 +1,10 @@
 import AlternateIdeas from './AlternateIdeas'
+import HookVideos from './HookVideos'
 import {
-  GAMMA_BRAND, GAMMA_HERO, GAMMA_MEDIA, GAMMA_HOOKS, GAMMA_SPINE,
-  GAMMA_TOOLS, GAMMA_TIME, GAMMA_TESTS, GAMMA_MANIFEST, GAMMA_RULES,
-  GAMMA_HOOKS_NOTE, GAMMA_THROUGHPUT, GAMMA_TEMPLATE_DEK,
-  GAMMA_GATE, GAMMA_GATE_INTRO, GAMMA_GATE_CLOSE,
+  GAMMA_BRAND, GAMMA_HERO, GAMMA_MEDIA, GAMMA_SPINE,
+  GAMMA_TOOLS, GAMMA_TIME, GAMMA_TESTS,
+  GAMMA_HOOKS_NOTE, GAMMA_HOOKS_AUDIENCE, GAMMA_HOLD_NOTE,
+  GAMMA_THROUGHPUT, GAMMA_MADE_LEDE, GAMMA_QA, GAMMA_BRIEF_NOTE,
 } from '@/lib/gammaCaseContent'
 
 const B = GAMMA_BRAND
@@ -112,6 +113,10 @@ export default function GammaCase() {
               <div style={s.chipsRow}>
                 {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
               </div>
+              <a href="/gamma/gamma-assets.zip" download className="g-dl">
+                Download all assets
+                <span>zip · 16 MB · 3 video, 3 static</span>
+              </a>
             </div>
             <div className="g-hero-r">
               <p style={s.dek}>{GAMMA_HERO.dek}</p>
@@ -133,24 +138,9 @@ export default function GammaCase() {
             take of the product.
           </p>
 
-          <div className="g-vgrid">
-            {GAMMA_MEDIA.hooks.map(m => {
-              const h = GAMMA_HOOKS.find(x => x.id === m.id)!
-              return (
-                <article key={m.id} style={s.card} className="g-vcard">
-                  <video className="g-video" src={m.src} poster={m.poster}
-                         muted loop playsInline controls preload="metadata" />
-                  <div style={s.vmeta}>
-                    <span style={s.vkind}>Hook {h.id} · {h.kind}</span>
-                    <h3 style={s.h3}>{h.name}</h3>
-                    <p style={s.vcopy}>{h.copy}</p>
-                    <p style={s.vtest}><strong>{h.test.split('. ')[0]}.</strong>{' '}
-                      {h.test.split('. ').slice(1).join('. ')}</p>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
+          <p style={s.sdek}>{GAMMA_HOOKS_AUDIENCE}</p>
+
+          <HookVideos />
 
           <p style={s.hooksNote}>{GAMMA_HOOKS_NOTE}</p>
 
@@ -165,6 +155,8 @@ export default function GammaCase() {
               ))}
             </div>
           </div>
+
+          <p style={s.hooksNote}>{GAMMA_HOLD_NOTE}</p>
         </div>
       </section>
 
@@ -196,6 +188,10 @@ export default function GammaCase() {
             Each one links to the full-resolution file. Supplied at 2× for retina placements;
             the trafficked sizes are the ones listed.
           </p>
+          <a href="/gamma/gamma-assets.zip" download className="g-dl" style={{ marginTop: 30 }}>
+            Download all assets
+            <span>zip · 16 MB · 3 video, 3 static</span>
+          </a>
         </div>
       </section>
 
@@ -204,6 +200,7 @@ export default function GammaCase() {
         <div style={s.inner}>
           <span style={s.label}>Deliverable 3: process note</span>
           <h2 style={s.h2}>How it got made</h2>
+          <p style={s.sdek}>{GAMMA_MADE_LEDE}</p>
 
           <div className="g-prose" style={{ marginTop: 46 }}>
             <h3 style={{ ...s.h3, marginTop: 8 }}>Tools, and what each one was for</h3>
@@ -221,7 +218,9 @@ export default function GammaCase() {
               The whole piece is data. Copy, timing, camera moves, cursor path, caption text and the
               slides themselves live in one config file. Three hooks cost minutes, not afternoons.
               Nothing needs repairing. A synthetic cursor is smooth by construction, and the camera
-              is already a keyframe track. Layers are free, because they were never combined.
+              is already a keyframe track. Layers are free, because they were never combined. That is the
+              answer to whether this could run ten times next week. The config is the asset. A new
+              variant is a new config, not a new build.
             </p>
             <p style={s.body}>
               That got tested mid-build: the concept changed completely. New scene, new hooks, new
@@ -239,75 +238,16 @@ export default function GammaCase() {
               </tbody>
             </table>
             <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_THROUGHPUT}</p>
+            <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_QA}</p>
 
             <h3 style={{ ...s.h3, marginTop: 44 }}>One thing the brief doesn’t account for</h3>
-            <p style={{ ...s.body, maxWidth: '78ch' }}>
-              The brief measures hook rate and hold rate, which are properties of a single asset. It
-              doesn’t account for how fast a winner decays. On Meta a creative that works is spent in
-              two to three weeks, so the number that governs cost over a quarter is how quickly the
-              replacement lands, not how well the first one performs. That is the number this build
-              was made to move.
-            </p>
+            <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_BRIEF_NOTE}</p>
 
             <h3 style={{ ...s.h3, marginTop: 44 }}>What I’d test next</h3>
             <ol className="g-ol">
               {GAMMA_TESTS.map(([k, v]) => <li key={k}><strong>{k}</strong> {v}</li>)}
             </ol>
           </div>
-        </div>
-      </section>
-
-      {/* ───────── appendix ───────── */}
-      <section style={s.section}>
-        <div style={s.inner}>
-          <span style={s.label}>The system</span>
-          <h2 style={s.h2}>Template spec</h2>
-          <p style={s.sdek}>{GAMMA_TEMPLATE_DEK}</p>
-
-          <h3 style={{ ...s.h3, marginTop: 52 }}>Layer template</h3>
-          <p style={{ ...s.body, maxWidth: '78ch' }}>
-            Nothing flattened. Timecodes are M:SS.ff at 30&nbsp;fps. Alpha layers ship as ProRes 4444
-            and VP9, so any line can be repositioned or reworded without re-rendering the base.
-          </p>
-          <div className="g-scroll">
-            <table className="g-man">
-              <thead>
-                <tr><th>Layer</th><th>Contents</th><th>In</th><th>Out</th><th>Alpha</th><th>Varies</th></tr>
-              </thead>
-              <tbody>
-                {GAMMA_MANIFEST.map((r, i) => (
-                  <tr key={i} className={r.sub ? 'g-sub' : undefined}>
-                    <td>{r.layer ? <strong>{r.layer}</strong> : ''}</td>
-                    <td>{r.what}</td>
-                    <td className="g-tc">{r.in}</td>
-                    <td className="g-tc">{r.out}</td>
-                    <td>{r.layer ? (r.alpha ? 'yes' : '·') : ''}</td>
-                    <td className={r.varies ? 'g-var' : undefined}>{r.varies ? 'yes' : (r.layer ? '·' : '')}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div style={s.callout}>
-            <strong>The one deviation.</strong> The brief’s spine ends on the fast scroll. Here the
-            scroll ends at 0:13.83 and the last 6.2&nbsp;s go to the send, the reply and the end card,
-            because the claim isn’t proved until the deck reaches the person who asked for it. It is a
-            field, not a rewrite: <code>close</code> in <code>build-hooks.js</code> is per hook, and the
-            three lengths trade against each other so every cut still lands on 20.00.
-          </div>
-
-          <h3 style={{ ...s.h3, marginTop: 48 }}>What gets rejected</h3>
-          <p style={{ ...s.body, maxWidth: '78ch' }}>{GAMMA_GATE_INTRO}</p>
-          <ul className="g-ul g-gate">
-            {GAMMA_GATE.map(g => <li key={g}>{g}</li>)}
-          </ul>
-          <p style={{ ...s.body, maxWidth: '78ch', marginTop: 18 }}>{GAMMA_GATE_CLOSE}</p>
-
-          <h3 style={{ ...s.h3, marginTop: 48 }}>Brand rules, checked</h3>
-          <ul className="g-ul">
-            {GAMMA_RULES.map(([k, v]) => <li key={k}><strong>{k}</strong> {v}</li>)}
-          </ul>
         </div>
       </section>
 
@@ -412,6 +352,14 @@ const GAMMA_CSS = `
   gap:clamp(32px,4vw,72px);margin-top:58px;align-items:start}
 .g-hero-l{display:flex;flex-direction:column}
 .g-hero-r{display:flex;flex-direction:column;gap:22px;padding-top:4px}
+
+.g-dl{display:inline-flex;flex-direction:column;gap:3px;margin-top:26px;padding:13px 22px;
+  border:1px solid ${B.tintDeep};border-radius:14px;background:${B.white};
+  font-family:${BODY};font-size:15px;font-weight:500;color:${B.ultramarine};
+  text-decoration:none;transition:border-color .15s,background .15s;align-self:flex-start}
+.g-dl span{font-size:12.5px;font-weight:400;color:${B.muted}}
+.g-dl:hover{border-color:${B.ultramarine};background:${B.tint}}
+.g-dl:focus-visible{outline:3px solid ${B.ultramarine};outline-offset:3px}
 
 /* full bleed, and no inherited 1200px flex row from globals.css */
 .gamma-case .g-foot{display:block;max-width:none;margin:0;border-top:0;width:100%}
