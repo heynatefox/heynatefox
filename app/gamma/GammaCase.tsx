@@ -24,7 +24,10 @@ const s: Record<string, React.CSSProperties> = {
   bar:    { position: 'sticky', top: 0, zIndex: 50, background: 'rgba(232,238,252,0.9)', backdropFilter: 'blur(12px)', borderBottom: `1px solid ${B.border}` },
   barIn:  { maxWidth: 1460, margin: '0 auto', padding: '13px clamp(20px, 2.8vw, 40px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 },
   back:   { fontFamily: BODY, fontSize: 14, fontWeight: 500, color: B.muted, textDecoration: 'none' },
-  barTag: { fontFamily: DISPLAY, fontSize: 13, fontWeight: 600, color: B.ultramarine, letterSpacing: TRACK },
+  barPill:{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '7px 16px',
+            borderRadius: 999, background: B.deepOcean, whiteSpace: 'nowrap' },
+  barName:{ fontFamily: DISPLAY, fontSize: 14, fontWeight: 700, color: B.white, letterSpacing: TRACK },
+  barRole:{ fontFamily: BODY, fontSize: 13, fontWeight: 400, color: B.sky },
 
   hero:   { position: 'relative', overflow: 'hidden', padding: 'clamp(56px, 7vw, 104px) 0 clamp(56px, 6.5vw, 96px)' },
   wash:   { position: 'absolute', inset: '-30% -10% auto -10%', height: '150%', pointerEvents: 'none',
@@ -95,8 +98,15 @@ export default function GammaCase() {
     <div style={s.page} className="gamma-case">
       <div style={s.bar}>
         <div style={s.barIn}>
-          <a href="/" style={s.back}>← heynatefox.com</a>
-          <span style={s.barTag}>Creative Strategist take-home</span>
+          <a href="/" style={s.back} className="g-back">
+            <span aria-hidden="true">←&nbsp;</span>
+            <span className="g-back-long">heynatefox.com</span>
+            <span className="g-back-short">Back</span>
+          </a>
+          <span style={s.barPill}>
+            <strong style={s.barName}>Nate Fox</strong>
+            <span style={s.barRole}>Creative Strategist</span>
+          </span>
         </div>
       </div>
 
@@ -113,9 +123,9 @@ export default function GammaCase() {
               <div style={s.chipsRow}>
                 {GAMMA_HERO.meta.map(m => <span key={m} style={s.chip}>{m}</span>)}
               </div>
-              <a href="/gamma/gamma-assets.zip" download className="g-dl">
+              <a href="/gamma/nate-fox-gamma-take-home.zip" download className="g-dl">
                 Download all assets
-                <span>zip · 16 MB · 3 video, 3 static</span>
+                <span>nate-fox-gamma-take-home.zip · 3 video, 3 static</span>
               </a>
             </div>
             <div className="g-hero-r">
@@ -182,9 +192,9 @@ export default function GammaCase() {
             Each one links to the full-resolution file. Supplied at 2× for retina placements;
             the trafficked sizes are the ones listed.
           </p>
-          <a href="/gamma/gamma-assets.zip" download className="g-dl" style={{ marginTop: 30 }}>
+          <a href="/gamma/nate-fox-gamma-take-home.zip" download className="g-dl" style={{ marginTop: 30 }}>
             Download all assets
-            <span>zip · 16 MB · 3 video, 3 static</span>
+            <span>nate-fox-gamma-take-home.zip · 3 video, 3 static</span>
           </a>
         </div>
       </section>
@@ -337,6 +347,14 @@ const GAMMA_CSS = `
 
 .gamma-case code{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:${B.tint};
   padding:2px 7px;border-radius:6px;color:${B.ink}}
+
+.g-back{white-space:nowrap}
+.g-back-short{display:none}
+@media (max-width:560px){
+  /* the domain wrapped to three lines next to the name pill */
+  .g-back-long{display:none}
+  .g-back-short{display:inline}
+}
 
 .g-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(32px,4vw,72px);margin-top:58px;align-items:start}
