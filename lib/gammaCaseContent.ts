@@ -48,19 +48,19 @@ export const GAMMA_MEDIA = {
 
 export const GAMMA_HOOKS = [
   { id: 'A', kind: 'Person', name: 'The Ask',
-    copy: 'Opens mid-squint, reading the message. No setup, no establishing shot — the situation is the hook.' },
+    copy: 'Opens mid-squint, reading the message. No setup, no establishing shot — the situation is the hook. The only one that ends on a face.' },
   { id: 'B', kind: 'Situational', name: 'The Thread',
-    copy: 'A team chat with the ask already in it — the situation isn’t an event, it’s where you are. Only the reply animates, and it holds 2.3 seconds so the joke has room to land.' },
+    copy: 'A team chat with the ask already in it — the situation isn’t an event, it’s where you are. Only the reply animates, and it holds 2.3 seconds so the joke has room to land. Ends in the same channel, two minutes later.' },
   { id: 'C', kind: 'Title card', name: 'The Line',
-    copy: 'No product, no person — just the line, big, on Deep Ocean. “Need a deck?” lands and holds a beat before it answers itself. The wordmark sits at the bottom, branded but not the point.' },
+    copy: 'No product, no person — just the line, big, on Deep Ocean. “Need a deck?” lands and holds a beat before it answers itself. The wordmark sits at the bottom, branded but not the point. Closes back in the channel.' },
 ]
 
 export const GAMMA_SPINE = [
-  { tc: '0:00–0:02.7', beat: 'The opener — this is the only part that changes' },
-  { tc: '0:02.7–0:14.4', beat: 'One unbroken product take, captions above the UI' },
-  { tc: '0:14.4–0:15.8', beat: 'The deck folds into a paper plane and goes' },
-  { tc: '0:15.8–0:18.0', beat: '“OH MY GOD THIS IS AMAZING”' },
-  { tc: '0:18.0–0:20', beat: 'Need a deck? just a sec.' },
+  { tc: '0:00–0:03', beat: 'The opener — person, channel, or title card' },
+  { tc: '0:03–0:14.4', beat: 'One unbroken product take, captions above the UI' },
+  { tc: '0:14.4–0:15.5', beat: 'The finished deck becomes a Send button, and is pressed' },
+  { tc: '0:15.5–0:18.1', beat: 'The reply — where each hook opened' },
+  { tc: '0:18.1–0:20', beat: 'Need a deck? just a sec.' },
 ]
 
 export const GAMMA_TOOLS = [
@@ -99,9 +99,10 @@ export const GAMMA_MANIFEST = [
   { sub: true, what: '· Six slides materialise',            in: '0:09.80', out: '0:12.20' },
   { sub: true, what: '· Fast scroll, finished deck',        in: '0:12.30', out: '0:14.43' },
   { layer: 'captions', what: 'Three lines above the UI + a gamma.app badge that holds', in: '0:03.03', out: '0:14.43', alpha: true },
-  { layer: 'fly',     what: 'The finished slide folds into a paper plane and leaves', in: '0:14.43', out: '0:15.83', alpha: false },
-  { layer: 'react',   what: '“OH MY GOD THIS IS AMAZING”, over the smile', in: '0:15.83', out: '0:18.00', alpha: true },
-  { layer: 'endcard', what: 'GAMMA · Need a deck? just a sec. · gamma.app', in: '0:18.00', out: '0:20.00', alpha: true },
+  { layer: 'send',    what: 'The finished slide becomes a Send button, and is pressed', in: '0:14.43', out: '0:15.53', alpha: false },
+  { layer: 'react',   what: 'Hook A — “OH MY GOD THIS IS AMAZING”, over the smile', in: '0:15.53', out: '0:18.10', alpha: true },
+  { layer: 'chat-return', what: 'Hooks B + C — the link lands in the channel, the boss reacts', in: '0:15.80', out: '0:18.10', alpha: false },
+  { layer: 'endcard', what: 'GAMMA · Need a deck? just a sec. · gamma.app', in: '0:18.10', out: '0:20.00', alpha: true },
   { layer: 'music',   what: '~95 BPM, aligned so the track resolves on the last frame', in: '0:00.00', out: '0:20.00', alpha: false },
 ]
 
@@ -114,7 +115,7 @@ export const GAMMA_RULES = [
   ['Wordmark clearspace.', 'Measured off the SVG: the “M” is 23.9% of the wordmark’s width. Held on every side — 134px on the end card, 48/40/124px across the three statics.'],
   ['Wordmark and avatar never locked up.', 'The Floating G appears nowhere, per the brand book’s rule against pairing them.'],
   ['Type.', 'ES Build for headlines at −2% tracking, PP Mori for body. Where the wordmark leads, the headline drops to a lighter weight so the two don’t compete.'],
-  ['Designed for sound off.', 'Captions burned in; the whole spot reads silent. The score is additive, not load-bearing.'],
+  ['Designed for sound off.', 'Captions burned in above the UI, not under it — below the product they lost anyone already reading the screen. The whole spot reads silent; the score is additive, not load-bearing.'],
 ]
 
 /* ============================================================
