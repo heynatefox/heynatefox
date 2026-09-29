@@ -29,7 +29,7 @@ export default function RadicalCase() {
           <span className="rh-eyebrow">{HERO.eyebrow}</span>
           <h1>Make sure you&rsquo;re not missing a <span className="rh-u">better option</span>.</h1>
           <p className="rh-sub">{HERO.sub}</p>
-          <p className="rh-meta-line">{HERO.meta}</p>
+          <p className="rh-meta-line">{HERO.meta.split(' · ').map((m, i) => <span key={m}>{i > 0 && <i aria-hidden="true"> · </i>}{m}</span>)}</p>
           <p className="rh-support">{HERO.support}</p>
           <div className="rh-jump" role="navigation" aria-label="Sections">
             {HERO.nav.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
@@ -287,6 +287,8 @@ const RH_CSS = `
 .rh-hero h1{font-size:clamp(40px,6.4vw,88px);max-width:14ch;line-height:1.1}
 .rh-sub{font-size:clamp(19px,2vw,24px);line-height:1.35;max-width:34ch;margin:0 0 22px;color:rgba(255,254,241,.9)}
 .rh-meta-line{font-size:15px;color:rgba(255,254,241,.75);margin:0 0 30px}
+.rh-meta-line span{white-space:nowrap}
+.rh-meta-line i{font-style:normal;white-space:normal}
 .rh-support{font-size:17px;line-height:1.6;max-width:58ch;margin:0 0 40px;color:rgba(255,254,241,.9)}
 .rh-jump{display:flex;flex-wrap:wrap;gap:6px 0;font-size:14px;color:rgba(255,254,241,.75)}
 .rh-jump a{text-decoration:none;color:rgba(255,254,241,.75);padding:6px 0;margin-right:22px;position:relative;white-space:nowrap}
