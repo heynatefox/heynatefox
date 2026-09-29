@@ -29,26 +29,29 @@ function Creative({ ad }: { ad: Ad }) {
   }
   return (
     <div className="rh-cr rh-cr-trial">
-      <img src="/radical/logo.svg" alt="Radical" className="rh-cr-logo" />
-      <p className="rh-cr-title">Compare your <span className="rh-u">options</span></p>
+      <p className="rh-cr-title">Compare your <mark>options</mark></p>
+      <p className="rh-cr-sub">One diagnosis. Every treatment option that fits it, side by side.</p>
       <div className="rh-cr-cards">
         {OPTIONS.map(o => (
           <div className="rh-cr-card" key={o.name}>
-            <span className={`rh-cr-tag${o.planned ? ' rh-cr-tag-on' : ''}`}>{o.tag}</span>
+            <span className={`rh-cr-tag rh-cr-tag-${o.tone}`}>{o.tag}</span>
+            <span className="rh-cr-k">Approach</span>
             <span className="rh-cr-name2">{o.name}</span>
             <span className="rh-cr-v">{o.value}</span>
           </div>
         ))}
       </div>
+      <span className="rh-cr-trials">Including 4 matched clinical trials</span>
+      <img src="/radical/logo.svg" alt="Radical" className="rh-cr-wordmark" />
     </div>
   )
 }
 
 /* The three option cards, word for word from Radical's own report. */
 const OPTIONS = [
-  { tag: 'Currently planned', planned: true, name: 'Immunity + Targeted pills', value: 'Longest disease control with a manageable visit schedule.' },
-  { tag: 'Option 1', planned: false, name: 'Triplet chemo\u00ADtherapy', value: 'Aggressive first attack; accepts higher clinic time.' },
-  { tag: 'Option 2', planned: false, name: 'Early-intervention', value: 'Minimal treatment; preserves daily routine.' },
+  { tag: 'Currently planned', tone: 'a', name: 'Immunity + Targeted pills', value: 'Longest disease control with a manageable visit schedule.' },
+  { tag: 'Option 2', tone: 'b', name: 'Triplet chemo\u00ADtherapy', value: 'Aggressive first attack; accepts higher clinic time.' },
+  { tag: 'Option 3', tone: 'c', name: 'Early-intervention', value: 'Minimal treatment; preserves daily routine.' },
 ]
 
 function Globe() {

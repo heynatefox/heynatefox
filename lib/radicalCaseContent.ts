@@ -10,6 +10,9 @@ export const RH = {
   cream: '#FFFEF1',   /* light surfaces, and text on ink */
   ink:   '#3A342B',   /* all text, all buttons */
   terracotta: '#D55E3F',   /* their band color, header only */
+  sunrise: '#FCE1BD',   /* their pill and highlight colors, creatives only */
+  bigSky: '#B5CADA',
+  panConChocolate: '#EDDFD6',
   /* derived from ink, same alphas their site uses */
   muted:  'rgba(58,52,43,0.65)',
   faint:  'rgba(58,52,43,0.45)',
@@ -164,7 +167,7 @@ export const ADS = {
       description: '48,800 cancer trials, searched against one case.',
       cta: 'Learn More',
       creative: 'stats',
-      direction: 'The three option cards lifted straight out of the real report, under its own title. The two statistics carry the primary text, so the creative shows the thing nobody else can show. This ad is aimed at a later moment than the other four, progression rather than diagnosis, and it is here deliberately as the bridge into the next test.',
+      direction: 'The three option cards lifted straight out of the real report, stacked and simplified to what a phone shows, with the trial match as the last line. The two statistics carry the primary text. This ad is aimed at a later moment than the other four, progression rather than diagnosis, and it is here deliberately as the bridge into the next test.',
     },
   ] as MetaAd[],
   closing: 'What is not in any of these: no countdown, no "don\'t wait", no urgency device of any kind. The urgency is already in the room. Manufacturing more of it is the fastest way to lose this audience permanently. Calm is the differentiated position in a feed full of people shouting at sick people.',

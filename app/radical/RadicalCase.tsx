@@ -403,16 +403,22 @@ const RH_CSS = `
 .rh-cr-name{font-family:${DISPLAY};font-size:18px;line-height:1.2}
 .rh-cr-role{font-size:12px;letter-spacing:.04em;color:${RH.muted};margin-top:3px}
 .rh-cr-logo{height:18px;width:auto;display:block}
-.rh-cr-trial{background:${RH.paper};color:${RH.ink};padding:7% 6%;justify-content:center}
-.rh-cr-trial .rh-cr-logo{margin-bottom:6%}
-.rh-cr-title{font-family:${DISPLAY};font-size:clamp(28px,3.2vw,38px);line-height:1.1;letter-spacing:-0.01em;margin:0 0 7%}
-.rh-cr-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:start}
-.rh-cr-card{display:flex;flex-direction:column;border:1px dashed ${RH.line};border-radius:8px;padding:14px 12px 16px;background:${RH.cream}}
-.rh-cr-tag{align-self:flex-start;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border:1px solid ${RH.line};border-radius:100px;margin-bottom:14px;white-space:nowrap}
-.rh-cr-tag-on{background:${RH.ink};color:${RH.cream};border-color:${RH.ink}}
-.rh-cr-name2{font-family:${DISPLAY};font-size:clamp(16px,1.6vw,19px);line-height:1.15;letter-spacing:-0.01em;margin-bottom:10px}
+.rh-cr-trial{background:${RH.paper};color:${RH.ink};padding:7% 7% 6%;display:flex;flex-direction:column}
+.rh-cr-title{font-family:${DISPLAY};font-size:clamp(28px,3.3vw,40px);line-height:1.1;letter-spacing:-0.01em;margin:0 0 6px}
+.rh-cr-title mark{background:${RH.sunrise};color:inherit;padding:0 .08em;border-radius:4px}
+.rh-cr-sub{font-size:clamp(12px,1.2vw,14px);line-height:1.35;color:${RH.muted};margin:0 0 7%}
+.rh-cr-cards{display:flex;flex-direction:column;gap:22px}
+.rh-cr-card{position:relative;display:flex;flex-direction:column;border:1px dashed ${RH.line};border-radius:8px;padding:22px 16px 16px;background:${RH.cream}}
+.rh-cr-tag{position:absolute;top:-11px;left:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:100px;border:1px solid ${RH.ink};white-space:nowrap;line-height:1.3}
+.rh-cr-tag-a{background:${RH.sunrise}}
+.rh-cr-tag-b{background:${RH.bigSky}}
+.rh-cr-tag-c{background:${RH.panConChocolate}}
+.rh-cr-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:${RH.muted};margin-bottom:4px}
+.rh-cr-name2{font-family:${DISPLAY};font-size:clamp(19px,2.2vw,26px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:6px}
 .rh-cr-v{font-size:12px;line-height:1.4;color:${RH.muted}}
-@media(max-width:560px){.rh-cr-cards{grid-template-columns:1fr;gap:6px}.rh-cr-card{padding:10px 12px}.rh-cr-tag{margin-bottom:8px}.rh-cr-name2{font-size:17px;margin-bottom:4px}.rh-cr-v{font-size:11px}}
+.rh-cr-trials{margin-top:auto;padding-top:14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:${RH.muted};text-align:center}
+.rh-cr-wordmark{height:22px;width:auto;display:block;margin:12px auto 0}
+@media(max-width:560px){.rh-cr-trial{padding:6% 6% 5%}.rh-cr-title{font-size:24px;margin-bottom:4px}.rh-cr-sub{font-size:11px;margin-bottom:5%}.rh-cr-cards{gap:14px}.rh-cr-card{padding:14px 11px 10px}.rh-cr-tag{font-size:8px;padding:3px 8px;top:-10px}.rh-cr-k{display:none}.rh-cr-name2{font-size:16px;margin-bottom:3px}.rh-cr-v{font-size:10.5px;line-height:1.3}.rh-cr-trials{padding-top:8px;font-size:8px}.rh-cr-wordmark{height:16px;margin-top:8px}}
 
 /* browser frame, capped and scrolling inside */
 .rh-browser{margin-top:36px;border:1px solid ${RH.border};border-radius:20px;overflow:hidden;background:${RH.cream}}
