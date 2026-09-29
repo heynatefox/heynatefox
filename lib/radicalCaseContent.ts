@@ -21,13 +21,7 @@ export const HERO = {
   eyebrow: 'Growth take-home, D2C patient acquisition',
   h1: "Make sure you're not missing a better option.",
   sub: 'Your headline, pointed at the two weeks when it matters most.',
-  tags: [
-    'Angle: know every option',
-    'Segment: the treatment-decision window',
-    '$50K across Google Search and Meta',
-    '5 ad variants',
-    '1 landing page',
-  ],
+  meta: '$50K across Google Search and Meta · 5 ads · 1 landing page',
   support: 'A plan is proposed. Treatment starts in two weeks. That gap is the whole opportunity, and it is the only window where a 24 hour report changes anything.',
   nav: [
     ['segment', 'Segment'],
@@ -42,21 +36,15 @@ export const HERO = {
 export const SEGMENT = {
   h2: 'One moment, two people.',
   body: [
-    'The segment is the treatment-decision window. A plan has been proposed, a start date exists, and in the gap between them one question sits in the room without a good way to answer it. Is this everything, or is this the first thing?',
-    'That window is real and it is short. Across 210,000 breast cancer patients in SEER-Medicare and NCDB data, 77.7% had surgery within 30 days of diagnosis. Two to four weeks is the practical window. Radical returns a report in 24 hours. That is the entire argument for this moment over any other.',
-    'Two people occupy it, and the channel decides which one you talk to. On Google you target a query, so whoever types "stage 2 lung cancer treatment options" has told you everything. On Meta you cannot target health conditions at all, so the creative does the qualifying, and the person it can legally speak to is the caregiver. Roughly 43% of health information seekers are researching at least partly for someone else, and those surrogate seekers go online first at 85% versus 70% for everyone else. They are the most digitally active people in the journey, and they are the only ones an ad can address directly without implying a health condition.',
-    'I ran the test across breast, lung and colorectal as separate keyword groups on one creative spine. The moment is universal. Tumor type is only the keyword layer, and one tumor alone would not produce enough conversions in two weeks to learn anything at this budget.',
+    'The segment is the treatment-decision window. A plan has been proposed, a start date exists, and in the gap between them one question sits in the room. Is this everything, or is this the first thing?',
+    'That window is short. Across 210,000 breast cancer patients in SEER-Medicare and NCDB data, 77.7% had surgery within 30 days of diagnosis. Two to four weeks is the practical window. Radical returns a report in 24 hours. That is the entire argument for this moment over any other.',
+    'Two people occupy it, and the channel decides which one you talk to. On Google the query does the targeting. On Meta you cannot target a health condition, so the creative does the qualifying, and the caregiver is the only person an ad can legally address. Roughly 43% of health information seekers are researching for someone else, and they are the ones who go online first.',
   ],
   h3: 'The wedge: completeness, not correctness.',
   wedge: [
-    'This is the load-bearing decision and it solves the compliance problem structurally rather than through careful wording.',
-    'Correctness framing asks whether the plan is right. It puts Radical against the oncologist, invites a claim about treatment quality, and crosses the line the team says it cannot cross. It also loses, because patients are terrified of exactly that possibility and do not want it confirmed by an ad.',
-    'Completeness framing asks whether the full option set is visible. It never evaluates the plan, never recommends a treatment, and positions Radical alongside the oncologist. It makes the patient a better participant in their own care rather than a second-guesser of it.',
-    'It is also already your headline. I am not inventing a position, I am pointing spend at the one you have.',
+    'Correctness asks whether the plan is right. That puts Radical against the oncologist, invites a claim about treatment quality, and crosses the line the team cannot cross. Completeness asks whether the full option set is visible. It never evaluates the plan, never recommends a treatment, and positions Radical alongside the oncologist.',
+    'It is also already your headline. I am pointing spend at the position you have.',
   ],
-  quote: 'Radical really helped my mental health because I finally could quit googling.',
-  quoteBy: 'Becky, triple negative breast cancer',
-  afterQuote: 'Every ad below is built for someone who has been googling for days.',
 }
 
 export type GoogleAd = {
@@ -233,31 +221,25 @@ export const PLAYBOOK = {
     clusterNote: 'I underweighted second opinion on purpose. In a JAMA Oncology study of 1,901 newly diagnosed breast cancer patients, 90% never got a second medical oncology opinion and 95% were treated by their first oncologist. It is the obvious cluster to build around and it is a much smaller market than it looks. The options and preparation clusters carry this account.',
     negativesLabel: 'Negatives, set before launch',
     negatives: ['survival rate', 'life expectancy', 'how long to live', 'prognosis stage 4', 'free', 'jobs', 'salary', 'donate', 'fundraiser', 'symptoms', 'causes', 'is it curable', 'end of life', 'hospice', 'obituary'],
-    negativesNote: 'Two reasons for the prognosis and survival negatives. They convert badly, because someone searching survival statistics at 2am is not in a purchase state. And targeting that query is the kind of thing a patient would feel sick about if they ever found out. It fails the trust test even though the volume looks attractive.',
+    negativesNote: 'Prognosis and survival queries are excluded for two reasons. They convert badly, and targeting them is the kind of thing a patient would feel sick about if they ever found out. It fails the trust test even though the volume looks attractive.',
     metaLead: 'Meta, 35% of budget.',
     meta: [
-      'Meta cannot be targeted at this segment. Health condition Detailed Targeting was eliminated on January 19, 2022. Disease interest audiences no longer exist. What remains is age, gender and location.',
-      'So on Meta the creative is the targeting. Broad audience, 30 and up, US, no interest layering. One campaign, one ad set, three creatives. Feed and Reels only, Stories and Audience Network off.',
-      'The policy also constrains the copy. An ad cannot imply knowledge of the viewer\'s health status, so "are you facing a cancer diagnosis" gets rejected and should. Every Meta ad above is written about someone else, which is why the caregiver is the only person on this platform an ad can address directly. The constraint and the best strategy point the same direction.',
+      'Meta cannot be targeted at this segment. Health condition targeting was removed in January 2022, so what remains is age, gender and location. Broad audience, 30 and up, US, one campaign, one ad set, three creatives, Feed and Reels only. The creative is the targeting. Policy also forbids implying the viewer\'s health status, which is why every Meta ad above is written about someone else. The constraint and the best strategy point the same direction.',
     ],
   },
   funnel: {
     h3: 'The funnel, as it actually works',
     steps: ['Ad', 'Coverage check (3 fields)', 'Price revealed', 'Records connected', 'Report in 24h'],
     body: [
-      'Worth noting because it changes the measurement plan. Radical\'s first conversion is not a purchase. It is a three-field coverage check: state, city, health plan. No email, no payment, no commitment. That is a genuinely low-friction entry point and it is better for paid acquisition than a price-first page would be.',
-      'The real drop is at records connection. Everything before it is typing. Records connection is the moment a stranger on the internet asks for access to your medical file, and it is where an otherwise healthy funnel leaks.',
-      'Three things on the landing page are built for that step specifically. It names the records step before the click, so it is expected rather than sprung. It names the 70,000 institution network, which turns an act of trust into an act of logistics. And it puts the NCCN advisors and the nurse above the form, because the question people are really asking is not "is this secure," it is "is this real."',
+      'Radical\'s first conversion is not a purchase. It is a three-field coverage check: state, city, health plan. The real drop is at records connection, the moment a stranger on the internet asks for access to your medical file. The landing page is built for that step. It names the records step before the click, names the 70,000 institution network, and puts the NCCN advisors and the nurse above the form, because the question people are really asking is not "is this secure," it is "is this real."',
     ],
   },
   metric: {
     h3: 'The metric',
     big: 'Cost per records-connected patient.',
     body: [
-      'Not cost per coverage check. A coverage check with no records behind it produces a generic report and a dead relationship. Counting it makes a channel look good while it wastes money.',
-      'Coverage-check completion is the week-one read, because it gives enough volume to judge creative fast. Records-connected is the number I would put on the wall.',
-      'I would also treat records-connection rate as a creative diagnostic rather than a product metric. If one ad drives coverage checks that never connect records, that ad is buying curiosity rather than intent, and it gets killed regardless of how good its cost per check looks.',
-      'One honest note on the model. Price is gated behind the coverage check, so I could not see it from outside, which means I cannot model contribution margin or a true allowable CAC. Every threshold below is a starting hypothesis to be replaced by week one data, not a forecast. Healthcare search CPCs run around $4.76 to $5.64 depending on the benchmark, and no oncology-specific published benchmark exists in any source I could find.',
+      'Not cost per coverage check. A check with no records behind it produces a generic report and a dead relationship. Coverage-check completion is the week-one read because it gives volume fast. Records-connected is the number I would put on the wall, and records-connection rate is a creative diagnostic. An ad whose checks never connect records is buying curiosity, and it gets killed regardless of its cost per check.',
+      'One honest note. Price is gated behind the coverage check, so I cannot model contribution margin or a true allowable CAC from outside. Every threshold below is a starting hypothesis to be replaced by week one data. Healthcare search CPCs run around $4.76 to $5.64 depending on the benchmark.',
     ],
   },
   plan: {
@@ -288,9 +270,9 @@ export const PLAYBOOK = {
 export const NEXT = {
   h2: "What I'd test next.",
   items: [
-    ['The second moment.', 'Everything above targets diagnosis. There is a second window, progression or recurrence, where the standard options are running out and the patient is exhausted. In that moment the caregiver is unambiguously the buyer, the question is "is there a trial," and it is the only question nobody answers. Fewer than one in ten patients enroll, but 55% say yes when offered. The bottleneck is that nobody runs the search, and running the search is literally the product. Lower volume, far higher intent.'],
-    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT and Claude right now, in volume, and getting a generic answer. That query is Radical\'s product, stated out loud. Being the source those answers cite is a real acquisition channel and almost nobody in this category is playing it deliberately yet.'],
-    ['Ungate the sample report.', 'The single biggest objection in this category is "what am I actually going to get," and the answer already exists inside the product. The sample report currently sits behind a login. A fully anonymized composite case, published as a page, is the most persuasive asset the company owns and it is invisible before signup.'],
+    ['The second moment.', 'Everything above targets diagnosis. There is a second window, progression or recurrence, where the standard options are running out, the caregiver is unambiguously the buyer, and the only question is "is there a trial." Fewer than one in ten patients enroll, but 55% say yes when offered. Nobody runs the search, and running the search is the product.'],
+    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT and Claude right now and getting a generic answer. That query is Radical\'s product, stated out loud. Being the source those answers cite is a real channel, and almost nobody in this category is playing it yet.'],
+    ['Ungate the sample report.', 'The biggest objection in this category is "what am I actually going to get," and the answer already exists inside the product. The sample report sits behind a login. A fully anonymized composite case, published as a page, is the most persuasive asset the company owns.'],
   ] as [string, string][],
 }
 
@@ -298,19 +280,16 @@ export const CHANNEL = {
   h2: 'One non-obvious channel.',
   h3: 'Turn the report into the referral engine.',
   body: [
-    'A 9.2 out of 10 feedback rating and an NPS of 85 means most patients are promoters, and almost none of them have been given anything to promote with. That is a distribution layer sitting unused.',
-    'The mechanic cannot be a referral code. Cancer patients will not send friends a discount link, and asking them to would damage the relationship the nurses have built.',
-    'What they will do, almost universally, is help the next person who gets the news. That instinct is real, it is currently unserved, and it is the loop.',
-    'So at the moment the report is delivered and the nurse call is finished, offer the patient a plain page they can send to anyone newly diagnosed. Not a pitch. A short, useful guide to the first two weeks, written by the nurses, with Radical named as the company that made it. One line at the bottom offering the same report to whoever is reading.',
-    'Three reasons it works. It routes through the only channel in oncology that carries real trust, which is one patient telling another. It arrives at the exact moment of peak goodwill. And it reaches the newly diagnosed in week one, which I deliberately excluded from paid, because a friend can say things in week one that an ad has no right to say.',
+    'An NPS of 85 means most patients are promoters, and none of them have been given anything to promote with. The mechanic cannot be a referral code. Cancer patients will not send friends a discount link, and asking them to would damage the relationship the nurses have built.',
+    'What they will do, almost universally, is help the next person who gets the news. So at the moment the report is delivered and the nurse call is finished, offer the patient a plain page to send to anyone newly diagnosed. Not a pitch. A short guide to the first two weeks, written by the nurses, with Radical named as the company that made it, and one line at the bottom offering the same report. It routes through the only channel in oncology that carries real trust, it arrives at peak goodwill, and it reaches week one, which paid deliberately does not.',
   ],
   h3b: 'Three structures worth copying',
   cards: [
-    ['Labcorp and Outcomes4Me', 'Labcorp took equity and promotes the app on screens at testing locations, with results piped into it. That reaches patients inside the decision window without buying any media.'],
-    ['Komen and AstraZeneca', 'A navigation infrastructure collaboration rather than a logo placement. Komen navigated 12,791 people last fiscal year. The company is embedded in the service, not advertising next to it.'],
-    ['Imerman Angels', 'Already sells a peer-to-peer partner program, with Pfizer and UnitedHealth as named partners, including participation analytics. The rail exists. You would not be building it.'],
+    ['Labcorp and Outcomes4Me.', 'Equity plus screens at testing locations, reaching patients inside the window without buying media.'],
+    ['Komen and AstraZeneca.', 'Navigation infrastructure, 12,791 people navigated last year. Embedded in the service rather than advertising next to it.'],
+    ['Imerman Angels.', 'Already sells a peer-to-peer partner program with Pfizer and UnitedHealth. The rail exists.'],
   ] as [string, string][],
-  closing: 'The pattern in all three is the same. Become part of the service rather than advertise near it. In a category where a commercial presence in a support group can become the story, that is the only version that survives.',
+  closing: 'The pattern is the same in all three. Become part of the service rather than advertise near it.',
 }
 
 export const FOOTER = {

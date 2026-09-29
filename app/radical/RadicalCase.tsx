@@ -25,14 +25,11 @@ export default function RadicalCase() {
 
       {/* ───────── 1. hero ───────── */}
       <header className="rh-hero">
-        <div className="rh-hero-scrim" aria-hidden="true" />
-        <div className="rh-in rh-hero-in">
+        <div className="rh-in">
           <span className="rh-eyebrow">{HERO.eyebrow}</span>
-          <h1><span className="rh-h1-line">Make sure you&rsquo;re not missing</span> <span className="rh-h1-line">a <span className="rh-u">better option</span>.</span></h1>
+          <h1>{HERO.h1}</h1>
           <p className="rh-sub">{HERO.sub}</p>
-          <div className="rh-tags">
-            {HERO.tags.map(t => <span key={t}>{t}</span>)}
-          </div>
+          <p className="rh-meta-line">{HERO.meta}</p>
           <p className="rh-support">{HERO.support}</p>
           <div className="rh-jump" role="navigation" aria-label="Sections">
             {HERO.nav.map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}
@@ -42,20 +39,13 @@ export default function RadicalCase() {
 
       {/* ───────── 2. segment and wedge ───────── */}
       <section id="segment" className="rh-sec">
-        <div className="rh-in rh-split">
-          <div className="rh-split-l">
-            <span className="rh-label">The segment and the wedge</span>
-            <h2>{SEGMENT.h2}</h2>
-          </div>
-          <div className="rh-prose">
+        <div className="rh-in">
+          <span className="rh-label">The segment and the wedge</span>
+          <h2>{SEGMENT.h2}</h2>
+          <div className="rh-prose rh-prose-top">
             {SEGMENT.body.map(p => <p key={p.slice(0, 40)}>{p}</p>)}
             <h3>{SEGMENT.h3}</h3>
             {SEGMENT.wedge.map(p => <p key={p.slice(0, 40)}>{p}</p>)}
-            <blockquote className="rh-quote">
-              <p>“{SEGMENT.quote}”</p>
-              <footer>{SEGMENT.quoteBy}</footer>
-            </blockquote>
-            <p className="rh-after">{SEGMENT.afterQuote}</p>
           </div>
         </div>
       </section>
@@ -72,10 +62,10 @@ export default function RadicalCase() {
               <div className="rh-adrow" key={ad.id}>
                 <div className="rh-adrow-mock"><GoogleAd ad={ad} /></div>
                 <div className="rh-adrow-side">
-                  <span className="rh-adrow-kind">Google Search · responsive search ad</span>
+                  <span className="rh-adrow-kind">Google Search, responsive search ad</span>
                   <h3 className="rh-ad-name">{ad.name}</h3>
                   <p className="rh-dir"><em>Creative direction.</em> {ad.direction}</p>
-                  <details className="rh-raw"><summary>Show raw copy</summary><GoogleCopy ad={ad} /></details>
+                  <GoogleCopy ad={ad} />
                 </div>
               </div>
             ))}
@@ -83,7 +73,7 @@ export default function RadicalCase() {
               <div className="rh-adrow" key={ad.id}>
                 <div className="rh-adrow-mock"><MetaAd ad={ad} /></div>
                 <div className="rh-adrow-side">
-                  <span className="rh-adrow-kind">Meta · feed and Reels · 4:5</span>
+                  <span className="rh-adrow-kind">Meta, feed and Reels, 4:5</span>
                   <h3 className="rh-ad-name">{ad.name}</h3>
                   <p className="rh-dir"><em>Creative direction.</em> {ad.direction}</p>
                   <details className="rh-raw"><summary>Show raw copy</summary><MetaCopy ad={ad} /></details>
@@ -103,7 +93,6 @@ export default function RadicalCase() {
           <h2>{LANDING.h2}</h2>
           <p className="rh-dek">{LANDING.intro}</p>
           <LandingMockup />
-          <p className="rh-dir rh-lp-note">{LANDING.afterNote}</p>
         </div>
       </section>
 
@@ -114,10 +103,8 @@ export default function RadicalCase() {
           <h2>{PLAYBOOK.h2}</h2>
 
           {/* targeting */}
-          <div className="rh-split rh-block">
-            <div className="rh-split-l">
-              <h3>{PLAYBOOK.targeting.h3}</h3>
-            </div>
+          <div className="rh-block">
+            <h3>{PLAYBOOK.targeting.h3}</h3>
             <div className="rh-prose">
               <p className="rh-lead">{PLAYBOOK.targeting.googleLead}</p>
               <p>{PLAYBOOK.targeting.google}</p>
@@ -142,8 +129,7 @@ export default function RadicalCase() {
           </div>
           <p className="rh-note rh-note-wide">{PLAYBOOK.targeting.negativesNote}</p>
 
-          <div className="rh-split rh-block">
-            <div className="rh-split-l" />
+          <div className="rh-block">
             <div className="rh-prose">
               <p className="rh-lead">{PLAYBOOK.targeting.metaLead}</p>
               {PLAYBOOK.targeting.meta.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
@@ -161,11 +147,8 @@ export default function RadicalCase() {
                 </li>
               ))}
             </ol>
-            <div className="rh-split">
-              <div className="rh-split-l" />
-              <div className="rh-prose">
-                {PLAYBOOK.funnel.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
-              </div>
+            <div className="rh-prose">
+              {PLAYBOOK.funnel.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
             </div>
           </div>
 
@@ -175,11 +158,8 @@ export default function RadicalCase() {
               <span>{PLAYBOOK.metric.h3}</span>
               <div className="rh-metric-big">{PLAYBOOK.metric.big}</div>
             </div>
-            <div className="rh-split">
-              <div className="rh-split-l" />
-              <div className="rh-prose">
-                {PLAYBOOK.metric.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
-              </div>
+            <div className="rh-prose">
+              {PLAYBOOK.metric.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
             </div>
           </div>
 
@@ -210,7 +190,7 @@ export default function RadicalCase() {
       {/* ───────── 6. what I'd test next ───────── */}
       <section id="next" className="rh-sec">
         <div className="rh-in">
-          <span className="rh-label">Beyond the two weeks</span>
+          <span className="rh-label">Next tests</span>
           <h2>{NEXT.h2}</h2>
           <ol className="rh-next">
             {NEXT.items.map(([h, p], i) => (
@@ -227,27 +207,16 @@ export default function RadicalCase() {
       {/* ───────── 7. optional channel ───────── */}
       <section id="channel" className="rh-sec rh-sec-alt">
         <div className="rh-in">
-          <div className="rh-split">
-            <div className="rh-split-l">
-              <span className="rh-label">Optional channel</span>
-              <h2>{CHANNEL.h2}</h2>
-            </div>
-            <div className="rh-prose">
-              <h3 className="rh-h3-first">{CHANNEL.h3}</h3>
-              {CHANNEL.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
-            </div>
-          </div>
-          <div className="rh-block">
+          <span className="rh-label">Optional channel</span>
+          <h2>{CHANNEL.h2}</h2>
+          <div className="rh-prose rh-prose-top">
+            <h3 className="rh-h3-first">{CHANNEL.h3}</h3>
+            {CHANNEL.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
             <h3>{CHANNEL.h3b}</h3>
-            <div className="rh-structures">
-              {CHANNEL.cards.map(([h, p]) => (
-                <div className="rh-card" key={h}>
-                  <div className="rh-card-h">{h}</div>
-                  <p>{p}</p>
-                </div>
-              ))}
-            </div>
-            <p className="rh-closing">{CHANNEL.closing}</p>
+            <ul className="rh-structures">
+              {CHANNEL.cards.map(([h, p]) => <li key={h}><strong>{h}</strong> {p}</li>)}
+            </ul>
+            <p>{CHANNEL.closing}</p>
           </div>
         </div>
       </section>
@@ -313,33 +282,30 @@ const RH_CSS = `
 .rh-pill span{color:rgba(255,254,241,.7)}
 
 /* hero: their own video poster behind cream type, centered like the homepage */
-.rh-hero{position:relative;background:${RH.ink} url(/radical/hero.jpg) center/cover no-repeat;color:${RH.cream};padding:clamp(72px,10vw,150px) 0 clamp(56px,7vw,96px);min-height:min(88vh,860px);display:flex;align-items:center}
-.rh-hero-scrim{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.rh-hero-in{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
-.rh-eyebrow{display:block;font-size:13px;letter-spacing:.04em;color:rgba(255,254,241,.85);margin-bottom:28px}
-.rh-hero h1{max-width:none;font-size:clamp(40px,6.6vw,96px)}
-@media(min-width:900px){.rh-h1-line{display:block;white-space:nowrap}}
-.rh-sub{font-size:clamp(19px,2vw,24px);line-height:1.2;letter-spacing:-0.02em;color:rgba(255,254,241,.85);max-width:34ch;margin:0 0 34px}
-.rh-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:32px}
-.rh-tags span{font-size:14px;padding:8px 16px;border-radius:100px;background:rgba(255,254,241,.14);border:1px solid rgba(255,254,241,.3);color:${RH.cream}}
-.rh-support{font-size:17px;line-height:1.55;color:rgba(255,254,241,.85);max-width:58ch;margin:0 0 40px}
-.rh-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;font-size:14px;color:rgba(255,254,241,.7)}
-.rh-jump a{text-decoration:none;color:rgba(255,254,241,.7);padding:6px 0;margin-right:22px;position:relative;white-space:nowrap}
-.rh-jump a::after{content:'·';position:absolute;right:-14px;top:6px;color:rgba(255,254,241,.4)}
+.rh-hero{padding:clamp(56px,8vw,112px) 0 clamp(48px,6vw,80px)}
+.rh-eyebrow{display:block;font-size:14px;color:${RH.muted};margin-bottom:26px}
+.rh-hero h1{font-size:clamp(40px,6vw,80px);max-width:15ch}
+.rh-sub{font-size:clamp(19px,2vw,24px);line-height:1.35;max-width:34ch;margin:0 0 22px}
+.rh-meta-line{font-size:15px;color:${RH.muted};margin:0 0 28px}
+.rh-support{font-size:17px;line-height:1.6;max-width:58ch;margin:0 0 36px}
+.rh-jump{display:flex;flex-wrap:wrap;gap:6px 0;font-size:14px;color:${RH.muted}}
+.rh-jump a{text-decoration:none;color:${RH.muted};padding:6px 0;margin-right:22px;position:relative;white-space:nowrap}
+.rh-jump a::after{content:'·';position:absolute;right:-14px;top:6px;color:${RH.faint}}
 .rh-jump a:last-child{margin-right:0}
 .rh-jump a:last-child::after{content:none}
-.rh-jump a:hover{color:${RH.cream};text-decoration:underline;text-underline-offset:4px}
+.rh-jump a:hover{color:${RH.ink};text-decoration:underline;text-underline-offset:4px}
 
 /* sections: paper and cream alternate */
 .rh-sec{border-top:1px solid ${RH.border};scroll-margin-top:64px}
 .rh-sec-alt{background:${RH.cream}}
-.rh-label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:${RH.muted};margin-bottom:18px}
+.rh-label{display:block;font-size:14px;color:${RH.muted};margin-bottom:16px}
 .rh-dek{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:60ch;margin:22px 0 0}
 .rh-split{display:grid;grid-template-columns:1fr;gap:28px}
-@media(min-width:900px){.rh-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}.rh-split-l{position:sticky;top:88px;align-self:start}}
+@media(min-width:900px){.rh-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}}
 .rh-prose p{font-size:17px;line-height:1.65;max-width:66ch;margin:0 0 18px}
 .rh-prose h3{margin:36px 0 14px}
 .rh-prose h3.rh-h3-first{margin-top:0}
+.rh-prose-top{margin-top:28px}
 .rh-lead{font-weight:600}
 .rh-block{margin-top:clamp(44px,5vw,64px)}
 .rh-block>h3{margin-bottom:24px}
@@ -347,7 +313,6 @@ const RH_CSS = `
 /* surfaces: the opposite tone of the section they sit in; report-style dashed rules on data cards */
 .rh-card,.rh-cluster,.rh-quote,.rh-note{background:${RH.cream};border:1px solid ${RH.border};border-radius:20px}
 .rh-sec-alt .rh-card,.rh-sec-alt .rh-cluster,.rh-sec-alt .rh-quote,.rh-sec-alt .rh-note{background:${RH.paper}}
-.rh-card,.rh-cluster{border-style:dashed;border-color:${RH.line}}
 
 /* quote */
 .rh-quote{padding:28px 30px;margin:30px 0 16px;max-width:66ch}
@@ -359,8 +324,8 @@ const RH_CSS = `
 .rh-ads{display:flex;flex-direction:column;gap:clamp(40px,5vw,64px);margin-top:44px}
 .rh-adrow{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;padding-top:clamp(32px,4vw,48px);border-top:1px solid ${RH.border}}
 .rh-adrow:first-child{border-top:0;padding-top:0}
-@media(min-width:900px){.rh-adrow{grid-template-columns:minmax(0,600px) minmax(260px,1fr);gap:48px}.rh-adrow-side{position:sticky;top:88px}}
-.rh-adrow-kind{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:${RH.muted};margin-bottom:12px}
+@media(min-width:900px){.rh-adrow{grid-template-columns:minmax(0,600px) minmax(260px,1fr);gap:48px}}
+.rh-adrow-kind{display:block;font-size:14px;color:${RH.muted};margin-bottom:12px}
 .rh-ad-name{font-size:clamp(23px,2.4vw,28px);margin-bottom:14px}
 .rh-raw{margin-top:18px}
 .rh-raw summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:${RH.muted};padding:6px 0}
@@ -368,7 +333,8 @@ const RH_CSS = `
 .rh-raw summary::before{content:'+';font-size:15px;line-height:1}
 .rh-raw[open] summary::before{content:'\\2212'}
 .rh-raw summary:hover{color:${RH.ink}}
-.rh-copy{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:${RH.ink};background:${RH.paper};border:1px dashed ${RH.line};border-radius:8px;padding:14px 16px 16px;margin-top:8px;user-select:all}
+.rh-copy{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;color:${RH.ink};background:${RH.paper};border:1px solid ${RH.border};border-radius:8px;padding:14px 16px 16px;margin-top:18px;user-select:all}
+.rh-raw .rh-copy{margin-top:8px}
 .rh-sec-alt .rh-copy{background:${RH.paper}}
 .rh-copy b{display:block;font-family:${BODY};font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${RH.muted};margin:12px 0 4px}
 .rh-copy b:first-child{margin-top:0}
@@ -447,7 +413,6 @@ const RH_CSS = `
 .rh-browser-url{flex:1;max-width:420px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:6px;background:${RH.cream};border-radius:8px;padding:6px 12px;font-size:13px;color:${RH.ink}}
 .rh-browser-spacer{width:42px}
 @media(max-width:480px){.rh-browser-spacer{display:none}.rh-browser-url{max-width:none}}
-.rh-lp-note{margin-top:16px}
 
 /* the landing page */
 .lp{background:${RH.paper};color:${RH.ink};font-size:15px;line-height:1.5;max-height:700px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
@@ -498,23 +463,25 @@ const RH_CSS = `
 .rh-cluster-h{font-family:${DISPLAY};font-size:22px;line-height:1.2;letter-spacing:-0.01em;margin-bottom:14px}
 .rh-cluster-h span{font-family:${BODY};font-size:12px;letter-spacing:.04em;color:${RH.muted}}
 .rh-cluster ul{list-style:none;margin:0;padding:0}
-.rh-cluster li{font-size:14px;line-height:1.4;padding:8px 0;border-top:1px dashed ${RH.line}}
+.rh-cluster li{font-size:14px;line-height:1.4;padding:8px 0;border-top:1px solid ${RH.border}}
 .rh-neg{margin-top:40px}
-.rh-neg-label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:${RH.muted};margin-bottom:12px}
+.rh-neg-label{display:block;font-size:14px;font-weight:600;margin-bottom:12px}
 .rh-chips{display:flex;flex-wrap:wrap;gap:8px}
 .rh-chips span{font-size:13px;padding:6px 12px;border-radius:100px;background:${RH.tint};color:${RH.ink}}
 .rh-flow{list-style:none;margin:0 0 36px;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px 0}
 .rh-flow li{display:flex;align-items:center}
-.rh-flow-step{display:inline-flex;align-items:center;gap:10px;background:${RH.cream};border:1px dashed ${RH.line};border-radius:100px;padding:8px 15px 8px 8px;font-size:14px;font-weight:500;white-space:nowrap}
+.rh-flow-step{display:inline-flex;align-items:center;gap:10px;background:${RH.cream};border:1px solid ${RH.border};border-radius:100px;padding:8px 15px 8px 8px;font-size:14px;font-weight:500;white-space:nowrap}
 .rh-sec-alt .rh-flow-step{background:${RH.paper}}
 .rh-flow-step b{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:${RH.ink};color:${RH.cream};font-size:12px;font-weight:500}
 .rh-flow-arrow{padding:0 9px;color:${RH.faint};font-size:17px}
 @media(max-width:640px){.rh-flow{flex-direction:column;align-items:flex-start}.rh-flow li{flex-direction:column;align-items:flex-start}.rh-flow-arrow{padding:4px 0 4px 18px;transform:rotate(90deg);display:inline-block}.rh-flow-step{white-space:normal}}
 .rh-metric{background:${RH.ink};color:${RH.cream};border-radius:20px;padding:clamp(28px,4vw,44px) clamp(24px,4vw,48px);margin-bottom:36px}
-.rh-metric span{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,254,241,.7);margin-bottom:14px}
+.rh-metric span{display:block;font-size:14px;color:rgba(255,254,241,.7);margin-bottom:14px}
 .rh-metric-big{font-family:${DISPLAY};font-size:clamp(32px,5vw,60px);line-height:1.1;letter-spacing:-0.01em;max-width:16ch}
-.rh-phases,.rh-decisions,.rh-structures{display:grid;gap:16px}
-@media(min-width:768px){.rh-phases{grid-template-columns:1fr 1fr}.rh-decisions,.rh-structures{grid-template-columns:1fr 1fr 1fr}}
+.rh-phases,.rh-decisions{display:grid;gap:16px}
+@media(min-width:768px){.rh-phases{grid-template-columns:1fr 1fr}.rh-decisions{grid-template-columns:1fr 1fr 1fr}}
+.rh-structures{margin:0 0 18px;padding-left:20px;max-width:66ch}
+.rh-structures li{font-size:17px;line-height:1.65;margin-bottom:10px}
 .rh-card{padding:24px}
 .rh-card-h{font-family:${DISPLAY};font-size:23px;line-height:1.2;letter-spacing:-0.01em;margin-bottom:14px}
 .rh-card ul{margin:0;padding:0 0 0 18px}
@@ -527,7 +494,7 @@ const RH_CSS = `
 .rh-next{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:32px}
 @media(min-width:900px){.rh-next{grid-template-columns:1fr 1fr 1fr;gap:40px}}
 .rh-next li{border-top:1px solid ${RH.border};padding-top:22px}
-.rh-next-n{display:block;font-size:12px;letter-spacing:.08em;color:${RH.muted};margin-bottom:14px}
+.rh-next-n{display:block;font-size:14px;color:${RH.muted};margin-bottom:14px}
 .rh-next h3{margin-bottom:12px}
 .rh-next p{margin:0;font-size:16px;line-height:1.6}
 
