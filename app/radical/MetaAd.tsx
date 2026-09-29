@@ -41,7 +41,7 @@ function Creative({ ad }: { ad: Ad }) {
           </div>
         ))}
       </div>
-      <span className="rh-cr-trials">Including 4 matched clinical trials</span>
+      <p className="rh-cr-sign">Make sure you&rsquo;re not missing a <span className="rh-u">better option</span>.</p>
       <img src="/radical/logo.svg" alt="Radical" className="rh-cr-wordmark" />
     </div>
   )
