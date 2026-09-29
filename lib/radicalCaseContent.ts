@@ -3,27 +3,18 @@
    All copy lives here. The components only lay it out.
    ============================================================ */
 
-/* Radical's own palette, read from the theme tokens on radicalhealth.ai.
-   The names are theirs. */
+/* Radical's system, as computed on radicalhealth.ai. Three colors.
+   Contrast comes from alternating paper and cream, plus full ink blocks. */
 export const RH = {
-  eggshell:        '#FBF7EE',   /* page background */
-  newsprint:       '#FFFDFA',   /* cards, inputs */
-  cream:           '#FFFEF1',   /* type on dark */
-  cardamom:        '#EEE5D6',   /* card borders */
-  sunrise:         '#FCE1BD',   /* soft accent, icon fields */
-  panConChocolate: '#EDDFD6',
-  bigSky:          '#B5CADA',   /* stat tiles on terracotta */
-  alpacaSweater:   '#E5E5E0',   /* secondary button */
-  terracotta:      '#D55E3F',   /* section band */
-  vineCharcoal:    '#262626',   /* footer, dark blocks */
-  chocolateLab:    '#3A342B',   /* body type */
-  persimmon:       '#FB6743',   /* primary button */
-  nectarine:       '#FF9557',
-  breakfastTea:    '#F5C78C',
-  /* derived, same as their computed values */
-  muted:           'rgba(58,52,43,0.65)',
-  faint:           'rgba(58,52,43,0.45)',
-  line:            'rgba(58,52,43,0.3)',
+  paper: '#FBF7EE',   /* page background */
+  cream: '#FFFEF1',   /* light surfaces, and text on ink */
+  ink:   '#3A342B',   /* all text, all buttons */
+  /* derived from ink, same alphas their site uses */
+  muted:  'rgba(58,52,43,0.65)',
+  faint:  'rgba(58,52,43,0.45)',
+  line:   'rgba(58,52,43,0.3)',
+  border: 'rgba(58,52,43,0.14)',
+  tint:   'rgba(58,52,43,0.06)',
 }
 
 export const HERO = {
@@ -194,79 +185,37 @@ export const LANDING = {
   h2: 'The landing page.',
   intro: 'radicalhealth.ai/options. All five ads point here.',
   url: 'radicalhealth.ai/options',
-  eyebrow: 'For anyone facing a cancer treatment decision',
   h1: "Make sure you're not missing a better option.",
-  sub: 'Every treatment option for your case, compared side by side, with matched clinical trials, in plain language. In your hands in 24 hours.',
+  sub: 'Every treatment option for your case, compared side by side, with matched clinical trials. In plain language, in 24 hours.',
+  fields: ['State', 'City', 'Health plan'],
   cta: 'Check your coverage',
-  ctaNote: 'Takes under a minute. No payment to see what applies to you.',
+  ctaNote: 'Takes under a minute. Nothing to pay to see what applies.',
   trust: [
     'Built with NCCN committee oncologists',
-    'Oncology nurse support',
     'Records from 70,000+ institutions',
     'SOC 2 Type II',
-    '24-hour turnaround',
+    'Report in 24 hours',
   ],
-  list: {
-    h: 'Nobody hands you the full list.',
-    p: [
-      'Your oncologist gave you a plan, and it is very likely a good one. But an appointment is fifteen minutes, and the full landscape for your specific case, including trials that opened last month, is bigger than fifteen minutes.',
-      'Most people fill that gap at midnight with a browser full of tabs.',
-    ],
-    quote: 'Radical really helped my mental health because I finally could quit googling.',
-    quoteBy: 'Becky, triple negative breast cancer',
-  },
-  get: {
-    h: 'What you get',
-    blocks: [
-      ['Your report', 'Every relevant treatment option for your case, compared side by side. Trials matched from 48,800 active studies. Sources cited on every line. Written so you can actually read it.'],
-      ['Your nurse', 'An oncology nurse who knows your case and will talk through the report with you. Supported by senior nurses from Stanford and Dana-Farber. Not a call center.'],
-      ['Always on', 'New trials and new research matched to your case as they appear. Between appointments, questions do not wait for business hours.'],
-    ],
-  },
-  built: {
-    h: 'Built with the people who write the guidelines',
-    people: [
-      ['Yan Li, MD', 'National Chair GI Oncology', 'Kaiser Permanente'],
-      ['Amol Narang, MD', 'Medical Director', 'Johns Hopkins, NCCN Committee'],
-      ['Michael Gensheimer', 'Clinical Associate Professor, Radiation Oncology', 'Stanford'],
-      ['Joel Hecht, MD', 'Director GI Oncology', 'UCLA, NCCN Committee'],
-    ],
-    line: 'NCCN guidelines define the standard of care in American oncology. Two of the people who help write them shaped how these reports are built.',
-  },
-  how: {
-    h: 'How it works',
-    steps: [
-      ['Tell us about the case.', 'Diagnosis, stage, treatments so far, what has been proposed. A few minutes.'],
-      ['Connect the records.', 'Securely, from any of 70,000+ US healthcare institutions. No phone calls, no fax requests. This is the step that makes the report yours instead of generic.'],
-      ['Get the report in 24 hours.', 'Then talk it through with your nurse.'],
-    ],
-  },
-  not: {
-    h: 'What Radical does not do',
-    p: [
-      'We do not tell you which treatment to choose. That decision belongs to you and your oncologist, and we would not take it from either of you. Our reports are for informational and educational purposes and are not medical advice.',
-      'What we do is make sure the conversation you have with your doctor includes everything it should.',
-    ],
-    quote: 'It gives us a true feeling of control, having the answers to questions and knowing what additional questions to ask.',
-    quoteBy: 'Theo, pancreatic cancer patient',
-  },
-  cost: {
-    h: 'What it costs',
-    p: 'Most people start at no cost. Check your plan and we will show you exactly what applies to you before you commit to anything. No monthly subscription.',
-    cta: 'Check your coverage',
-  },
-  faq: [
-    ['Will my oncologist be offended?', 'Most are not. You are arriving better informed, with specific questions, about your own case. Many patients bring the report to their next appointment and use it as the agenda.'],
-    ['Is this a second opinion?', 'Not in the formal sense. It is a complete view of the options and trials relevant to your case. Some people use it to decide whether a formal second opinion is worth pursuing, and where.'],
-    ['How do you handle my records?', 'Encrypted, HIPAA-compliant, SOC 2 Type II certified, and yours. We never sell or share your information. You can ask us to delete it at any time.'],
-    ['How fast is 24 hours really?', '24 hours from when your records finish connecting. Most people have their report the next day.'],
-    ['What if my case is rare or advanced?', 'Those are the cases where a complete option set matters most, and where matched trials most often change what is on the table.'],
+  proofLine: 'This is what arrives. Every option for one case, side by side, sources cited.',
+  proofImg: '/radical/report-desktop.webp',
+  get: [
+    'Every treatment option for your case, compared side by side.',
+    'Trials matched from 48,800 active studies.',
+    'An oncology nurse who knows your case, supported by senior nurses from Stanford and Dana-Farber.',
   ],
-  close: {
-    h: "Stop wondering if there's a better option.",
-    line: 'Every option for your case, in 24 hours.',
-    cta: 'Check your coverage',
-  },
+  people: [
+    ['Yan Li, MD', 'National Chair GI Oncology, Kaiser Permanente'],
+    ['Amol Narang, MD', 'Medical Director, Johns Hopkins, NCCN Committee'],
+    ['Michael Gensheimer', 'Clinical Associate Professor, Radiation Oncology, Stanford'],
+    ['Joel Hecht, MD', 'Director GI Oncology, UCLA, NCCN Committee'],
+  ] as [string, string][],
+  peopleLine: 'NCCN guidelines define the standard of care in American oncology. Two of the people who write them shaped how these reports are built.',
+  quote: 'Radical really helped my mental health because I finally could quit googling.',
+  quoteBy: 'Becky, triple negative breast cancer',
+  quoteImg: '/radical/becky.webp',
+  honest: 'We do not tell you which treatment to choose. That belongs to you and your oncologist. We make sure the conversation includes everything it should.',
+  closeH: "Stop wondering if there's a better option.",
+  afterNote: 'Deliberately not their homepage. No nav, one angle, one CTA, message-matched to the ad that drove the click.',
 }
 
 export const PLAYBOOK = {
