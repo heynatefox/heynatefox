@@ -27,7 +27,7 @@ export default function RadicalCase() {
       <header className="rh-hero">
         <div className="rh-in">
           <span className="rh-eyebrow">{HERO.eyebrow}</span>
-          <h1>{HERO.h1}</h1>
+          <h1>Make sure you&rsquo;re not missing a <span className="rh-u">better option</span>.</h1>
           <p className="rh-sub">{HERO.sub}</p>
           <p className="rh-meta-line">{HERO.meta}</p>
           <p className="rh-support">{HERO.support}</p>
@@ -282,21 +282,22 @@ const RH_CSS = `
 .rh-pill span{color:rgba(255,254,241,.7)}
 
 /* hero: their own video poster behind cream type, centered like the homepage */
-.rh-hero{padding:clamp(56px,8vw,112px) 0 clamp(48px,6vw,80px)}
-.rh-eyebrow{display:block;font-size:14px;color:${RH.muted};margin-bottom:26px}
-.rh-hero h1{font-size:clamp(40px,6vw,80px);max-width:15ch}
-.rh-sub{font-size:clamp(19px,2vw,24px);line-height:1.35;max-width:34ch;margin:0 0 22px}
-.rh-meta-line{font-size:15px;color:${RH.muted};margin:0 0 28px}
-.rh-support{font-size:17px;line-height:1.6;max-width:58ch;margin:0 0 36px}
-.rh-jump{display:flex;flex-wrap:wrap;gap:6px 0;font-size:14px;color:${RH.muted}}
-.rh-jump a{text-decoration:none;color:${RH.muted};padding:6px 0;margin-right:22px;position:relative;white-space:nowrap}
-.rh-jump a::after{content:'·';position:absolute;right:-14px;top:6px;color:${RH.faint}}
+.rh-hero{background:${RH.terracotta};color:${RH.cream};padding:clamp(64px,9vw,128px) 0 clamp(56px,7vw,96px)}
+.rh-eyebrow{display:block;font-size:14px;color:rgba(255,254,241,.8);margin-bottom:28px}
+.rh-hero h1{font-size:clamp(40px,6.4vw,88px);max-width:14ch;line-height:1.1}
+.rh-sub{font-size:clamp(19px,2vw,24px);line-height:1.35;max-width:34ch;margin:0 0 22px;color:rgba(255,254,241,.9)}
+.rh-meta-line{font-size:15px;color:rgba(255,254,241,.75);margin:0 0 30px}
+.rh-support{font-size:17px;line-height:1.6;max-width:58ch;margin:0 0 40px;color:rgba(255,254,241,.9)}
+.rh-jump{display:flex;flex-wrap:wrap;gap:6px 0;font-size:14px;color:rgba(255,254,241,.75)}
+.rh-jump a{text-decoration:none;color:rgba(255,254,241,.75);padding:6px 0;margin-right:22px;position:relative;white-space:nowrap}
+.rh-jump a::after{content:'·';position:absolute;right:-14px;top:6px;color:rgba(255,254,241,.45)}
 .rh-jump a:last-child{margin-right:0}
 .rh-jump a:last-child::after{content:none}
-.rh-jump a:hover{color:${RH.ink};text-decoration:underline;text-underline-offset:4px}
+.rh-jump a:hover{color:${RH.cream};text-decoration:underline;text-underline-offset:4px}
 
 /* sections: paper and cream alternate */
 .rh-sec{border-top:1px solid ${RH.border};scroll-margin-top:64px}
+.rh-hero+.rh-sec{border-top:0}
 .rh-sec-alt{background:${RH.cream}}
 .rh-label{display:block;font-size:14px;color:${RH.muted};margin-bottom:16px}
 .rh-dek{font-size:clamp(18px,1.8vw,21px);line-height:1.5;max-width:60ch;margin:22px 0 0}
@@ -389,21 +390,34 @@ const RH_CSS = `
 .rh-cr-brand{position:absolute;left:8%;bottom:7%;height:20px;width:auto}
 .rh-cr-land{background:${RH.ink} url(/radical/hero.jpg) center/cover no-repeat;color:${RH.cream};justify-content:center;padding:8%}
 .rh-cr-land::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.rh-cr-land{align-items:center;text-align:center}
+.rh-cr-pill{position:relative;display:inline-block;font-family:${BODY};font-size:13px;letter-spacing:.02em;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,254,241,.6);color:${RH.cream};margin-bottom:22px}
 .rh-cr-land p{position:relative;font-family:${DISPLAY};font-size:clamp(34px,4.2vw,50px);line-height:1.15;letter-spacing:-0.01em;margin:0;text-align:center}
 .rh-cr-becky{background:${RH.paper};color:${RH.ink}}
 .rh-cr-portrait{display:block;width:100%;height:58%;object-fit:cover;object-position:50% 25%}
 .rh-cr-panel{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6% 8% 7%}
-.rh-cr-panel p{font-family:${DISPLAY};font-size:clamp(19px,2.2vw,25px);line-height:1.2;letter-spacing:-0.01em;margin:0 0 14px}
+.rh-cr-panel p{font-family:${DISPLAY};font-size:clamp(19px,2.2vw,25px);line-height:1.2;letter-spacing:-0.01em;margin:0 0 16px}
+.rh-cr-panel-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.rh-cr-panel-foot>span{display:flex;flex-direction:column}
 .rh-cr-name{font-family:${DISPLAY};font-size:18px;line-height:1.2}
 .rh-cr-role{font-size:12px;letter-spacing:.04em;color:${RH.muted};margin-top:3px}
-.rh-cr-trial{background:${RH.cream};color:${RH.ink}}
-.rh-cr-stats{padding:9% 8% 5%;display:flex;flex-direction:column;gap:16px}
-.rh-cr-stats div{display:flex;flex-direction:column;gap:4px}
-.rh-cr-stats strong{font-family:${DISPLAY};font-weight:400;font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-0.01em}
-.rh-cr-stats span{font-size:12px;letter-spacing:.04em;color:${RH.muted};line-height:1.4}
-.rh-cr-report{flex:1;position:relative;margin:0 8% -2px;border:1px dashed ${RH.line};border-bottom:0;border-radius:10px 10px 0 0;overflow:hidden;background:#fff}
-.rh-cr-report img{display:block;width:100%;height:auto}
-.rh-cr-trial .rh-cr-brand{display:none}
+.rh-cr-logo{height:18px;width:auto;display:block}
+.rh-cr-trial{background:${RH.paper};color:${RH.ink};padding:6% 6% 6%}
+.rh-cr-trial .rh-cr-logo{margin-bottom:5%}
+.rh-cr-title{font-family:${DISPLAY};font-size:clamp(26px,3vw,36px);line-height:1.1;letter-spacing:-0.01em;margin:0 0 5%}
+.rh-cr-cards{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;min-height:0;overflow:hidden}
+.rh-cr-card{display:flex;flex-direction:column;border:1px dashed ${RH.line};border-radius:8px;padding:12px 11px;background:${RH.cream};overflow:hidden;min-height:0}
+.rh-cr-tag{align-self:flex-start;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border:1px solid ${RH.line};border-radius:100px;margin-bottom:12px;white-space:nowrap}
+.rh-cr-tag-on{background:${RH.ink};color:${RH.cream};border-color:${RH.ink}}
+.rh-cr-k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:${RH.muted};margin:9px 0 3px}
+.rh-cr-k:first-of-type{margin-top:0}
+.rh-cr-name2{font-family:${DISPLAY};font-size:clamp(16px,1.6vw,20px);line-height:1.15;letter-spacing:-0.01em;padding-bottom:10px;border-bottom:1px dashed ${RH.line}}
+.rh-cr-v{font-size:11.5px;line-height:1.4}
+.rh-cr-load{font-family:${DISPLAY};font-size:15px;line-height:1.2;background:${RH.tint};padding:2px 5px;align-self:flex-start;border-radius:3px}
+.rh-cr-tos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.rh-cr-tos li{font-size:10px;line-height:1.35;padding-left:13px;position:relative}
+.rh-cr-tos li::before{content:'';position:absolute;left:0;top:4px;width:7px;height:7px;border:1px solid ${RH.line};border-radius:1px}
+@media(max-width:560px){.rh-cr-cards{grid-template-columns:1fr;gap:6px}.rh-cr-card{display:grid;grid-template-columns:auto 1fr;grid-auto-rows:min-content;column-gap:10px;padding:8px 10px;align-content:center}.rh-cr-tag{grid-column:1/-1;margin-bottom:4px}.rh-cr-k{display:none}.rh-cr-name2{grid-column:1/-1;border-bottom:0;padding-bottom:2px;font-size:15px}.rh-cr-v{grid-column:1/-1;font-size:10.5px}.rh-cr-load{display:none}.rh-cr-tos{display:none}}
 
 /* browser frame, capped and scrolling inside */
 .rh-browser{margin-top:36px;border:1px solid ${RH.border};border-radius:20px;overflow:hidden;background:${RH.cream}}

@@ -7,6 +7,7 @@ function Creative({ ad }: { ad: Ad }) {
   if (ad.creative === 'headline') {
     return (
       <div className="rh-cr rh-cr-land">
+        <span className="rh-cr-pill">Loved one diagnosed with cancer?</span>
         <p>Make sure they&rsquo;re not missing a <span className="rh-u">better option</span>.</p>
         <img src="/radical/logo-cream.svg" alt="Radical" className="rh-cr-brand" />
       </div>
@@ -18,25 +19,46 @@ function Creative({ ad }: { ad: Ad }) {
         <img src="/radical/becky.webp" alt="" className="rh-cr-portrait" />
         <div className="rh-cr-panel">
           <p>&ldquo;Radical really helped my mental health because I finally could quit googling.&rdquo;</p>
-          <span className="rh-cr-name">Becky</span>
-          <span className="rh-cr-role">Triple negative breast cancer</span>
+          <div className="rh-cr-panel-foot">
+            <span><span className="rh-cr-name">Becky</span><span className="rh-cr-role">Triple negative breast cancer</span></span>
+            <img src="/radical/logo.svg" alt="Radical" className="rh-cr-logo" />
+          </div>
         </div>
       </div>
     )
   }
   return (
     <div className="rh-cr rh-cr-trial">
-      <div className="rh-cr-stats">
-        <div><strong>1 in 10</strong><span>cancer patients ever joins a clinical trial.</span></div>
-        <div><strong>More than half</strong><span>say yes when they are actually offered one.</span></div>
+      <img src="/radical/logo.svg" alt="Radical" className="rh-cr-logo" />
+      <p className="rh-cr-title">Compare your <span className="rh-u">options</span></p>
+      <div className="rh-cr-cards">
+        {OPTIONS.map(o => (
+          <div className="rh-cr-card" key={o.name}>
+            <span className={`rh-cr-tag${o.planned ? ' rh-cr-tag-on' : ''}`}>{o.tag}</span>
+            <span className="rh-cr-k">Approach</span>
+            <span className="rh-cr-name2">{o.name}</span>
+            <span className="rh-cr-k">Best if you value</span>
+            <span className="rh-cr-v">{o.value}</span>
+            <span className="rh-cr-k">Clinic load</span>
+            <span className="rh-cr-load">{o.load}</span>
+            <span className="rh-cr-k">Trade-offs</span>
+            <ul className="rh-cr-tos">{o.tradeoffs.map(t => <li key={t}>{t}</li>)}</ul>
+          </div>
+        ))}
       </div>
-      <div className="rh-cr-report">
-        <img src="/radical/report-desktop.webp" alt="" />
-      </div>
-      <img src="/radical/logo.svg" alt="Radical" className="rh-cr-brand" />
     </div>
   )
 }
+
+/* The three option cards, word for word from Radical's own report. */
+const OPTIONS = [
+  { tag: 'Currently planned', planned: true, name: 'Immunity + Targeted pills', value: 'Longest disease control with a manageable visit schedule.', load: 'Weekly \u2192 monthly',
+    tradeoffs: ['Longest cancer control and survival of the three.', 'Regular injections, then monthly. Avoids chemo nerve damage.', 'Watch for low white cells and infections in year one.'] },
+  { tag: 'Option 1', planned: false, name: 'Triplet chemo\u00ADtherapy', value: 'Aggressive first attack; accepts higher clinic time.', load: 'Weekly visits',
+    tradeoffs: ['Strong control, typically shorter than D-Rd and longer than pills alone.', 'Weekly shots plus possible transplant means more hospital time.', 'Higher chance of nerve pain from bortezomib.'] },
+  { tag: 'Option 2', planned: false, name: 'Early-intervention', value: 'Minimal treatment; preserves daily routine.', load: 'Few visits',
+    tradeoffs: ['Delays rather than treats. Least disease control of the three.', 'Daily home pill option with few visits, no steroids.', 'Benefits may fade sooner; close re-evaluation needed.'] },
+]
 
 function Globe() {
   return (
