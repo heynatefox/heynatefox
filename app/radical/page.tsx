@@ -1,10 +1,8 @@
-import { Instrument_Serif, DM_Sans } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import RadicalCase from './RadicalCase'
 
-/* Radical sets headings in Canela, a licensed face served from their own
-   site. Instrument Serif is the closest open equivalent: one regular weight,
-   the same tapered serifs and calm contrast. DM Sans is their body face. */
-const display = Instrument_Serif({ weight: '400', subsets: ['latin'], variable: '--rh-display', display: 'swap' })
+/* Canela, Radical's display face, is self-hosted from /public/radical/fonts
+   and declared in the page stylesheet. DM Sans is their body face. */
 const body = DM_Sans({ weight: ['400', '500', '600'], style: ['normal', 'italic'], subsets: ['latin'], variable: '--rh-body', display: 'swap' })
 
 export const metadata = {
@@ -27,7 +25,7 @@ export const metadata = {
 
 export default function RadicalPage() {
   return (
-    <div className={`${display.variable} ${body.variable}`}>
+    <div className={body.variable}>
       <RadicalCase />
     </div>
   )

@@ -24,8 +24,9 @@ export default function LandingMockup() {
       <div className="lp" aria-label="Landing page mockup, radicalhealth.ai/options" tabIndex={0}>
         {/* 1. hero with the coverage check inline */}
         <div className="lp-hero">
-          <img src="/radical/logo.svg" alt="Radical" className="lp-logo" />
-          <div className="lp-h1">{L.h1}</div>
+          <div className="lp-hero-in">
+          <img src="/radical/logo-cream.svg" alt="Radical" className="lp-logo" />
+          <div className="lp-h1"><span className="rh-h1-line">Make sure you&rsquo;re not missing</span> <span className="rh-h1-line">a <span className="rh-u">better option</span>.</span></div>
           <p className="lp-sub">{L.sub}</p>
           <div className="lp-form" aria-label="Coverage check">
             {L.fields.map(f => (
@@ -34,6 +35,7 @@ export default function LandingMockup() {
             <span className="lp-btn">{L.cta}</span>
           </div>
           <span className="lp-note">{L.ctaNote}</span>
+          </div>
         </div>
 
         {/* 2. trust line */}

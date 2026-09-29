@@ -145,7 +145,7 @@ export const ADS = {
       description: 'Every option, side by side, in 24 hours.',
       cta: 'Learn More',
       creative: 'headline',
-      direction: "Type only on a solid field in Radical's primary color. No photography, no ribbon imagery, no soft focus hands. The restraint is the trust signal, because every competitor in this feed looks like a pamphlet.",
+      direction: "The still from their own hero film behind a cream headline, with the underline on \"better option\" set exactly as the homepage sets it. No ribbon imagery, no soft focus hands. The restraint is the trust signal, because every competitor in this feed looks like a pamphlet.",
     },
     {
       id: 'meta2',
@@ -160,7 +160,7 @@ export const ADS = {
       description: 'One report. Every option. 24 hours.',
       cta: 'Learn More',
       creative: 'quote',
-      direction: "Becky's quote set large in plain type, attribution small beneath. This is the highest-conviction ad in the set, because it is the only one that names the feeling the product actually removes.",
+      direction: "Becky's real portrait, cropped the way their site crops it, with the quote in plain type beneath. This is the highest-conviction ad in the set, because it is the only one that names the feeling the product actually removes.",
     },
     {
       id: 'meta3',
@@ -175,7 +175,7 @@ export const ADS = {
       description: '48,800 trials, searched against one case.',
       cta: 'Learn More',
       creative: 'stats',
-      direction: 'The two statistics rendered as the entire creative, large, one above the other. This ad is aimed at a later moment than the other four, progression rather than diagnosis, and it is here deliberately as the bridge into the next test.',
+      direction: 'The two statistics large, one above the other, with the real report beneath them as the proof. This ad is aimed at a later moment than the other four, progression rather than diagnosis, and it is here deliberately as the bridge into the next test.',
     },
   ] as MetaAd[],
   closing: 'What is not in any of these: no countdown, no "don\'t wait", no urgency device of any kind. The urgency is already in the room. Manufacturing more of it is the fastest way to lose this audience permanently. Calm is the differentiated position in a feed full of people shouting at sick people.',
