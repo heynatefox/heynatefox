@@ -35,12 +35,12 @@ export const PROJECTS: Project[] = [
       2: 'Lobby: room code, packs, pace, and cooperative or competitive mode',
     },
     link: 'https://hotorcold.app',
-    description: 'Hot or Cold is a real-time multiplayer party game. One player gets a hidden number on a spectrum and gives a single-word clue. Everyone else argues about where it lands. Three to ten players, learn it in a minute.\n\nThe game is also a measurement instrument. Every round produces a clean data point: a person, a prompt, a guess, and a correct answer. That structure answers a question worth answering. How well do people actually read each other, and does knowing someone make you better at it?\n\nI built it solo across five months and 176 commits. Design, code, game content, and the research layer. The interesting part is not that a model wrote code. It is that the product and the experiment are the same object.',
+    description: 'Hot or Cold is a real-time multiplayer party game. One player gets a hidden number on a spectrum and gives a single clue. Everyone else argues about where it lands. Three to ten players, learn it in a minute.\n\nThe game is also a measurement instrument. Every round produces a clean data point: a person, a prompt, a guess, and a correct answer. That structure answers a question worth answering. How well do people actually read each other, and does knowing someone make you better at it?\n\nI built it solo across five months and 176 commits. Design, code, game content, and the research layer. The interesting part is not that a model wrote code. It is that the product and the experiment are the same object.',
     stats: [
-      { value: '19,199', label: 'Human guesses recorded across 7,485 rounds' },
-      { value: '0.98x', label: 'Human accuracy vs chance when reading one person cold' },
-      { value: '29.0 to 20.3', label: 'Mean error after three reads of the same person' },
-      { value: '3', label: 'Model providers answering the same rounds' },
+      { value: '45,935', label: 'Guesses recorded across 14,367 rounds' },
+      { value: '6,997', label: 'Players' },
+      { value: '8,809', label: 'Clues written by players' },
+      { value: '27.5 to 20.0', label: 'Mean error, first read of a person to the third' },
       { value: '176', label: 'Commits, May to September 2026' },
       { value: '1', label: 'Person on the project' },
     ],
@@ -50,12 +50,12 @@ export const PROJECTS: Project[] = [
         body: 'pnpm monorepo, four packages: core, server, ui, and web. Real-time play runs on Colyseus over WebSocket with Fastify underneath. React with TanStack Router on the front end. Drizzle and Postgres on Neon for storage. The game server deploys to Fly.io, the client to Cloudflare Pages. It also ships as a Discord Activity, so a group plays inside a voice channel without installing anything.',
       },
       {
-        title: 'What the models actually do',
-        body: 'Three providers answer the same game rounds as the humans: Claude Opus 5, GPT-5.6, and Grok 4.6. Each one gets asked two versions of every sampled round. One with only the spectrum and the clue, which is guessing about a stranger. One with that plus the player\u2019s last twelve rounds, which is guessing about someone you have watched.\n\nThe gap between those two answers is the measurement. Running several providers is deliberate: if the same curve shows up across labs, the signal is in the data rather than in one vendor\u2019s model. Each arm is independent, so a bad key or an outage silently drops that provider and the rest keep recording.',
+        title: 'Where the models are, and where they are not',
+        body: 'No model runs inside a round. The game is a Colyseus server, a React client and Postgres. A forty second timer is the wrong place for an inference call, and a model in the request path would have made the game slower and the data noisier.\n\nThe models are in how it got built. Claude Code wrote most of the lines across five months while I directed the architecture and reviewed every change.\n\nThe prediction work runs offline against the captured corpus. The benchmark shows a predictor four clues from the same spectrum, written by different people, and asks which one a specific person wrote. Chance is 25 percent. A predictor that knows the clue corpus but nothing about the person gets 24.3 percent. A predictor that knows the person gets 31.3 percent. Seven points, across 1,051 people. The comparison is personal against population rather than personal against chance, because scoring against chance quietly takes credit for what general knowledge already earns.',
       },
       {
         title: 'What the data said',
-        body: 'The original assumption was that people read each other about twice as well as chance. That did not survive the data.\n\n- Predicting one specific person cold is roughly a coin flip. Humans scored 0.98x against the best fixed guess, and the confidence interval contains the baseline.\n- Familiarity is the whole effect. First read of a person averaged 29.0 mean error. Third or later read averaged 20.3, and the intervals do not overlap.\n- That gain is not just practice. Holding position in the session fixed, about eight of the nine points come from having seen that specific person before.\n\nThe useful finding is not the prediction. It is the slope.',
+        body: 'The starting assumption was that people read each other about twice as well as chance. That did not survive contact with the data.\n\n- Reading one specific person cold is close to a coin flip. Across 4,497 considered human reads, mean error was 25.5 against 27.0 for always guessing the middle. Better than the baseline, but barely.\n- Familiarity is the whole effect. First read of a person averaged 27.5 mean error. Third or later read of the same person averaged 20.0.\n- The useful finding is not the accuracy. It is the slope.\n\nI shipped the measurement doc that killed the original 2x claim. It was a result I asked for and then published against my own pitch.',
       },
       {
         title: 'Built with models, decided by me',
