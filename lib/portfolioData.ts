@@ -16,50 +16,334 @@ export type Project = {
   imageLabels?: Record<number, string>
 }
 
-export const COMPANIES = ['All', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'AI Builds', 'Other'] as const
+export const COMPANIES = ['All', 'AI Builds', 'Take-Homes', 'Conmetior', 'Marin Mountain School', 'Bad Cards', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'AirPR', 'Other'] as const
 
 export const PROJECTS: Project[] = [
   {
     slug: 'hot-or-cold',
     title: 'Hot or Cold',
     company: 'AI Builds',
-    thumbnail: '/portfolio/hot-or-cold-round.png',
+    thumbnail: '/portfolio/hot-or-cold-hero-card.jpg',
     thumbnailColor: '#0d0d0d',
     images: [
       '/portfolio/hot-or-cold-hero.png',
-      '/portfolio/hot-or-cold-round.png',
+      '/portfolio/hot-or-cold-round-recap.png',
       '/portfolio/hot-or-cold-lobby.png',
+      '/portfolio/hot-or-cold-after-dark-pack.png',
     ],
     imageLabels: {
-      1: 'Shareable round recap, generated at the end of every round',
-      2: 'Lobby: room code, packs, pace, and cooperative or competitive mode',
+      1: 'Every round ends as a shareable recap: the clue, where each player guessed, and the answer',
+      2: 'The lobby. Room code, pack picker, game length, pace and mode',
+      3: 'Packs gate both content and tone. After Dark is age gated and sold separately',
     },
     link: 'https://hotorcold.app',
-    description: 'Hot or Cold is a real-time multiplayer party game. One player gets a hidden number on a spectrum and gives a single clue. Everyone else argues about where it lands. Three to ten players, learn it in a minute.\n\nThe game is also a measurement instrument. Every round produces a clean data point: a person, a prompt, a guess, and a correct answer. That structure answers a question worth answering. How well do people actually read each other, and does knowing someone make you better at it?\n\nI built it solo across five months and 176 commits. Design, code, game content, and the research layer. The interesting part is not that a model wrote code. It is that the product and the experiment are the same object.',
+    description: 'Hot or Cold is a real-time multiplayer party game. One player gets a hidden number on a spectrum like Overrated to Underrated. They write a single clue. Everyone else places a dial where they think it sits. The arguing is the game.\n\nIt is also a measurement instrument. Most human preference data is either scraped without permission or collected in a lab, where people answer differently because they know they are being watched. This is a third option. A game people want to play on a Friday night, where playing produces a clean consented record of how a person judges things. Invisible at the table, rigorous in the database.\n\nBuilt solo across five months and 176 commits: the game, the content, the infrastructure and the research layer. Real players arrived in July 2026. The corpus now holds 45,935 guesses from 6,997 people.',
     stats: [
-      { value: '45,935', label: 'Guesses recorded across 14,367 rounds' },
+      { value: '45,935', label: 'Guesses recorded' },
+      { value: '14,367', label: 'Rounds captured' },
       { value: '6,997', label: 'Players' },
       { value: '8,809', label: 'Clues written by players' },
-      { value: '27.5 to 20.0', label: 'Mean error, first read of a person to the third' },
-      { value: '176', label: 'Commits, May to September 2026' },
-      { value: '1', label: 'Person on the project' },
+      { value: '+7.0 pts', label: 'Knowing the person beats knowing the corpus, across 1,051 people' },
+      { value: '260', label: 'Spectrums across 6 packs' },
+      { value: '16', label: 'Languages' },
+      { value: '176', label: 'Commits, solo, May to September 2026' },
     ],
     sections: [
       {
         title: 'The stack',
-        body: 'pnpm monorepo, four packages: core, server, ui, and web. Real-time play runs on Colyseus over WebSocket with Fastify underneath. React with TanStack Router on the front end. Drizzle and Postgres on Neon for storage. The game server deploys to Fly.io, the client to Cloudflare Pages. It also ships as a Discord Activity, so a group plays inside a voice channel without installing anything.',
+        body: 'TypeScript pnpm monorepo in four packages. Fastify 5 with Colyseus 0.16 holds live rooms over WebSocket on Fly.io. React 18.3 with Vite 6 and TanStack Router on Cloudflare Pages. Neon Postgres with Drizzle, 16 tables and 10 migrations. Auth is an emailed code, no passwords. It also ships as a Discord Activity that runs inside a voice channel with nothing to install.\n\nEvery round writes a versioned JSONB payload rather than a fixed row, so the capture schema can change without orphaning history. Player identifiers are salted one-way hashes and consent is versioned, so it is always clear which terms a given row was collected under.',
       },
       {
-        title: 'Where the models are, and where they are not',
-        body: 'No model runs inside a round. The game is a Colyseus server, a React client and Postgres. A forty second timer is the wrong place for an inference call, and a model in the request path would have made the game slower and the data noisier.\n\nThe models are in how it got built. Claude Code wrote most of the lines across five months while I directed the architecture and reviewed every change.\n\nThe prediction work runs offline against the captured corpus. The benchmark shows a predictor four clues from the same spectrum, written by different people, and asks which one a specific person wrote. Chance is 25 percent. A predictor that knows the clue corpus but nothing about the person gets 24.3 percent. A predictor that knows the person gets 31.3 percent. Seven points, across 1,051 people. The comparison is personal against population rather than personal against chance, because scoring against chance quietly takes credit for what general knowledge already earns.',
+        title: 'The modes measure different things',
+        body: 'The round types are not variety for its own sake. Classic gives one player a hidden target and one clue, and measures whether meaning survives the trip between two people. Crowd Read asks for your own position and your prediction of the room on the same item, which is the pairing almost no dataset has. Hot Seat puts one player on the spectrum and everyone else places them, which is the only mode that captures how a group sees an individual.\n\nHot Seat is also the most sensitive thing in the system, so it never leaves in any external dataset. Poles are randomised every round so left and right carry no fixed meaning, with the canonical orientation stored alongside so analysis is not fooled by the flip.',
       },
       {
-        title: 'What the data said',
-        body: 'The starting assumption was that people read each other about twice as well as chance. That did not survive contact with the data.\n\n- Reading one specific person cold is close to a coin flip. Across 4,497 considered human reads, mean error was 25.5 against 27.0 for always guessing the middle. Better than the baseline, but barely.\n- Familiarity is the whole effect. First read of a person averaged 27.5 mean error. Third or later read of the same person averaged 20.0.\n- The useful finding is not the accuracy. It is the slope.\n\nI shipped the measurement doc that killed the original 2x claim. It was a result I asked for and then published against my own pitch.',
+        title: 'The measurement result',
+        body: 'The benchmark asks a predictor to pick which of four clues a specific person wrote, with the three decoys drawn from the same spectrum by different authors. Chance is 25 percent.\n\nA predictor that knows the whole clue corpus but nothing about the person scores 24.3 percent, which is chance. A predictor that knows the person scores 31.3 percent. That gap is seven points across 1,051 people.\n\nThe comparison is deliberately personal against population rather than personal against chance. Scoring a personal predictor against chance quietly takes credit for everything general knowledge already earns, which is how this kind of result usually gets overstated.',
       },
       {
-        title: 'Built with models, decided by me',
-        body: 'Claude Code wrote most of the lines. I made the calls that mattered: the game design, the spectrum content, the two-condition experiment, the choice to run several providers, and the decision to publish a result that contradicted the pitch. The measurement doc that killed the 2x claim is one I asked for and then shipped against my own interest.\n\nThat is the working style. Move fast with models on the parts that are mechanical, stay slow and skeptical on the parts where being wrong is expensive.',
+        title: 'Building solo with a model',
+        body: 'No model runs inside a round. Bots play from a precomputed clue bank, not live inference. A forty second timer is the wrong place for an inference call, and a model in the request path would have made the game slower and the data noisier.\n\nThe models are in how it got built. Claude Code wrote most of the lines across five months while I designed the game, the modes, the data model and the measurement, and reviewed every change. The split held because the model is fast at producing code and has no opinion about whether a round type earns its place, whether a number is honest, or whether a field is safe to publish.\n\nThe clearest example is the measurement work. I asked for the analysis that tested my own assumption about how well people read each other, and the answer came back weaker than the pitch. Publishing the weaker number is the entire point of having built an instrument rather than a demo.',
+      },
+    ],
+  },
+  {
+    slug: 'conmetior-connect',
+    title: 'Conmetior Connect',
+    company: 'Conmetior',
+    thumbnail: '/portfolio/conmetior-connect-home-card.jpg',
+    images: [
+      '/portfolio/conmetior-connect-home.png',
+      '/portfolio/conmetior-connect-posts.png',
+      '/portfolio/conmetior-connect-dashboard.png',
+      '/portfolio/conmetior-connect-wizard.png',
+      '/portfolio/conmetior-connect-audit.png',
+    ],
+    imageLabels: {
+      1: 'The core screen: a month of generated posts waiting for approval',
+      2: 'Practice dashboard, including the plain-English recovery banner',
+      3: 'Brand profile built during onboarding: practice type, detected voice',
+      4: 'The free practice audit, the top of the funnel and the lead capture',
+    },
+    link: 'https://conmetiorconnect.com',
+    description: 'When someone needs a dentist they search Google and call one of the first practices that looks active. The Google Business Profile is the storefront that decides whether that call comes in. Most practices have not posted to theirs in months, not because it does not matter, but because the work is weekly, unrelenting and nobody\'s job.\n\nConmetior Connect is a subscription product that keeps that profile working without adding anything to the practice\'s week. It writes their posts in the voice detected from their own site and reviews, drafts replies to reviews in whatever language the reviewer used, monitors profile health daily, and publishes only what the practice approves. Approval takes about a minute a week from a phone.\n\nThe product is live and functional. It has not yet been sent to its target list, so the numbers below measure the build and the targeting research rather than adoption.',
+    stats: [
+      { value: '192', label: 'Commits, May to September 2026' },
+      { value: '30', label: 'Database tables across 29 migrations' },
+      { value: '11', label: 'Scheduled jobs running the automation' },
+      { value: '10', label: 'Languages, 7,600 translation keys' },
+      { value: '16,784', label: 'Dental practice websites analyzed and scored' },
+      { value: '73,821', label: 'Customer contacts classified into 31,916 domains' },
+      { value: '1,899', label: 'Targets found already running a competitor, and deprioritized' },
+    ],
+    sections: [
+      {
+        title: 'The compliance gate',
+        body: 'Dental has a constraint most content tools ignore. Healthcare advertising rules differ by market, and a post that promises an outcome or quotes a price creates a real problem for the practice rather than just a bad impression.\n\nEvery generated post is graded against a dental advertising ruleset before a human sees it, with a stricter European variant outside the US. The grader fails closed. If it cannot run, nothing publishes. The product\'s whole promise is that a practice can stop watching, so the failure mode had to be silence rather than a bad post going out under their name.\n\nTwo models split the work. Sonnet 5 writes anything a dentist or a patient will read. Haiku 4.5 handles classification and extraction, where quality is invisible and volume is high.',
+      },
+      {
+        title: 'Ten languages, not ten translations',
+        body: 'The product ships in ten languages across 7,600 keys, but the localization goes past the interface. Generated content is written natively in the practice\'s language rather than translated afterward, review replies match the language the reviewer wrote in, and the compliance ruleset switches standard by market. A validation script runs in the build and blocks retired pricing, unapproved claims and stylistic violations from reaching any locale.',
+      },
+      {
+        title: 'Targeting research: 73,821 contacts down to 300',
+        body: 'The client had a customer list of 73,821 contacts across 31,916 business domains and no idea which to email. Sorting by contact volume would have surfaced the DSO chains, which are the opposite of the buyer.\n\nI wrote a pipeline that filtered out chains, government, universities, suppliers and international domains, then visited all 16,784 remaining dental practice websites and scored each on how visibly unattended its presence was and how likely it was to buy. Practices already running Birdeye, Podium or Weave were pushed down automatically, which found 1,899 of them. The output was a ranked first send of 300 with a plain English reason attached to every row.',
+      },
+      {
+        title: 'Rebuilding the funnel around a free audit',
+        body: 'The first version asked a cold prospect to create an account, connect their Google profile and enter a card as the first step. Real clicks produced no signups.\n\nThe replacement leads with a free audit that asks only for a URL, returns a graded report on how the practice looks to a new patient, and writes two real posts for that specific practice in exchange for an email. It also solved a writing problem. Research on a stranger cannot be used in a cold email without sounding like surveillance, but the same specificity is the product once they have asked for the analysis.',
+      },
+    ],
+  },
+  {
+    slug: 'forterra-compliance-checker',
+    title: 'Pre-Flight Compliance Checker',
+    company: 'Take-Homes',
+    thumbnail: '/portfolio/forterra-hero-card.jpg',
+    thumbnailColor: '#1a1a1a',
+    images: [
+      '/portfolio/forterra-hero.png',
+      '/portfolio/forterra-flags.png',
+      '/portfolio/forterra-attributed.png',
+    ],
+    imageLabels: {
+      1: 'Every flag carries severity, an explanation, a one-click rewrite and the regulation it comes from',
+      2: 'Claims inside an attributed external quote are downgraded rather than flagged as hard violations',
+    },
+    link: 'https://forterra-press-generator.vercel.app/compliance',
+    description: 'Built for Forterra, an autonomous defense vehicle company, during a final-round interview.\n\nDefense marketing carries risk most marketing teams are not equipped to catch. One line in a press release can cross ITAR, OPSEC, EAR, DFARS or foreign disclosure rules, and the person writing it usually has no way to know. The safety net is legal review, which is slow, arrives late, and turns every draft into a queue.\n\nSo I built a tool that reads draft marketing content and flags those problems before anything ships. Paste a draft, pick the content type and where it is going, run the check. It returns a score and every issue it found, each one carrying the exact text that triggered it, a severity, a plain explanation, the regulation it comes from cited properly, and a suggested compliant rewrite you can accept with one click. Re-run, and the score moves.\n\nIt scored clean copy at 86 to 95 percent and unfiltered drafts near zero, catching real violations on live Forterra content. It shipped as a deployed working tool rather than a mockup, and it is still running.',
+    stats: [
+      { value: '6', label: 'Regulatory frameworks in the rule library' },
+      { value: '18', label: 'Rules, each with a citation and a suggested rewrite' },
+      { value: '11', label: 'Violations caught in the sample draft' },
+      { value: '0% to 95%', label: 'Score range, unfiltered draft to cleaned copy' },
+      { value: '6 days', label: 'First commit to deployed demo' },
+      { value: '1,502', label: 'Lines of TypeScript across the app' },
+    ],
+    sections: [
+      {
+        title: 'The rule library is the product',
+        body: 'Anyone can build a text box that highlights words. The work was deciding what actually constitutes a violation and proving it.\n\nEach rule pairs a pattern with a real citation. 22 CFR 120-130 and USML Category XII for sensor and targeting specifications. AR 530-1 and DoDD 5205.02E for unit identification. DFARS 252.204-7000 and FAR 3.104 for procurement integrity. 15 CFR 730-774 for dual-use characterisation.\n\nThe rewrite matters as much as the flag. Telling a marketer that a sensor range of 2.3km is a problem is half the job. Handing them extended-range sensor capability is the other half.',
+      },
+      {
+        title: 'Attributed quotes get different treatment',
+        body: 'An executive quote is not the same liability as a company claim, and treating them identically would have made the tool annoying enough to ignore. The checker detects when flagged language sits inside an attributed external quote and downgrades it, marking it as reduced liability but still worth review.\n\nThat single rule is the difference between a tool a team uses and one they route around.',
+      },
+      {
+        title: 'No model in the loop, on purpose',
+        body: 'The checker is deterministic. A compliance tool that invents a citation is worse than no tool, because it teaches people to distrust it at exactly the moment they need it. Every flag traces to a written rule a compliance officer can read, argue with and amend.\n\nClaude Code wrote the application. I wrote the rule library, did the regulatory research behind every citation, made the product and interface decisions, and checked each rule against the actual CFR and DoD sources.',
+      },
+      {
+        title: 'What it changes',
+        body: 'It turns a slow legal review bottleneck into a self-serve check anyone on the marketing team can run before they send anything. Legal still reviews, but they review drafts that have already had the obvious problems removed, with the reasoning attached.\n\nContent types cover press release, LinkedIn post, blog, web copy, exec quote, spec sheet and trade show material. Destinations cover US public, allied NATO nations, restricted and internal only, because the same sentence can be fine in one context and a violation in another.',
+      },
+    ],
+  },
+  {
+    slug: 'radical-health-acquisition',
+    title: 'Radical Health, D2C Patient Acquisition',
+    company: 'Take-Homes',
+    thumbnail: '/portfolio/radical-health-hero-card.jpg',
+    thumbnailColor: '#D55E3F',
+    images: [
+      '/portfolio/radical-health-hero.png',
+      '/portfolio/radical-health-meta-ads.jpg',
+      '/portfolio/radical-health-landing.jpg',
+      '/portfolio/radical-health-serp.png',
+    ],
+    imageLabels: {
+      1: 'Three Meta creatives built on Radical’s own assets: their hero film, a real patient portrait, and their report UI',
+      2: 'The paid landing page, built as a landing page rather than a homepage',
+      3: 'One of two Google responsive search ads',
+    },
+    link: 'https://heynatefox.com/radical',
+    description: 'A growth take-home for Radical Health, an AI oncology platform that returns a complete report of a patient\'s treatment options in 24 hours. The brief: pick one segment and moment, write the ads and the landing page for real, and plan $50K across Google and Meta.\n\nI picked the treatment-decision window. A plan has been proposed, a start date exists, and in the two to four weeks between them one question sits in the room without a good way to answer it. Is this everything, or is this the first thing? That window is the only moment where a 24 hour report changes anything, which is the entire argument for it over any other segment.\n\nThe wedge is completeness, not correctness. Correctness framing asks whether the plan is right, which puts the product against the oncologist and crosses a compliance line the team cannot cross. Completeness asks whether the full option set is visible. It never grades the plan, and it is already their own headline.\n\nSpec work. It was never run, so there is no performance data here. Everything below is the deliverable and the reasoning.',
+    stats: [
+      { value: '$50K', label: 'Planned across Google Search and Meta' },
+      { value: '5', label: 'Ad variants, written and rendered as mockups' },
+      { value: '1', label: 'Landing page, built rather than described' },
+      { value: '2 to 4 weeks', label: 'The decision window the whole plan targets' },
+      { value: '65/35', label: 'Search to Meta split, by where intent is legible' },
+      { value: '~2.5 hrs', label: 'Build time end to end' },
+    ],
+    sections: [
+      {
+        title: 'One moment, two people',
+        body: 'Two people occupy that window, and the channel decides which one you reach. On Google the query does the targeting, so whoever types stage 2 lung cancer treatment options has told you everything.\n\nOn Meta you cannot target a health condition at all. Detailed targeting for health was removed in 2022, and policy forbids an ad implying it knows the viewer\'s health status. So the creative does the qualifying, and the only person an ad can legally address is the caregiver. Roughly 43 percent of health information seekers are researching for someone else, and they are the ones who go online first. The constraint and the best strategy point the same direction.',
+      },
+      {
+        title: 'Five ads, built in their system',
+        body: 'Two Google responsive search ads and three Meta concepts, all written to run as is.\n\nThe Meta creatives are built on Radical\'s own assets rather than invented ones: the still from their hero film behind the caregiver headline, a real patient\'s portrait cropped the way their site crops it, and the three option cards lifted straight out of the actual report. Their licensed display face is self-hosted so the type is theirs, and their headline underline device is reused exactly.\n\nWhat is not in any of them: no countdown, no urgency device of any kind. The urgency is already in the room. Manufacturing more of it is the fastest way to lose this audience permanently. Calm is the differentiated position in a feed full of people shouting at sick people.',
+      },
+      {
+        title: 'A paid landing page, not a homepage',
+        body: 'The landing page is deliberately not their homepage. Logo only, no navigation, one CTA repeated once, seven blocks, message-matched to the ad that drove the click. It uses the real report screenshot as the proof rather than describing it.\n\nThe sequencing is built around where the funnel actually leaks. The first conversion is a three-field coverage check, which is easy. The real drop is at records connection, the moment a stranger on the internet asks for access to your medical file. So the page names the records step before the click, names the 70,000 institution network to turn an act of trust into an act of logistics, and puts the NCCN advisors and the nurse above the form, because the question people are really asking is not is this secure, it is is this real.',
+      },
+      {
+        title: 'The metric and the two-week plan',
+        body: 'The number on the wall is cost per records-connected patient, not cost per coverage check. A check with no records behind it produces a generic report and a dead relationship, and counting it makes a channel look good while it wastes money.\n\nWeek one changes nothing except negative keywords. The instinct to optimise on day three is the most expensive instinct in paid acquisition at this budget. End of week two the kill, scale and pause thresholds are already written down and agreed, including killing any ad whose coverage checks connect records under 40 percent even if its cost per check is the best in the account, because it is buying the wrong person.\n\nOne honest note carried on the page: price sits behind the coverage check, so contribution margin and a true allowable CAC could not be modelled from outside. Every threshold is a starting hypothesis to be replaced by week one data.',
+      },
+    ],
+  },
+  {
+    slug: 'gamma-just-a-sec',
+    title: 'Need a deck? just a sec.',
+    company: 'Take-Homes',
+    thumbnail: '/portfolio/gamma-just-a-sec-three-hooks-card.jpg',
+    thumbnailColor: '#0d0d0d',
+    images: [
+      '/portfolio/gamma-just-a-sec-three-hooks.jpg',
+      '/portfolio/gamma-just-a-sec-product-take.jpg',
+      '/portfolio/gamma-just-a-sec-statics.jpg',
+      '/portfolio/gamma-just-a-sec-figma-parts.jpg',
+    ],
+    imageLabels: {
+      1: 'The product take. One unbroken 11.1 second shot, captions set above the UI',
+      2: 'Three statics at 4:5, 1:1 and 9:16, rendered from the same config as the video',
+      3: 'The component library. Every piece exported on its own at 3x, transparent',
+    },
+    link: 'https://heynatefox.com/gamma',
+    description: 'A paid social campaign for Gamma, produced as a take-home for an AI Creative Strategist role.\n\nThe brief asked for three video variants, statics in three ratios, and a process note. The normal way to do that is screen record the product, cut it in Premiere, hand back three exports. That gets you three assets. It does not get you a fourth.\n\nThe real constraint in paid social is not making one good ad. A creative that works on Meta is spent in two to three weeks, so the number that governs cost over a quarter is how fast the replacement lands. So I set a different problem: build the asset in a way where the thirtieth variant costs about what the fourth did.\n\nThe product UI in these spots is not a screen recording. It is rebuilt as vector in plain HTML and CSS, driven by a deterministic seek function that returns the exact state of any frame at any time. Puppeteer steps that one frame at a time in headless Chrome and pipes PNGs into ffmpeg, so every run is frame identical. Because the frame is a pure function of time, everything describing the ad is data: copy, timing, camera keyframes, captions, slides. Changing the concept is editing a config, not reopening a design file.',
+    stats: [
+      { value: '3', label: 'Videos at 20.00s, 1080x1920, one shared spine' },
+      { value: '2,663', label: 'Lines of render engine across 13 files' },
+      { value: '5', label: 'Output ratios from one config' },
+      { value: '65', label: 'Figma-ready components exported at 3x' },
+      { value: '182', label: 'Files delivered across 13 folders' },
+      { value: '50 min', label: 'To rebuild after the concept changed completely' },
+      { value: '3 days', label: 'First render to final cut' },
+    ],
+    sections: [
+      {
+        title: 'Three hooks, one spine',
+        body: 'Three genuinely different openers run against one identical middle. A person reading the message, a team channel where the ask is already sitting there, and a title card that states the need with no setup. Each is a hypothesis about a different axis: a face buys attention, a channel buys recognition, a line buys clarity.\n\nThe middle never changes, because the middle is where viewers leave. It is one unbroken 11.1 second take of the real product flow that never cuts away from the screen, so the payoff and the product are the same shot. All three land on 20.00 seconds exactly, because each opener buys its length out of its own close.',
+      },
+      {
+        title: 'Building the system before the output',
+        body: 'The first pass built the engine, not the spot. That is the whole bet, and it is visible in the file structure: 2,663 lines of engine across 13 files, then three finished videos that are each a short config on top of it.\n\nIt paid off twice. Once when the concept changed completely mid-build, which cost 50 minutes instead of a restart, and the previous concept still renders untouched from its archived config. Again on every round of revisions, where a note like the captions are in the wrong place is a coordinate change and a re-render rather than a re-edit.',
+      },
+      {
+        title: 'Diagnosing motion by measuring it, not watching it',
+        body: 'Several rounds of feedback were about a transition feeling choppy. Watching it back and guessing produced three failed fixes.\n\nTracking the object frame by frame found the cause in one pass. The canvas clipped content flat against the page with no visible boundary, so the final slide\'s bottom edge sat pinned on the clip line for thirteen consecutive frames while its top climbed. It was not scrolling into place. It was inflating, because the bottom physically could not move.\n\nThe same approach fixed the cut into the send beat. Measuring pixel difference across the cut gave a number to work against: 117,677 differing pixels before, 305 after. That is the difference between an edit that reads as a scene change and one that is invisible.',
+      },
+      {
+        title: 'Handed over as a system',
+        body: '182 files across 13 folders, not three exports. Alpha layers on ProRes 4444 and VP9 so any line can be reworded without touching the base. A 65 piece component library for Figma. A build script where changing one constant re-cuts all three videos consistently. The statics render from the same config as the video, which is why the times on screen match across all of it.\n\nI wrote none of the code by hand. Claude Opus 5 through Claude Code built the engine, the overlay layers and the build script, and drove every render. The concept, the campaign line, the hook structure, the pacing and every creative call were mine, and several rounds were rejected and rebuilt on my direction. The AI is in how it was made, not in what plays.',
+      },
+    ],
+  },
+  {
+    slug: 'marin-mountain-school',
+    title: 'Marin Mountain School',
+    company: 'Marin Mountain School',
+    thumbnail: '/portfolio/marin-mountain-school-home-card.jpg',
+    images: [
+      '/portfolio/marin-mountain-school-home.jpg',
+      '/portfolio/marin-mountain-school-community.jpg',
+      '/portfolio/marin-mountain-school-admissions.png',
+      '/portfolio/marin-mountain-school-apply.png',
+      '/portfolio/marin-mountain-school-mobile.png',
+      '/portfolio/marin-mountain-school-share-card.jpg',
+    ],
+    imageLabels: {
+      1: 'Community page, one of twelve designed templates',
+      2: 'Admissions',
+      3: 'The school’s existing 65-field Gravity Form, restyled and left running',
+      4: 'Homepage at 390px',
+      5: 'Social share card, generated from the site’s own logo and brand fonts',
+    },
+    link: 'https://www.marinmountainschool.org',
+    description: 'A 35-year-old preschool in Corte Madera wanted a rebuild. The design was dated and the site looked it.\n\nThe rebuild was most of the way done as a custom Next.js site before the real constraint surfaced. The school does not just publish pages. It takes money and runs admissions through that site. Nine Gravity Forms, live Stripe, a 65-field admission application with a fee attached, a named scholarship fund, and nine years of submitted entries behind them. At the point the new site was ready to launch, 292 applications and 372 contact messages were already in that system.\n\nSo the actual problem was not design. A beautiful new site on a different stack would have orphaned a working payment pipeline during admissions season, and the director who runs it is not technical and had no appetite for learning a second system.\n\nI abandoned the Next.js deployment and ported the design into their existing WordPress instead. Forms, payments and entry history stayed exactly where they were, it cost the school nothing new, and it removed a hosting bill rather than adding one.',
+    stats: [
+      { value: '18', label: 'Page templates in the shipped theme' },
+      { value: '292', label: 'Admission applications the redesign had to not break' },
+      { value: '9', label: 'Existing Gravity Forms preserved, including a 65-field application' },
+      { value: '54', label: 'Editable fields exposed to the school' },
+      { value: '3,649', label: 'Lines of PHP, JS and CSS in the theme' },
+      { value: '0', label: 'Seconds of downtime at launch' },
+    ],
+    sections: [
+      {
+        title: 'The audit that changed the plan',
+        body: 'I crawled all 24 pages of the live site and mapped every form to the page embedding it, which is what produced the finding the project turned on. The new-family application lived on a noindexed page nobody had mentioned. Tuition ran through FACTS Management rather than the parent portal everyone assumed. Two of the nine forms were embedded nowhere at all.\n\nIt also corrected the site\'s own copy. The donate page claimed gifts were processed through the parent portal. They were not. They ran through Gravity Forms and Stripe.',
+      },
+      {
+        title: 'Launching without downtime',
+        body: 'The theme was uploaded inactive, so it sat on the server changing nothing while the director reviewed it through WordPress Live Preview, which renders the new design for one logged-in session while every visitor still sees the old site.\n\nThe flip was activating the theme. Ten seconds, no database change, no downtime, and rollback was activating the old theme again. The one thing I refused to use was SiteGround\'s push-to-live, which overwrites the live database and would have destroyed any application submitted during the build window.\n\nOld pages I never designed still render, because the default template carries the full design language. Nothing 404s and nothing looks half-finished.',
+      },
+      {
+        title: 'Making it editable by a non-technical director',
+        body: 'The school\'s director does everything and is not comfortable with WordPress. The point of the ACF layer was to make her independent of me.\n\nEvery photo and every piece of global copy is exposed through ACF Pro as Local JSON, so field definitions live in git rather than trapped in a database. Templates read those fields with the current content hardcoded as a fallback, so the theme renders complete the moment it is activated and editing is optional instead of a prerequisite.\n\nShe gets a custom Welcome dashboard with large labeled cards for the tasks she actually does, and a How-To Guides page beside it with plain-language walkthroughs that print, because she prefers paper. Menus she does not need are hidden from non-admin roles, and Editors can read form entries without being able to touch plugins, payments or the design.',
+      },
+      {
+        title: 'Copy under a trademark constraint',
+        body: 'After launch the school was told by its accrediting association that the site could not use a specific pedagogical term in the domain, name, tagline, headers or links, and that the copy had to describe what the school does rather than what that tradition does.\n\nI rewrote the site to that rule. The headline changed, the FAQ was restructured so the school is the grammatical subject of every question and answer, page titles and schema descriptions were rewritten, eight alt texts were fixed and the share card was regenerated. Then I verified compliance against the live site rather than assuming it: zero occurrences in any page title, any h1 or h2, or any alt text across all 11 pages.\n\nThe positioning survived. The term still appears where the rules allow it, in full sentences on three pages and in teachers\' factual training credentials.',
+      },
+    ],
+  },
+  {
+    slug: 'head-rush-kids',
+    title: 'Head Rush Kids',
+    company: 'AI Builds',
+    thumbnail: '/portfolio/head-rush-kids-gameplay-card-card.jpg',
+    thumbnailColor: '#0d0d0d',
+    images: [
+      '/portfolio/head-rush-kids-gameplay-card.png',
+      '/portfolio/head-rush-kids-deck-store.png',
+      '/portfolio/head-rush-kids-results.png',
+      '/portfolio/head-rush-kids-paywall.png',
+    ],
+    imageLabels: {
+      1: 'The deck store. Each tier states its price once in the section header',
+      2: 'Results screen with a per-card recap',
+      3: 'The unlock sheet, behind a press-and-hold gate so a child cannot trigger it',
+    },
+    link: 'https://headrushkids.com',
+    description: 'Work in progress. The game is built, live and playable, but payments are still in Stripe test mode and nothing is instrumented, so there are no player, retention or revenue numbers here yet. It is in the portfolio for what it took to build, not for what it has done.\n\nHold a phone to your forehead, tilt down when your group gets the word, tilt up to skip, 60 seconds a round. 28 decks, 50 cards each, 1,400 cards total, every one a word plus a large emoji so a child who cannot read can still give the clue. It opens from a link with no install.\n\nThe reason it exists is that my own kids could not play the games in the app store. The good ones assume you can read, and every one of them charges again for content that should have shipped with it.\n\nThe reason it took a year is one bug.',
+    stats: [
+      { value: '1,400', label: 'Cards across 28 decks' },
+      { value: '0', label: 'npm dependencies and no build step' },
+      { value: '1,217', label: 'Lines of application code' },
+      { value: '3', label: 'Unlock tiers: 4 free decks, 4 for an email, 20 paid' },
+      { value: '6', label: 'Serverless endpoints' },
+      { value: '3 months', label: 'That one motion bug stalled the project' },
+    ],
+    sections: [
+      {
+        title: 'The bug that stalled it for three months',
+        body: 'A phone held flat against a forehead sits exactly where the browser orientation API breaks down. My first attempt read the gamma angle, which flips sign near vertical, so tilts registered twice or not at all. Three months of the project died on that.\n\nThe fix was to stop reading orientation angles and read the gravity vector instead. The devicemotion event reports acceleration including gravity, and the z component of that vector gives a clean pitch angle with no discontinuity in the forehead position. Tilt down is positive, tilt up is negative, and it behaves the same in both landscape directions.\n\nThat is the whole reason this project is worth showing. Not the game. The three months it took to learn that the obvious API was the wrong one.',
+      },
+      {
+        title: 'Tuning it for a room full of kids',
+        body: 'On top of the gravity vector sits the tuning that makes it feel right. Three sensitivity presets expressed in real degrees from vertical: 45, 35 and 25. A card only re-arms once the phone returns within 15 degrees of vertical and at least 400 milliseconds have passed, so one enthusiastic swing cannot burn two cards. A single sign constant flips the whole thing if a device reports gravity inverted.\n\nThere is a debug mode that prints live pitch and lets arrow keys drive the same code path, so most of the work could be tested on a laptop instead of by picking up a phone after every change.\n\nPortrait is for setup, landscape is for play. The round starts on its own when the phone turns and pauses if it turns back. Orientation events are unreliable across mobile browsers, so that runs off listeners plus a polling watchdog rather than trusting any single event to fire.',
+      },
+      {
+        title: '1,400 cards, tagged at the source',
+        body: 'Sixteen cards per deck was not enough. A deck ran out before the timer did. Getting every deck to 50 meant writing 952 new cards.\n\nI ran four Claude subagents in parallel, each owning seven decks, each working against the same fixed schema: a word, one emoji, and three tags covering what kind of thing it is, whether it is best acted, sounded or described, and whether it is real or fictional. They wrote to separate files and a merge script checked every card before it landed, rejecting duplicates within a deck and any invalid tag. All 28 decks came out at exactly 50 with no failures.\n\nThe tags are not decoration. They are the schema the capture layer records against.',
+      },
+      {
+        title: 'Where it stands',
+        body: 'Shipped: the game, 1,400 cards, the motion engine, the three-tier unlock, Stripe Checkout with session verification, two domains, a manifest and icons so it installs as a real web app, and a plain-language privacy policy written for parents.\n\nNot done: payments are in test mode, the capture layer and email list are unconfigured in production, and it has never been put in front of anyone at scale. The next step is the app stores, which is what the privacy policy and the installable wrapper were for.\n\nOne architectural note I would keep. The whole game is one HTML file, one data file and six serverless functions. No framework, no bundler, no npm dependencies. It deploys by pushing a folder and it loads instantly on a bad phone at a birthday party, which is the only performance test that matters here. No model runs in the shipped product. AI was the build method, not the feature.',
       },
     ],
   },

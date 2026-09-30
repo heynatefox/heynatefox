@@ -213,12 +213,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   textAlign: 'center',
                   border: '1px solid var(--border)',
                 }}>
-                  <div style={{
+                  <div className="project-stat-value" style={{
                     fontFamily: "'Syne', sans-serif",
                     fontSize: 28,
                     fontWeight: 800,
                     color: '#E8601C',
-                    lineHeight: 1,
+                    lineHeight: 1.05,
                     marginBottom: 8,
                   }}>
                     {stat.value}
@@ -330,6 +330,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         @media (max-width: 900px) {
           main > div { padding: 120px 24px 60px !important; }
           .project-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        /* keep a figure on one line instead of breaking it mid-number */
+        .project-stat-value { overflow-wrap: normal; word-break: keep-all; hyphens: none; }
+        @media (max-width: 560px) {
+          .project-stats-grid { gap: 10px !important; }
+          .project-stats-grid > div { padding: 18px 14px !important; }
+          .project-stat-value { font-size: 22px !important; }
+        }
+        @media (max-width: 400px) {
+          .project-stat-value { font-size: 20px !important; }
         }
       `}</style>
     </>
