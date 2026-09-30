@@ -1,20 +1,20 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { PROJECTS, COMPANIES } from '@/lib/portfolioData'
+import { PROJECTS, FILTERS } from '@/lib/portfolioData'
 
 export default function PortfolioGrid() {
   const [filter, setFilter] = useState('All')
 
   const filtered = filter === 'All'
     ? PROJECTS
-    : PROJECTS.filter(p => p.company === filter)
+    : PROJECTS.filter(p => p.tags.includes(filter as never))
 
   return (
     <>
       {/* Filter pills */}
       <div className="portfolio-filters">
-        {COMPANIES.map(c => (
+        {FILTERS.map(c => (
           <button
             key={c}
             onClick={() => setFilter(c)}

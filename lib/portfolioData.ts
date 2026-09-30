@@ -1,3 +1,5 @@
+export type Tag = typeof TAGS[number]
+
 export type ProjectStat = { value: string; label: string }
 export type ProjectSection = { title: string; body: string; image?: string }
 
@@ -5,6 +7,7 @@ export type Project = {
   slug: string
   title: string
   company: string
+  tags: Tag[]
   thumbnail: string
   thumbnailColor?: string
   images: string[]
@@ -16,13 +19,16 @@ export type Project = {
   imageLabels?: Record<number, string>
 }
 
-export const COMPANIES = ['All', 'AI Builds', 'Take-Homes', 'Conmetior', 'Marin Mountain School', 'Bad Cards', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'AirPR', 'Other'] as const
+export const TAGS = ['AI Build', 'Growth', 'Brand', 'Campaign', 'Product', 'Creative Ops', 'Take-home'] as const
+
+export const FILTERS = ['All', ...TAGS] as const
 
 export const PROJECTS: Project[] = [
   {
     slug: 'hot-or-cold',
     title: 'Hot or Cold',
-    company: 'AI Builds',
+    company: 'Personal',
+    tags: ['AI Build', 'Product'],
     thumbnail: '/portfolio/hot-or-cold-hero-card.jpg',
     thumbnailColor: '#0d0d0d',
     images: [
@@ -71,6 +77,7 @@ export const PROJECTS: Project[] = [
     slug: 'conmetior-connect',
     title: 'Conmetior Connect',
     company: 'Conmetior',
+    tags: ['AI Build', 'Product', 'Growth'],
     thumbnail: '/portfolio/conmetior-connect-home-card.jpg',
     images: [
       '/portfolio/conmetior-connect-home.png',
@@ -118,7 +125,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'forterra-compliance-checker',
     title: 'Pre-Flight Compliance Checker',
-    company: 'Take-Homes',
+    company: 'Forterra',
+    tags: ['AI Build', 'Product', 'Take-home'],
     thumbnail: '/portfolio/forterra-hero-card.jpg',
     thumbnailColor: '#1a1a1a',
     images: [
@@ -162,7 +170,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'radical-health-acquisition',
     title: 'Radical Health, D2C Patient Acquisition',
-    company: 'Take-Homes',
+    company: 'Radical Health',
+    tags: ['Growth', 'Campaign', 'AI Build', 'Take-home'],
     thumbnail: '/portfolio/radical-health-hero-card.jpg',
     thumbnailColor: '#D55E3F',
     images: [
@@ -208,7 +217,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'gamma-just-a-sec',
     title: 'Need a deck? just a sec.',
-    company: 'Take-Homes',
+    company: 'Gamma',
+    tags: ['AI Build', 'Campaign', 'Take-home'],
     thumbnail: '/portfolio/gamma-just-a-sec-three-hooks-card.jpg',
     thumbnailColor: '#0d0d0d',
     images: [
@@ -256,6 +266,7 @@ export const PROJECTS: Project[] = [
     slug: 'marin-mountain-school',
     title: 'Marin Mountain School',
     company: 'Marin Mountain School',
+    tags: ['AI Build', 'Product', 'Brand'],
     thumbnail: '/portfolio/marin-mountain-school-home-card.jpg',
     images: [
       '/portfolio/marin-mountain-school-home.jpg',
@@ -304,7 +315,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'head-rush-kids',
     title: 'Head Rush Kids',
-    company: 'AI Builds',
+    company: 'Personal',
+    tags: ['AI Build', 'Product'],
     thumbnail: '/portfolio/head-rush-kids-gameplay-card-card.jpg',
     thumbnailColor: '#0d0d0d',
     images: [
@@ -351,6 +363,7 @@ export const PROJECTS: Project[] = [
     slug: 'bad-cards-platform',
     title: 'Platform & Growth',
     company: 'Bad Cards',
+    tags: ['Product', 'Growth'],
     thumbnail: '/portfolio/badcards-platform-hero.png',
     thumbnailColor: '#0d0d0d',
     images: ['/portfolio/badcards-platform-hero.png'],
@@ -391,6 +404,7 @@ export const PROJECTS: Project[] = [
     slug: 'gametime-12-days',
     title: '12 Days of Gametime',
     company: 'Gametime',
+    tags: ['Campaign', 'Growth'],
     thumbnail: '/portfolio/gametime-hero.png',
     images: [
       '/portfolio/gametime-hero.png',
@@ -422,7 +436,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'ditch-your-site',
     title: 'DitchYourSite',
-    company: 'Other',
+    company: 'Personal',
+    tags: ['AI Build', 'Product'],
     thumbnail: '/portfolio/ditchyoursite-hero.png',
     images: ['/portfolio/ditchyoursite-hero.png'],
     description: 'DitchYourSite is an AI-powered website migration tool that scrapes any public website and outputs a complete migration kit \u2014 structured JSON, downloaded images, and a pre-written Claude Code prompt \u2014 ready to rebuild the site as a modern Next.js application. Built and shipped in under 48 hours from concept to live product with payments.\n\nLeaving Squarespace, Wix, Showit, or any legacy website builder is painful. The platforms don\'t give you your content back in a usable format. Designers charge $3\u20135K to rebuild. Manual migration takes days. There was no fast, affordable, self-serve path from "I hate my website" to "I have a new one."\n\nPaste a URL. Click Scrape. Get a ZIP file containing everything needed to rebuild the site with AI \u2014 all pages, all images, full text content, nav structure, and a ready-to-paste Claude Code prompt. The entire migration goes from weeks to hours.',
@@ -447,7 +462,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'personalityhire-ai',
     title: 'PersonalityHire.ai',
-    company: 'Other',
+    company: 'Personal',
+    tags: ['AI Build', 'Product'],
     thumbnail: '/portfolio/personalityhire-hero.png',
     images: ['/portfolio/personalityhire-hero.png'],
     description: 'A lightweight Slack bot built solo using AI-assisted coding tools including v0.dev and ChatGPT. The bot sends randomized, chaotic-good messages to keep teams entertained, with admins able to add custom messages.\n\nHandled ~90% of the build solo, then brought in an engineer for final polish and Slack submission. A fun experiment to test AI-assisted development capabilities.',
@@ -461,7 +477,8 @@ export const PROJECTS: Project[] = [
   {
     slug: 'creative-marketing-ops-playbook',
     title: 'Creative + Marketing Ops Playbook',
-    company: 'Other',
+    company: 'Personal',
+    tags: ['Creative Ops'],
     thumbnail: '/portfolio/aaba8d72-52ea-42fe-9073-3942f84fdeb9_car_1x1.png',
     images: [
       '/portfolio/849d33ed-f9e6-4a23-bfbe-fd2d7f1f0018_rw_1920.png',
@@ -473,6 +490,7 @@ export const PROJECTS: Project[] = [
     slug: 'process-implementation',
     title: 'Process Implementation',
     company: 'Lyft',
+    tags: ['Creative Ops'],
     thumbnail: '/portfolio/7f8819e9-f0ad-4bb4-a3c7-8113e4666fad_rwc_0x0x1746x1746x1746.png',
     images: [
       '/portfolio/2d6c3d25-704c-4a4d-b614-b1f06058019c_rw_1200.png',
@@ -490,6 +508,7 @@ export const PROJECTS: Project[] = [
     slug: '12-days-of-momo',
     title: '12 Days Of Momo',
     company: 'Concept Labs',
+    tags: ['Campaign', 'Brand'],
     thumbnail: '/portfolio/cd05c55c-3120-425b-b714-6c01f31b423f_rwc_337x0x1017x1017x1017.png',
     images: [
       '/portfolio/4724e046-8025-40b3-8aef-0f8cd9b5eb05_rw_1920.png',
@@ -508,6 +527,7 @@ export const PROJECTS: Project[] = [
     slug: 'robinhood-you-got-it',
     title: 'You Got It',
     company: 'Robinhood',
+    tags: ['Campaign', 'Brand'],
     thumbnail: '/portfolio/9dfe4c52-a25d-47d4-8020-873412eddac3_rwc_720x0x1844x1844x1844.png',
     images: [
       '/portfolio/d7723cfe-14ed-4b14-a20e-813ccce6b55b_rw_1200.png',
@@ -521,6 +541,7 @@ export const PROJECTS: Project[] = [
     slug: 'concept-labs-rebrand',
     title: 'Rebrand Strategy',
     company: 'Concept Labs',
+    tags: ['Brand'],
     thumbnail: '/portfolio/54e1b0a5-ec2a-4a4e-81b4-96a52e9be3e7_rwc_458x80x847x847x847.jpg',
     images: [
       '/portfolio/f9dc1753-24e4-4dd9-9bc3-afa58b6a85ba_rw_3840.png',
@@ -566,6 +587,7 @@ export const PROJECTS: Project[] = [
     slug: 'y-lyft',
     title: 'Y Lyft Brand Campaign',
     company: 'Lyft',
+    tags: ['Campaign', 'Brand'],
     thumbnail: '/portfolio/c39f7928-7efe-4005-a732-d01c481eb749_rwc_211x0x540x540x540.png',
     images: [
       'https://cdn.myportfolio.com/0b016d8a836e89dbab66b15317ee8de6/487c9ac8-fc22-4072-a63a-686ce0f25080_rw_1200.png?h=26d638c00c8d5620b7d5565fd81ead0b',
@@ -582,6 +604,7 @@ export const PROJECTS: Project[] = [
     slug: 'bad-cards-rebrand',
     title: 'Rebrand',
     company: 'Bad Cards',
+    tags: ['Brand'],
     thumbnail: '/portfolio/7264a83d-2bdc-4854-8169-0fc89b60ec7a_rwc_445x121x1031x1031x1031.jpg',
     images: [
       'https://cdn.myportfolio.com/0b016d8a836e89dbab66b15317ee8de6/7d2e7ab7-c134-4d78-889f-6ea6a6baf681_rw_1920.gif?h=110126c927a59319e98fa490bb68e4ea',
@@ -610,6 +633,7 @@ export const PROJECTS: Project[] = [
     slug: 'robinhood-creative-support',
     title: 'Creative Support',
     company: 'Robinhood',
+    tags: ['Brand'],
     thumbnail: '/portfolio/a222145e-adfb-4eb5-bd14-1ed12ab50c3f_rwc_0x0x1008x1008x1008.gif',
     images: [
       'https://cdn.myportfolio.com/0b016d8a836e89dbab66b15317ee8de6/e1295db5-0315-4142-a4c0-2598df9e1bbd_rw_1200.gif?h=f01325b76c8831edfcfef106f6b435af',
@@ -649,6 +673,7 @@ export const PROJECTS: Project[] = [
     slug: 'airpr-brand-development',
     title: 'Brand Development',
     company: 'AirPR',
+    tags: ['Brand'],
     thumbnail: '/portfolio/8a342c3f-6f45-44e1-9334-e5d75ad9fb87_rwc_0x0x1693x1693x1693.gif',
     images: [
       'https://cdn.myportfolio.com/0b016d8a836e89dbab66b15317ee8de6/f99cb068-244a-4144-b36f-0be13c6ec2a9_rw_600.png?h=8045d7fe70a34485bdaf29691f561cfd',
