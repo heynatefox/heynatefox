@@ -49,7 +49,7 @@ export const SEGMENT = {
   wedge: [
     'Correctness asks whether the plan is right. That puts Radical against the oncologist, invites a claim about treatment quality, and crosses the line the team cannot cross. Completeness asks whether the full option set is visible. It never evaluates the plan, never recommends a treatment, and positions Radical alongside the oncologist.',
     'It is also already your headline. I am pointing spend at the position you have.',
-    'One clarification, because this is a real decision rather than an obvious one. There are two windows, not one. The other is progression or recurrence, when the standard options are running out. Diagnosis is the larger market and the cheaper place to learn what message works. Progression has higher intent, a single question, and a second possible payer. I built for the first. Section six is what would make me move.',
+    'One clarification. There are two windows, not one. The other is progression or recurrence, when the standard options are running out. Diagnosis is the larger market and the cheaper place to learn what works. Progression has higher intent, one question, and a second possible payer. I built for the first and would test into the second early.',
   ],
 }
 
@@ -217,35 +217,36 @@ export const PLAYBOOK = {
   targeting: {
     h3: 'Targeting',
     googleLead: 'Google Search, 65% of budget.',
-    google: 'This is where the moment announces itself. Someone typing "questions to ask oncologist before starting chemo" has told you everything you need to know. Exact and phrase match only in week one. Broad match gets added in week two, and only against clusters that have already converted.',
+    google: 'This is where the moment announces itself. Someone typing "questions to ask oncologist before starting chemo" has told you everything. Exact and phrase match in week one. Broad match in week two, and only against clusters that already converted.',
     clusters: [
       ['Options cluster', 'the core', ['breast cancer treatment options', 'stage 3 lung cancer treatment options', 'triple negative treatment options', 'her2 positive treatment options', 'colorectal cancer treatment options', 'what are my options after diagnosis', 'alternatives to chemotherapy']],
       ['Trials cluster', 'underpriced', ['clinical trials for breast cancer', 'am i eligible for a clinical trial', 'clinical trials near me', 'how to find a cancer clinical trial', 'lung cancer clinical trials']],
       ['Preparation cluster', 'cheapest inventory', ['questions to ask oncologist', 'what to ask before starting chemo', 'how to prepare for oncology appointment', 'understanding my pathology report', 'what does my pathology report mean']],
       ['Second opinion cluster', 'smallest. Deliberately underweighted', ['cancer second opinion', 'oncology second opinion online', 'remote second opinion cancer', 'second opinion before starting chemo']],
     ] as [string, string, string[]][],
-    clusterNote: 'I underweighted second opinion on purpose. In a JAMA Oncology study of 1,901 newly diagnosed breast cancer patients, 90% never got a second medical oncology opinion and 95% were treated by their first oncologist. It is the obvious cluster to build around and it is a much smaller market than it looks. The options and preparation clusters carry this account.',
+    clusterNote: 'Second opinion is underweighted on purpose. In a JAMA Oncology study of 1,901 newly diagnosed breast cancer patients, 90% never got a second opinion and 95% stayed with their first oncologist. It is the obvious cluster to build around and a much smaller market than it looks.',
     negativesLabel: 'Negatives, set before launch',
     negatives: ['survival rate', 'life expectancy', 'how long to live', 'prognosis stage 4', 'free', 'jobs', 'salary', 'donate', 'fundraiser', 'symptoms', 'causes', 'is it curable', 'end of life', 'hospice', 'obituary'],
     negativesNote: 'Prognosis and survival queries are excluded for two reasons. They convert badly, and targeting them is the kind of thing a patient would feel sick about if they ever found out. It fails the trust test even though the volume looks attractive.',
     metaLead: 'Meta, 35% of budget.',
     meta: [
-      'Meta cannot be targeted at this segment. Health condition targeting was removed in January 2022, so what remains is age, gender and location. Broad audience, 30 and up, US, one campaign, one ad set, three creatives, Feed and Reels only. The creative is the targeting. Policy also forbids implying the viewer\'s health status, which is why every Meta ad above is written about someone else. The constraint and the best strategy point the same direction.',
+      'Health condition targeting was removed in January 2022, so what remains is age, gender and location. Broad, 30 and up, US, one campaign, one ad set, three creatives, Feed and Reels only. The creative does the targeting. Policy also forbids implying you know the viewer\'s health status, which is why every Meta ad above is written about someone else. The constraint and the best strategy point the same way.',
     ],
   },
   funnel: {
     h3: 'The funnel, as it actually works',
     steps: ['Ad', 'Coverage check (3 fields)', 'Price revealed', 'Records connected', 'Report in 24h'],
     body: [
-      'Radical\'s first conversion is not a purchase. It is a three-field coverage check: state, city, health plan. The real drop is at records connection, the moment a stranger on the internet asks for access to your medical file. The landing page is built for that step. It names the records step before the click, names the 70,000 institution network, and puts the NCCN advisors and the nurse above the form, because the question people are really asking is not "is this secure," it is "is this real."',
+      'The first conversion is not a purchase. It is a three-field coverage check. The real drop is at records connection, the moment a stranger asks for access to your medical file. The landing page is built for that step: it names the records step before the click, names the 70,000 institution network, and puts the advisors and the nurse above the form. The question people are really asking is not "is this secure," it is "is this real."',
     ],
   },
   metric: {
     h3: 'The metric',
     big: 'Cost per records-connected patient.',
     body: [
-      'Not cost per coverage check. A check with no records behind it produces a generic report and a dead relationship. Coverage-check completion is the week-one read because it gives volume fast. Records-connected is the number I would put on the wall, and records-connection rate is a creative diagnostic. An ad whose checks never connect records is buying curiosity, and it gets killed regardless of its cost per check.',
-      'One honest note. Price is gated behind the coverage check, so I cannot model contribution margin or a true allowable CAC from outside. Every threshold below is a starting hypothesis to be replaced by week one data. Healthcare search CPCs run around $4.76 to $5.64 depending on the benchmark.',
+      'Not cost per coverage check. A check with no records behind it is a generic report and a dead relationship. Coverage checks are the week-one read because they give volume fast. Records-connected is the number on the wall. An ad whose checks never connect records is buying curiosity, and it gets killed however cheap it looks.',
+      'Since we spoke I have the shape of the economics, and it changes the conclusion rather than softening it. A first paid engagement returns a couple of hundred dollars. Acquisition costs several times that today. The target is a fraction of the current number.',
+      'That gap is not a paid media problem. Good work on a badly run account might take a third off. It does not take you to a sixth. Search and Meta are how you learn which message works and what a real customer looks like. The rest has to come from channels where the marginal cost of one more patient is close to nothing, which is what the last three sections are about.',
     ],
   },
   plan: {
@@ -276,8 +277,8 @@ export const PLAYBOOK = {
 export const NEXT = {
   h2: "What I'd test next.",
   items: [
-    ['The second moment.', 'Everything above targets diagnosis. There is a second window, progression or recurrence, where the standard options are running out and the only question is whether a trial exists. Fewer than one in ten patients ever enroll, but 55% say yes when they are offered one. Nobody runs the search, and running the search is the product.\n\nWhat makes this more than a second segment is who pays for it. Oncology trial recruitment runs roughly $15,000 to $50,000 per enrolled patient, and screen failure rates in oncology regularly exceed 70%. A patient who has already connected their records and been matched against 48,800 trials is pre-screened, which is the exact cost a trial sponsor is trying to avoid. Leal Health and Massive Bio both run trial matching that is free to the patient because pharma funds it. If a second payer covers acquisition for this segment, the math stops looking like consumer acquisition at all.'],
-    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT and Claude right now and getting a generic answer back. That query is Radical\'s product, stated out loud, and almost nobody in this category is playing for it deliberately yet.\n\nThere are real mechanics here, not just more blog posts. Structured data markup materially raises the rate at which a model selects a page. Answers get lifted when each section opens with a direct, self-contained response to the question in its own heading, rather than building to a conclusion at the end. And citations go to sources, which means original data rather than commentary. Radical is one of the few companies in this category that has data worth citing.'],
+    ['The second moment.', 'Everything above targets diagnosis. The second window is progression or recurrence, when the standard options are running out and the only question left is whether a trial exists. Fewer than one in ten patients ever enroll, but 55% say yes when offered. Nobody runs the search, and running the search is the product.\n\nWhat makes it more than a second segment is who pays. Oncology trial recruitment runs roughly $15,000 to $50,000 per enrolled patient, and screen failure rates in oncology regularly exceed 70%. A patient who has connected their records and been matched against 48,800 trials is already pre-screened, which is the exact cost sponsors are trying to avoid. Leal Health and Massive Bio both run trial matching that is free to the patient because pharma funds it. A second payer for this segment changes the math completely.'],
+    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT right now and getting a generic answer. That query is Radical\'s product, stated out loud, and nobody in this category is playing for it deliberately yet.\n\nThere are real mechanics here, not more blog posts. Structured data markup raises the rate at which a model picks a page. Answers get lifted when a section opens with the direct answer instead of building to it. And citations go to sources, which means original data rather than commentary. Radical is one of the few companies here with data worth citing.'],
     ['Ungate the sample report.', 'The biggest objection in this category is "what am I actually going to get," and the answer already exists inside the product. The sample report sits behind a login. A fully anonymized composite case, published as a page, is the most persuasive asset the company owns.'],
   ] as [string, string][],
 }
@@ -286,7 +287,7 @@ export const AWARENESS = {
   h2: 'Nobody shops for this in advance.',
   body: [
     'This is a hard thing to sell, and not for the usual reasons. Nobody researches cancer reports before they need one. The need appears without warning, it lasts two to four weeks, and inside that window you are asking someone to hand a company they have never heard of access to their medical file.',
-    'You cannot build that much trust in two weeks. So the name has to already be familiar when the moment arrives, which makes awareness a prerequisite for the paid channel rather than a luxury sitting above it. The long-running IPA work by Binet and Field puts the efficient mix for consumer businesses near 60% brand and 40% activation. The plan above is 100% activation. That is correct for a first two weeks and wrong for a year.',
+    'You cannot build that much trust in two weeks, so the name has to be familiar before the moment arrives. That makes awareness a prerequisite for the paid channel, not a luxury above it. Binet and Field put the efficient mix near 60% brand and 40% activation. The plan above is 100% activation, which is right for two weeks and wrong for a year.',
   ],
   plays: [
     ['Use the credibility you already paid for.', 'Radical is in the Mayo Clinic Platform_Accelerate cohort, announced by Mayo. The reports were shaped by oncologists who sit on NCCN committees. Both facts are on the site and neither one leads. In a category where the only real objection is whether this is real, that is the cheapest awareness asset available and it is already bought.'],
@@ -298,7 +299,7 @@ export const AWARENESS = {
 export const CHANNEL = {
   h2: 'Getting patients to bring patients.',
   intro: [
-    'In healthcare you cannot pay for a referral. Not the patient, not a partner, not per signup. The federal Anti-Kickback Statute reaches anything a federal program might pay for, and state all-payor laws apply even when no insurance is involved at all. California bars compensation for referring patients and applies it to everyone in the chain, not just clinicians. Paying only for the non-federal patients does not work either.',
+    'In healthcare you cannot pay for a referral. Not the patient, not a partner, not per signup. The federal Anti-Kickback Statute reaches anything a federal program might pay for, and state all-payor laws apply even with no insurance involved. California bars compensation for referring patients and applies it to everyone in the chain. Paying only for non-federal patients does not work either.',
     'So the obvious ideas are all dead on arrival. A referral fee. A free report for sharing. A gift card from a partner brand. Gift cards count as cash, and anything given to a patient has to stay under roughly $15 an item and $75 a year to avoid the question entirely.',
     'Three things survive, and the last one is the one that scales.',
   ],
