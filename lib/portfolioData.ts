@@ -16,9 +16,53 @@ export type Project = {
   imageLabels?: Record<number, string>
 }
 
-export const COMPANIES = ['All', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'Other'] as const
+export const COMPANIES = ['All', 'Gametime', 'Lyft', 'Robinhood', 'Concept Labs', 'Bad Cards', 'AirPR', 'AI Builds', 'Other'] as const
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'hot-or-cold',
+    title: 'Hot or Cold',
+    company: 'AI Builds',
+    thumbnail: '/portfolio/hot-or-cold-round.png',
+    thumbnailColor: '#0d0d0d',
+    images: [
+      '/portfolio/hot-or-cold-hero.png',
+      '/portfolio/hot-or-cold-round.png',
+      '/portfolio/hot-or-cold-lobby.png',
+    ],
+    imageLabels: {
+      1: 'Shareable round recap, generated at the end of every round',
+      2: 'Lobby: room code, packs, pace, and cooperative or competitive mode',
+    },
+    link: 'https://hotorcold.app',
+    description: 'Hot or Cold is a real-time multiplayer party game. One player gets a hidden number on a spectrum and gives a single-word clue. Everyone else argues about where it lands. Three to ten players, learn it in a minute.\n\nThe game is also a measurement instrument. Every round produces a clean data point: a person, a prompt, a guess, and a correct answer. That structure answers a question worth answering. How well do people actually read each other, and does knowing someone make you better at it?\n\nI built it solo across five months and 176 commits. Design, code, game content, and the research layer. The interesting part is not that a model wrote code. It is that the product and the experiment are the same object.',
+    stats: [
+      { value: '19,199', label: 'Human guesses recorded across 7,485 rounds' },
+      { value: '0.98x', label: 'Human accuracy vs chance when reading one person cold' },
+      { value: '29.0 to 20.3', label: 'Mean error after three reads of the same person' },
+      { value: '3', label: 'Model providers answering the same rounds' },
+      { value: '176', label: 'Commits, May to September 2026' },
+      { value: '1', label: 'Person on the project' },
+    ],
+    sections: [
+      {
+        title: 'The stack',
+        body: 'pnpm monorepo, four packages: core, server, ui, and web. Real-time play runs on Colyseus over WebSocket with Fastify underneath. React with TanStack Router on the front end. Drizzle and Postgres on Neon for storage. The game server deploys to Fly.io, the client to Cloudflare Pages. It also ships as a Discord Activity, so a group plays inside a voice channel without installing anything.',
+      },
+      {
+        title: 'What the models actually do',
+        body: 'Three providers answer the same game rounds as the humans: Claude Opus 5, GPT-5.6, and Grok 4.6. Each one gets asked two versions of every sampled round. One with only the spectrum and the clue, which is guessing about a stranger. One with that plus the player\u2019s last twelve rounds, which is guessing about someone you have watched.\n\nThe gap between those two answers is the measurement. Running several providers is deliberate: if the same curve shows up across labs, the signal is in the data rather than in one vendor\u2019s model. Each arm is independent, so a bad key or an outage silently drops that provider and the rest keep recording.',
+      },
+      {
+        title: 'What the data said',
+        body: 'The original assumption was that people read each other about twice as well as chance. That did not survive the data.\n\n- Predicting one specific person cold is roughly a coin flip. Humans scored 0.98x against the best fixed guess, and the confidence interval contains the baseline.\n- Familiarity is the whole effect. First read of a person averaged 29.0 mean error. Third or later read averaged 20.3, and the intervals do not overlap.\n- That gain is not just practice. Holding position in the session fixed, about eight of the nine points come from having seen that specific person before.\n\nThe useful finding is not the prediction. It is the slope.',
+      },
+      {
+        title: 'Built with models, decided by me',
+        body: 'Claude Code wrote most of the lines. I made the calls that mattered: the game design, the spectrum content, the two-condition experiment, the choice to run several providers, and the decision to publish a result that contradicted the pitch. The measurement doc that killed the 2x claim is one I asked for and then shipped against my own interest.\n\nThat is the working style. Move fast with models on the parts that are mechanical, stay slow and skeptical on the parts where being wrong is expensive.',
+      },
+    ],
+  },
   {
     slug: 'bad-cards-platform',
     title: 'Platform & Growth',
