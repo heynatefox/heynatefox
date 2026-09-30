@@ -33,6 +33,7 @@ export const HERO = {
     ['landing', 'Landing page'],
     ['playbook', 'Playbook'],
     ['next', "What's next"],
+    ['awareness', 'Awareness'],
     ['channel', 'Channel'],
   ] as [string, string][],
 }
@@ -48,6 +49,7 @@ export const SEGMENT = {
   wedge: [
     'Correctness asks whether the plan is right. That puts Radical against the oncologist, invites a claim about treatment quality, and crosses the line the team cannot cross. Completeness asks whether the full option set is visible. It never evaluates the plan, never recommends a treatment, and positions Radical alongside the oncologist.',
     'It is also already your headline. I am pointing spend at the position you have.',
+    'One clarification, because this is a real decision rather than an obvious one. There are two windows, not one. The other is progression or recurrence, when the standard options are running out. Diagnosis is the larger market and the cheaper place to learn what message works. Progression has higher intent, a single question, and a second possible payer. I built for the first. Section six is what would make me move.',
   ],
 }
 
@@ -274,26 +276,39 @@ export const PLAYBOOK = {
 export const NEXT = {
   h2: "What I'd test next.",
   items: [
-    ['The second moment.', 'Everything above targets diagnosis. There is a second window, progression or recurrence, where the standard options are running out, the caregiver is unambiguously the buyer, and the only question is "is there a trial." Fewer than one in ten patients enroll, but 55% say yes when offered. Nobody runs the search, and running the search is the product.'],
-    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT and Claude right now and getting a generic answer. That query is Radical\'s product, stated out loud. Being the source those answers cite is a real channel, and almost nobody in this category is playing it yet.'],
+    ['The second moment.', 'Everything above targets diagnosis. There is a second window, progression or recurrence, where the standard options are running out and the only question is whether a trial exists. Fewer than one in ten patients ever enroll, but 55% say yes when they are offered one. Nobody runs the search, and running the search is the product.\n\nWhat makes this more than a second segment is who pays for it. Oncology trial recruitment runs roughly $15,000 to $50,000 per enrolled patient, and screen failure rates in oncology regularly exceed 70%. A patient who has already connected their records and been matched against 48,800 trials is pre-screened, which is the exact cost a trial sponsor is trying to avoid. Leal Health and Massive Bio both run trial matching that is free to the patient because pharma funds it. If a second payer covers acquisition for this segment, the math stops looking like consumer acquisition at all.'],
+    ['Answer-engine visibility.', 'People are typing "I was just diagnosed with stage 2 lung cancer, what are my options" into ChatGPT and Claude right now and getting a generic answer back. That query is Radical\'s product, stated out loud, and almost nobody in this category is playing for it deliberately yet.\n\nThere are real mechanics here, not just more blog posts. Structured data markup materially raises the rate at which a model selects a page. Answers get lifted when each section opens with a direct, self-contained response to the question in its own heading, rather than building to a conclusion at the end. And citations go to sources, which means original data rather than commentary. Radical is one of the few companies in this category that has data worth citing.'],
     ['Ungate the sample report.', 'The biggest objection in this category is "what am I actually going to get," and the answer already exists inside the product. The sample report sits behind a login. A fully anonymized composite case, published as a page, is the most persuasive asset the company owns.'],
   ] as [string, string][],
 }
 
-export const CHANNEL = {
-  h2: 'One non-obvious channel.',
-  h3: 'Turn the report into the referral engine.',
+export const AWARENESS = {
+  h2: 'Nobody shops for this in advance.',
   body: [
-    'An NPS of 85 means most patients are promoters, and none of them have been given anything to promote with. The mechanic cannot be a referral code. Cancer patients will not send friends a discount link, and asking them to would damage the relationship the nurses have built.',
-    'What they will do, almost universally, is help the next person who gets the news. So at the moment the report is delivered and the nurse call is finished, offer the patient a plain page to send to anyone newly diagnosed. Not a pitch. A short guide to the first two weeks, written by the nurses, with Radical named as the company that made it, and one line at the bottom offering the same report. It routes through the only channel in oncology that carries real trust, it arrives at peak goodwill, and it reaches week one, which paid deliberately does not.',
+    'This is a hard thing to sell, and not for the usual reasons. Nobody researches cancer reports before they need one. The need appears without warning, it lasts two to four weeks, and inside that window you are asking someone to hand a company they have never heard of access to their medical file.',
+    'You cannot build that much trust in two weeks. So the name has to already be familiar when the moment arrives, which makes awareness a prerequisite for the paid channel rather than a luxury sitting above it. The long-running IPA work by Binet and Field puts the efficient mix for consumer businesses near 60% brand and 40% activation. The plan above is 100% activation. That is correct for a first two weeks and wrong for a year.',
   ],
-  h3b: 'Three structures worth copying',
-  cards: [
-    ['Labcorp and Outcomes4Me.', 'Equity plus screens at testing locations, reaching patients inside the window without buying media.'],
-    ['Komen and AstraZeneca.', 'Navigation infrastructure, 12,791 people navigated last year. Embedded in the service rather than advertising next to it.'],
-    ['Imerman Angels.', 'Already sells a peer-to-peer partner program with Pfizer and UnitedHealth. The rail exists.'],
+  plays: [
+    ['Use the credibility you already paid for.', 'Radical is in the Mayo Clinic Platform_Accelerate cohort, announced by Mayo. The reports were shaped by oncologists who sit on NCCN committees. Both facts are on the site and neither one leads. In a category where the only real objection is whether this is real, that is the cheapest awareness asset available and it is already bought.'],
+    ['Publish what only you can publish.', 'Radical searches 48,800 trials and reads patient journeys at volume. Findings from that data are citable in a way that blog posts are not, which earns press, earns links, and earns the AI citations described above. It is also the honest version of thought leadership, because there is actual data underneath it.'],
+    ['Reach wide, because you cannot predict who needs it.', 'For most products there is a wrong audience. Here the buyer is defined by somebody else\'s diagnosis, so there is no way to know in advance who will need this and no way to reach them in time once they do. That makes cheap broad reach worth more in this category than in almost any other.'],
   ] as [string, string][],
-  closing: 'The pattern is the same in all three. Become part of the service rather than advertise near it.',
+}
+
+export const CHANNEL = {
+  h2: 'Getting patients to bring patients.',
+  intro: [
+    'In healthcare you cannot pay for a referral. Not the patient, not a partner, not per signup. The federal Anti-Kickback Statute reaches anything a federal program might pay for, and state all-payor laws apply even when no insurance is involved at all. California bars compensation for referring patients and applies it to everyone in the chain, not just clinicians. Paying only for the non-federal patients does not work either.',
+    'So the obvious ideas are all dead on arrival. A referral fee. A free report for sharing. A gift card from a partner brand. Gift cards count as cash, and anything given to a patient has to stay under roughly $15 an item and $75 a year to avoid the question entirely.',
+    'Three things survive, and the last one is the one that scales.',
+  ],
+  tiers: [
+    ['Give them something worth passing on, and pay nobody.', 'At the moment the report is delivered and the nurse call is finished, offer the patient a plain guide to the first two weeks, written by the nurses, with Radical named on it. No money moves, so there is nothing to review. It routes through the only thing in oncology that carries real trust, which is one patient telling another, and it reaches people in week one, which paid deliberately does not.'],
+    ['If something has to come back to the patient, make it a donation.', 'They share, Radical gives to cancer research in their name. The patient receives nothing of value personally, so it is not remuneration and there is no inducement to analyze. It is also the only reward that matches the reason a person would share this in the first place. Nobody forwards a cancer report to a friend to earn a dinner reservation.'],
+    ['Pay institutions for work, never for referrals.', 'A flat fee, agreed in advance, that does not move with volume. Pfizer funds a dedicated mentor program at Imerman Angels. Komen runs patient navigation with AstraZeneca. Labcorp took equity in Outcomes4Me and promotes it on screens where patients are already sitting and waiting. Same structure every time, and all of it reaches patients at the moment of need without buying a single impression.'],
+  ] as [string, string][],
+  closing: 'The pattern across all of it is that nobody pays the patient. Everybody is paid by the best funded party in the chain, and in oncology that is never the person with cancer. The one exception worth testing is an offer for the person being referred, publicly advertised and available to anyone, because an offer open to everybody is pricing rather than an inducement.',
+  disclaimer: 'I am not a lawyer. None of this ships without yours.',
 }
 
 export const FOOTER = {

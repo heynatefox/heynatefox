@@ -2,7 +2,7 @@ import OpenPing from '../gamma/OpenPing'
 import GoogleAd, { GoogleCopy } from './GoogleAd'
 import MetaAd, { MetaCopy } from './MetaAd'
 import LandingMockup from './LandingMockup'
-import { RH, HERO, SEGMENT, ADS, LANDING, PLAYBOOK, NEXT, CHANNEL, FOOTER } from '@/lib/radicalCaseContent'
+import { RH, HERO, SEGMENT, ADS, LANDING, PLAYBOOK, NEXT, AWARENESS, CHANNEL, FOOTER } from '@/lib/radicalCaseContent'
 
 export default function RadicalCase() {
   return (
@@ -204,19 +204,50 @@ export default function RadicalCase() {
         </div>
       </section>
 
-      {/* ───────── 7. optional channel ───────── */}
+      {/* ───────── 7. brand awareness ───────── */}
+      <section id="awareness" className="rh-sec">
+        <div className="rh-in">
+          <span className="rh-label">Before the moment</span>
+          <h2>{AWARENESS.h2}</h2>
+          <div className="rh-prose rh-prose-top">
+            {AWARENESS.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
+          </div>
+          <ol className="rh-plays">
+            {AWARENESS.plays.map(([h, p], i) => (
+              <li key={h}>
+                <span className="rh-plays-n">0{i + 1}</span>
+                <div>
+                  <h3>{h}</h3>
+                  <p>{p}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ───────── 8. referral channel ───────── */}
       <section id="channel" className="rh-sec rh-sec-alt">
         <div className="rh-in">
           <span className="rh-label">Optional channel</span>
           <h2>{CHANNEL.h2}</h2>
           <div className="rh-prose rh-prose-top">
-            <h3 className="rh-h3-first">{CHANNEL.h3}</h3>
-            {CHANNEL.body.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
-            <h3>{CHANNEL.h3b}</h3>
-            <ul className="rh-structures">
-              {CHANNEL.cards.map(([h, p]) => <li key={h}><strong>{h}</strong> {p}</li>)}
-            </ul>
+            {CHANNEL.intro.map(p => <p key={p.slice(0, 30)}>{p}</p>)}
+          </div>
+          <div className="rh-tiers">
+            {CHANNEL.tiers.map(([h, p], i) => (
+              <div className="rh-tier" key={h}>
+                <span className="rh-tier-n">{i + 1}</span>
+                <div>
+                  <h3>{h}</h3>
+                  <p>{p}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="rh-prose">
             <p>{CHANNEL.closing}</p>
+            <p className="rh-disclaimer">{CHANNEL.disclaimer}</p>
           </div>
         </div>
       </section>
@@ -514,6 +545,22 @@ const RH_CSS = `
 .rh-next-n{display:block;font-size:14px;color:${RH.muted};margin-bottom:14px}
 .rh-next h3{margin-bottom:12px}
 .rh-next p{margin:0;font-size:16px;line-height:1.6}
+
+/* awareness plays */
+.rh-plays{list-style:none;margin:40px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;max-width:82ch}
+.rh-plays li{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-top:1px solid ${RH.border}}
+.rh-plays-n{font-size:13px;letter-spacing:.06em;color:${RH.muted};padding-top:6px;flex-shrink:0}
+.rh-plays h3{font-size:clamp(20px,2vw,24px);margin-bottom:8px}
+.rh-plays p{margin:0;font-size:16px;line-height:1.65}
+
+/* referral tiers */
+.rh-tiers{display:flex;flex-direction:column;gap:2px;margin-top:36px;max-width:82ch}
+.rh-tier{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-top:1px solid ${RH.border}}
+.rh-tier-n{width:28px;height:28px;border-radius:50%;background:${RH.ink};color:${RH.cream};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:3px}
+.rh-tier h3{font-size:clamp(20px,2vw,24px);margin-bottom:8px}
+.rh-tier p{margin:0;font-size:16px;line-height:1.65}
+.rh-disclaimer{color:${RH.muted};font-size:15px}
+@media(max-width:560px){.rh-plays li,.rh-tier{gap:14px}}
 
 /* channel */
 .rh-closing{margin:32px 0 0;font-size:17px;line-height:1.6;max-width:66ch}
